@@ -11,6 +11,12 @@ window.onload = function(){
         let para = document.createElement("p");
         para.innerHTML = verse + ". " + bible[0].chapters[0][i];
         book.appendChild(para);
+        if (verse == 2){
+            let img = document.createElement("img");
+            img.setAttribute("src", "./imgs/gen_1_2.jpg");
+            img.setAttribute("width", "80%");
+            book.appendChild(img);
+        }
         if (verse == 3){
             let img = document.createElement("img");
             img.setAttribute("src", "./imgs/gen_1_3.jpg");
