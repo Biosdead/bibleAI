@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bíblia Antiga</title>
     <!-- <link rel="stylesheet" href="index.css"> -->
-    <link rel="stylesheet" href="modernStyle.css">
+    <link id="link" rel="stylesheet" href="modernStyle.css">
 </head>
 <body>
     <header>
@@ -14,6 +14,8 @@
             <ul>
                 <li><a class="chapter old" href="#genesis1">Gênesis</a></li>
                 <li><a class="chapter old" href="#genesis2">Êxodo</a></li>
+                <li><a onclick="OldMode()" class="chapter old" href="#genesis2">Modo Claro</a></li>
+                <li><a onclick="FutureMode()" class="chapter old" href="#genesis2">Modo Escuro</a></li>
                 <!-- Adicione mais links para outros livros e capítulos -->
             </ul>
         </nav>
@@ -21,14 +23,8 @@
 
     <main>
         <article id="genesis1">
-            <h2>Gênesis 1</h2>
-            <p> No princípio Deus criou os céus e a terra. </p>
-            <!-- Adicione mais versículos -->
-        </article>
-
-        <article id="genesis2">
-            <h2>Gênesis 2</h2>
-            <p> Assim foram concluídos os céus e a terra, e tudo o que neles há. </p>
+            <h1 id="book">Livro</h1>
+            <h2 id="chapter">Gênesis 1</h2>
             <!-- Adicione mais versículos -->
         </article>
     </main>
