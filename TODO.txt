@@ -1,12 +1,24 @@
 v0.2
+- Definir como apresentar as imagens de forma inteligente: Ao lado, em cima, embaixo, ou em outro lugar. Ok
+
+v0.3
+-Inserir todo os livros. Feito
+
+v0.3
+- Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela.
+
+v0.4
+-Inserir todo os capíulos
+
+v0.5
 -Ler todo o capítulo e ver as melhores passagens para criar as imagens
 
--Insrerir todo os livros e todos os capítulos
+
+
 
 - Inserir as imagens de forma inteligente.
 
 - Mostrar prévia para a família
 
-- Definir como apresentar as imagens de forma inteligente: Ao lado, em cima, embaixo, ou em outro lugar.
+- Inserir barra de busca
 
-- Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela.

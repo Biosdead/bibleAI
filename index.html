@@ -3,34 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bíblia Antiga</title>
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
+    <title>Bíblia com IA</title>
     <!-- <link rel="stylesheet" href="index.css"> -->
     <link id="link" rel="stylesheet" href="modernStyle.css">
 </head>
 <body>
     <header>
-        <h1>Bíbl<span id="logo">IA</span></h1>
+        <h1>Bíbl<span id="logo">ia</span> - IA de imagens na bíblia</h1>
+        
         <nav>
+            <h3>Antigo Testamento</h3>
+            <ul id="old-testament">
+                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+            </ul>
+            <h3>Novo Testamento</h3>
+            <ul id="new-testament">
+                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+                <li><a href="#" onclick="renderBook(5)">Teste</a></li>
+            </ul>
+        </nav>
+        
+        <!-- <nav>
             <ul>
                 <li><a class="chapter old" href="#genesis1">Gênesis</a></li>
                 <li><a class="chapter old" href="#genesis2">Êxodo</a></li>
                 <li><a onclick="OldMode()" class="chapter old" href="#genesis2">Modo Claro</a></li>
                 <li><a onclick="FutureMode()" class="chapter old" href="#genesis2">Modo Escuro</a></li>
-                <!-- Adicione mais links para outros livros e capítulos -->
             </ul>
-        </nav>
+        </nav> -->
     </header>
-
     <main>
         <article id="genesis1">
             <h1 id="book">Livro</h1>
             <h2 id="chapter">Gênesis 1</h2>
+            <br>
             <!-- Adicione mais versículos -->
         </article>
     </main>
 
     <footer>
-        <p>V0.1</p>
+        <p>V0.3</p>
         <p>© 2024 Bíblia Ilustrada por IA. Todos os direitos reservados.</p>
         <p>Criado por Lennon Sales Furtado</p>
     </footer>
