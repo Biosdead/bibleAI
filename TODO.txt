@@ -9,8 +9,12 @@ v0.4
 - Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela. Feito
 
 v0.5
+- Deixar as imagens clicáveis zoom in e out.
+- Marcar texto liustradores.
+
+- Deixar as imagens clicáveis zoom in e out.
 - Inserir as imagens de forma inteligente.
--Ler todo o capítulo e ver as melhores passagens para criar as imagens
+- Ler todo o capítulo e ver as melhores passagens para criar as imagens
 - Inserir barra de busca
 
 v0.6

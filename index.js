@@ -12,21 +12,24 @@ window.onload = function(){
         para.innerHTML = verse + ". " + bible[0].chapters[0][i];
         book.appendChild(para);
         if (verse == 2){
+            para.classList.add("ilustrated");
             let img = document.createElement("img");
             img.setAttribute("src", "./imgs/gen_1_2.jpg");
-            img.setAttribute("width", "80%");
+            img.setAttribute("onclick", "zoom()");
             book.appendChild(img);
         }
         if (verse == 3){
+            para.classList.add("ilustrated");
             let img = document.createElement("img");
             img.setAttribute("src", "./imgs/gen_1_3.jpg");
-            img.setAttribute("width", "80%");
+            img.setAttribute("onclick", "zoom()");
             book.appendChild(img);
         }
     }
     
 // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
 populateBookList();
+event.preventDefault();
 }
 
 
@@ -155,7 +158,6 @@ function HideOldTestament() {
       }
 
     bookName.innerHTML = bible[livro].name;
-    // divChapters.style.display = "inline-flex";
     let book = bible[livro].chapters; 
     let i = 0;
     book.forEach(chapter => {
@@ -169,3 +171,12 @@ function HideOldTestament() {
        i++;
     });
   }
+
+//   function zoom() {
+//     var img = document.getElementById("img");
+//     if (img.style.display === "none") {
+//         img.style.display = "block";
+//     } else {
+//         img.style.display = "none";
+//     }
+//   }
