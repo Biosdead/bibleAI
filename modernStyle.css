@@ -6,27 +6,6 @@ body {
     color: #ffffff;
 }
 
-/* nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 5px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-} */
-
-/* nav ul li a:hover {
-    color: #dddddd;
-} */
-
 main {
     padding: 20px;
 }
@@ -71,7 +50,7 @@ footer p {
 img {
     border: 15px solid;
     border-radius: 10%;
-    width: 60%;
+    width: 40%;
     display: block;
     margin: auto;
 }
@@ -110,10 +89,14 @@ nav ul {
     background-color: #2c2c2c;
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
 }
 
 nav ul li {
-    margin-right: 20px;
+    border: white 3px solid;
+    border-radius: 10px;
+    width: 26%;
+    margin-right: 10px;
     margin-bottom: 10px; /* Espaçamento entre os itens */
 }
 
@@ -121,16 +104,32 @@ nav ul li a {
     text-decoration: none;
     color: #ffffff;
     font-size: 1rem;
-    transition: color 0.3s ease;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
 nav ul li a:hover {
     background-color: #4a4a4a;
 }
 
-nav ul li a.active {
+nav ul li a:active {
     background-color: #4a4a4a;
 }
 
+button{
+    color: whitesmoke !important;
+    background-color: #4a4a4a;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+}
+
+button:hover {
+    background-color: #4a4a4a;
+}
+
+button:active {
+    background-color: #2c2c2c;
+}
+
+img:active{
+    -webkit-transform: scale(2,2);
+}

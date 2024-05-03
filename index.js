@@ -3,9 +3,9 @@ const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
 
 window.onload = function(){
-    console.log(bible);
     book.innerHTML = bible[0].name;
-    chapter.innerHTML = bible[0].chapters[0][0];
+    chapter.innerHTML = bible[0].name + " 1";
+    // chapter.innerHTML = bible[0].chapters[0][0];
     for (let i = 0; i < bible[0].chapters[0].length; i++) {
         let verse = i + 1;
         let para = document.createElement("p");
@@ -96,4 +96,76 @@ function renderBook(livro){
         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
         chapter.appendChild(para);
     }
+    populateChapters(livro);
 }
+
+function renderBookAndChapter(livro, chap){
+    while (chapter.hasChildNodes()) {
+        chapter.removeChild(chapter.firstChild);
+      }
+
+    const divChapters = document.getElementById("divChapters");
+    divChapters.style.display = "none";
+    let cap = chap;
+    let TrueChapter = cap + 1;
+    book.innerHTML = bible[livro].name;
+    chapter.innerHTML = " Capítulo " + TrueChapter;
+    for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
+        let verse = i + 1;
+        let para = document.createElement("p");
+        para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
+        chapter.appendChild(para);
+    }
+    // populateChapters(livro);
+}
+
+function HideOldTestament() {
+    var old_testament_books = document.getElementById("old-testament");
+    if (old_testament_books.style.display === "none") {
+        old_testament_books.style.display = "inline-flex";
+    } else {
+        old_testament_books.style.display = "none";
+    }
+  }
+
+  function HideNewTestament() {
+    var new_testament_books = document.getElementById("new-testament");
+    if (new_testament_books.style.display === "none") {
+        new_testament_books.style.display = "inline-flex";
+    } else {
+        new_testament_books.style.display = "none";
+    }
+  }
+
+  function populateChapters(livro) {
+    const divChapters = document.getElementById("divChapters");
+    divChapters.style.display = "flex";
+    var old_testament_books = document.getElementById("old-testament");
+    old_testament_books.style.display = "none";
+    var new_testament_books = document.getElementById("new-testament");
+    new_testament_books.style.display = "none";
+
+    const capitulos = document.getElementById("chapters");
+    const bookName = document.getElementById("bookName");
+
+    
+
+    while (capitulos.hasChildNodes()) {
+        capitulos.removeChild(capitulos.firstChild);
+      }
+
+    bookName.innerHTML = bible[livro].name;
+    // divChapters.style.display = "inline-flex";
+    let book = bible[livro].chapters; 
+    let i = 0;
+    book.forEach(chapter => {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = '#';
+        link.textContent = i+1;
+        link.setAttribute('onclick','renderBookAndChapter('+livro+','+i+')');
+        listItem.appendChild(link);
+        capitulos.appendChild(listItem);
+       i++;
+    });
+  }

@@ -4,21 +4,24 @@ v0.2
 v0.3
 -Inserir todo os livros. Feito
 
-v0.3
-- Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela.
-
 v0.4
--Inserir todo os capíulos
+-Inserir todo os capíulos. Feito
+- Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela. Feito
 
 v0.5
+- Inserir as imagens de forma inteligente.
+-Ler todo o capítulo e ver as melhores passagens para criar as imagens
+- Inserir barra de busca
+
+v0.6
 -Ler todo o capítulo e ver as melhores passagens para criar as imagens
 
 
 
 
-- Inserir as imagens de forma inteligente.
+
 
 - Mostrar prévia para a família
 
-- Inserir barra de busca
+
 
