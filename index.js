@@ -3,6 +3,9 @@ const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
 
 window.onload = function(){
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault(); 
+    });
     book.innerHTML = bible[0].name;
     chapter.innerHTML = bible[0].name + " 1";
     // chapter.innerHTML = bible[0].chapters[0][0];
@@ -15,21 +18,23 @@ window.onload = function(){
             para.classList.add("ilustrated");
             let img = document.createElement("img");
             img.setAttribute("src", "./imgs/gen_1_2.jpg");
-            img.setAttribute("onclick", "zoom()");
+            img.setAttribute("id", "img"+i);
+            img.setAttribute("onclick", "zoom(img"+i+")");
             book.appendChild(img);
         }
         if (verse == 3){
             para.classList.add("ilustrated");
             let img = document.createElement("img");
             img.setAttribute("src", "./imgs/gen_1_3.jpg");
-            img.setAttribute("onclick", "zoom()");
+            img.setAttribute("id", "img"+i);
+            img.setAttribute("onclick", "zoom(img"+i+")");
             book.appendChild(img);
         }
     }
     
 // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
 populateBookList();
-event.preventDefault();
+// event.preventDefault();
 }
 
 
@@ -39,6 +44,12 @@ function OldMode(){
 
 function FutureMode(){
     linkhref.href = "modernStyle.css";
+}
+
+function zoom(id){
+    console.log("img" + id);
+    // document.getElementById(""+id).style.transform = "scale(2,2)";
+
 }
 
 

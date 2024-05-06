@@ -20,7 +20,6 @@
             <button onclick="HideNewTestament()">Novo Testamento</button>
             <ul id="new-testament" style="display: none;">
                 <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
-                <!-- <li><a href="#" onclick="renderBook(5)">Teste</a></li> -->
             </ul>
             <div id="divChapters" style="display: none;">
                 <p>Capítulos de <span  id="bookName">livro</span></p>
@@ -28,16 +27,13 @@
                 <ul id="chapters">
                 </ul>
             </div>
+            <div id="divVerse" style="display: none;">
+                <p><span  id="bookNameChapter">livro - </span>Capítulo <span  id="chapterNumber"></span></p>
+                <br>
+                <ul id="verses">
+                </ul>
+            </div>
         </nav>
-        
-        <!-- <nav>
-            <ul>
-                <li><a class="chapter old" href="#genesis1">Gênesis</a></li>
-                <li><a class="chapter old" href="#genesis2">Êxodo</a></li>
-                <li><a onclick="OldMode()" class="chapter old" href="#genesis2">Modo Claro</a></li>
-                <li><a onclick="FutureMode()" class="chapter old" href="#genesis2">Modo Escuro</a></li>
-            </ul>
-        </nav> -->
     </header>
     <main>
         <article id="genesis1">
@@ -49,7 +45,9 @@
     </main>
 
     <footer>
-        <p>V0.5</p>
+        <button onclick="OldMode()" class="chapter old" href="#genesis2">Modo Claro</button>
+        <button onclick="FutureMode()" class="chapter old" href="#genesis2">Modo Escuro</button>
+        <p>V0.6</p>
         <p>© 2024 Bíblia Ilustrada por IA. Todos os direitos reservados.</p>
         <p>Criado por Lennon Sales Furtado</p>
     </footer>

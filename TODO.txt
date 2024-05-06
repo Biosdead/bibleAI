@@ -9,8 +9,11 @@ v0.4
 - Deixar as imagens clicáveis para dar um zoom nelas e preencher toda a tela. Feito
 
 v0.5
-- Deixar as imagens clicáveis zoom in e out.
-- Marcar texto liustradores.
+- Marcar texto liustradores. Feito
+
+v0.6
+- Deixar as imagens clicáveis zoom in e out. 
+- Inserir todo os versículos.
 
 - Deixar as imagens clicáveis zoom in e out.
 - Inserir as imagens de forma inteligente.
