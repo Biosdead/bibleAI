@@ -12,7 +12,10 @@ v0.5
 - Marcar texto liustradores. Feito
 
 v0.61
-- Inserir todo os versículos.
+- Inserir todo os versículos. Feito
+
+v0.62
+- Fazer o botão esconder livros, cap e versos. Feito
 
 
 - Deixar as imagens clicáveis zoom in e out. 

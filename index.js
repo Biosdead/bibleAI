@@ -1,6 +1,9 @@
 const book = document.getElementById('book');
 const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
+const divChapters = document.getElementById("divChapters");
+const divVerses = document.getElementById("divVerses");
+    
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -83,7 +86,7 @@ function populateBookList() {
         link.href = '#';
         // link.onclick = () => renderBook(i);
         link.textContent = book;
-        link.setAttribute('onclick','renderBook('+i+')');
+        link.setAttribute('onclick','populateChapters('+i+')');
         listItem.appendChild(link);
 
         if(book == "Mateus"){
@@ -99,7 +102,7 @@ function populateBookList() {
     });
 }
 
-function renderBook(livro){
+function renderBook(livro){ // Posso apagar
     let cap = 0;
     let TrueChapter = cap + 1;
     book.innerHTML = bible[livro].name;
@@ -119,7 +122,8 @@ function renderBookAndChapter(livro, chap){
       }
 
     const divChapters = document.getElementById("divChapters");
-    divChapters.style.display = "none";
+    hideDiv(divChapters);
+    // divChapters.style.display = "none";
     let cap = chap;
     let TrueChapter = cap + 1;
     book.innerHTML = bible[livro].name;
@@ -153,8 +157,8 @@ function HideOldTestament() {
   }
 
   function populateChapters(livro) {
-    const divChapters = document.getElementById("divChapters");
-    divChapters.style.display = "flex";
+    showDiv(divChapters);
+    // divChapters.style.display = "flex";
     HideOldandNewTestament();
 
     const capitulos = document.getElementById("chapters");
@@ -178,9 +182,8 @@ function HideOldTestament() {
   }
 
   function populateVerses(livro,capitulo) {
-    showVerses();
+    showDiv(divVerses);
     HideOldandNewTestament();
-    const verseNumber = document.getElementById("chapterNumber");
     const bookName = document.getElementById("bookNameChapter");
     const versesUl = document.getElementById("verses");
     removeChildrenNodes(versesUl);
@@ -192,10 +195,9 @@ function HideOldTestament() {
         const listItem = document.createElement("li");
         const link = document.createElement("a");
         link.textContent = i+1;
-        // link.id = "v"+i;
         link.href = '#v'+i;
         // link.setAttribute('onclick','renderBookAndChapter('+livro+','+i+')');
-        link.setAttribute('onclick','hideVerses()');
+        link.setAttribute('onclick','hideDiv('+divVerses+')');
         listItem.appendChild(link);
         versesUl.appendChild(listItem);
        i++;
@@ -230,12 +232,18 @@ function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
     });
 }
 
-function showVerses(){
-    const divVerses = document.getElementById("divVerses");
-    divVerses.style.display = "flex";
+function showDiv(div){
+    div.style.display = "flex";
+}
+
+function hideDiv(div){
+    div.style.display = "none";
+}
+
+function hideChapters(){
+    divChapters.style.display = "none";
 }
 
 function hideVerses(){
-    const divVerses = document.getElementById("divVerses");
     divVerses.style.display = "none";
 }
