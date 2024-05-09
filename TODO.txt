@@ -11,10 +11,11 @@ v0.4
 v0.5
 - Marcar texto liustradores. Feito
 
-v0.6
-- Deixar as imagens clicáveis zoom in e out. 
+v0.61
 - Inserir todo os versículos.
 
+
+- Deixar as imagens clicáveis zoom in e out. 
 - Deixar as imagens clicáveis zoom in e out.
 - Inserir as imagens de forma inteligente.
 - Ler todo o capítulo e ver as melhores passagens para criar as imagens

@@ -2,13 +2,32 @@ const book = document.getElementById('book');
 const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
 
+// Array contendo os nomes dos livros da Bíblia
+const booksOfBible = [
+    "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio",
+    "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel",
+    "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras",
+    "Neemias", "Ester", "Jó", "Salmos", "Provérbios",
+    "Eclesiastes", "Cânticos", "Isaías", "Jeremias", "Lamentações",
+    "Ezequiel", "Daniel", "Oseias", "Joel", "Amós",
+    "Obadias", "Jonas", "Miquéias", "Naum", "Habacuque",
+    "Sofonias", "Ageu", "Zacarias", "Malaquias",
+    "Mateus", "Marcos", "Lucas", "João", "Atos",
+    "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas", "Efésios",
+    "Filipenses", "Colossenses", "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo",
+    "2 Timóteo", "Tito", "Filemom", "Hebreus", "Tiago",
+    "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João",
+    "Judas", "Apocalipse"
+];
+
 window.onload = function(){
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault(); 
-    });
+    // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
+    populateBookList();
+    // Desabilita o menu de contexto
+    disableContextMenu();
+
     book.innerHTML = bible[0].name;
     chapter.innerHTML = bible[0].name + " 1";
-    // chapter.innerHTML = bible[0].chapters[0][0];
     for (let i = 0; i < bible[0].chapters[0].length; i++) {
         let verse = i + 1;
         let para = document.createElement("p");
@@ -32,9 +51,6 @@ window.onload = function(){
         }
     }
     
-// Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
-populateBookList();
-// event.preventDefault();
 }
 
 
@@ -53,23 +69,7 @@ function zoom(id){
 }
 
 
-// Array contendo os nomes dos livros da Bíblia
-const booksOfBible = [
-    "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio",
-    "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel",
-    "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras",
-    "Neemias", "Ester", "Jó", "Salmos", "Provérbios",
-    "Eclesiastes", "Cânticos", "Isaías", "Jeremias", "Lamentações",
-    "Ezequiel", "Daniel", "Oseias", "Joel", "Amós",
-    "Obadias", "Jonas", "Miquéias", "Naum", "Habacuque",
-    "Sofonias", "Ageu", "Zacarias", "Malaquias",
-    "Mateus", "Marcos", "Lucas", "João", "Atos",
-    "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas", "Efésios",
-    "Filipenses", "Colossenses", "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo",
-    "2 Timóteo", "Tito", "Filemom", "Hebreus", "Tiago",
-    "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João",
-    "Judas", "Apocalipse"
-];
+
 
 // Função para preencher o cabeçalho com os nomes dos livros da Bíblia
 function populateBookList() {
@@ -128,9 +128,10 @@ function renderBookAndChapter(livro, chap){
         let verse = i + 1;
         let para = document.createElement("p");
         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
+        para.setAttribute("id","v"+i);
         chapter.appendChild(para);
     }
-    // populateChapters(livro);
+    populateVerses(livro,chap);
 }
 
 function HideOldTestament() {
@@ -154,19 +155,12 @@ function HideOldTestament() {
   function populateChapters(livro) {
     const divChapters = document.getElementById("divChapters");
     divChapters.style.display = "flex";
-    var old_testament_books = document.getElementById("old-testament");
-    old_testament_books.style.display = "none";
-    var new_testament_books = document.getElementById("new-testament");
-    new_testament_books.style.display = "none";
+    HideOldandNewTestament();
 
     const capitulos = document.getElementById("chapters");
     const bookName = document.getElementById("bookName");
 
-    
-
-    while (capitulos.hasChildNodes()) {
-        capitulos.removeChild(capitulos.firstChild);
-      }
+    removeChildrenNodes(capitulos);
 
     bookName.innerHTML = bible[livro].name;
     let book = bible[livro].chapters; 
@@ -183,6 +177,31 @@ function HideOldTestament() {
     });
   }
 
+  function populateVerses(livro,capitulo) {
+    showVerses();
+    HideOldandNewTestament();
+    const verseNumber = document.getElementById("chapterNumber");
+    const bookName = document.getElementById("bookNameChapter");
+    const versesUl = document.getElementById("verses");
+    removeChildrenNodes(versesUl);
+    let TrueChapter = capitulo + 1;
+    bookName.innerHTML = bible[livro].name+" - " + TrueChapter;
+    let verses = bible[livro].chapters[capitulo]; 
+    let i = 0;
+    verses.forEach(verse => {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = i+1;
+        // link.id = "v"+i;
+        link.href = '#v'+i;
+        // link.setAttribute('onclick','renderBookAndChapter('+livro+','+i+')');
+        link.setAttribute('onclick','hideVerses()');
+        listItem.appendChild(link);
+        versesUl.appendChild(listItem);
+       i++;
+    });
+  }
+
 //   function zoom() {
 //     var img = document.getElementById("img");
 //     if (img.style.display === "none") {
@@ -191,3 +210,32 @@ function HideOldTestament() {
 //         img.style.display = "none";
 //     }
 //   }
+
+function HideOldandNewTestament(){
+    var old_testament_books = document.getElementById("old-testament");
+    old_testament_books.style.display = "none";
+    var new_testament_books = document.getElementById("new-testament");
+    new_testament_books.style.display = "none";
+}
+
+function removeChildrenNodes(node){
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+      }
+}
+
+function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault(); 
+    });
+}
+
+function showVerses(){
+    const divVerses = document.getElementById("divVerses");
+    divVerses.style.display = "flex";
+}
+
+function hideVerses(){
+    const divVerses = document.getElementById("divVerses");
+    divVerses.style.display = "none";
+}
