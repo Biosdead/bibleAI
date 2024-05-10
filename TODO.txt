@@ -17,21 +17,21 @@ v0.61
 v0.62
 - Fazer o botão esconder livros, cap e versos. Feito
 
+v0.7
+- Inserir as imagens de forma inteligente. Feito
 
+v0.8
 - Deixar as imagens clicáveis zoom in e out. 
-- Deixar as imagens clicáveis zoom in e out.
-- Inserir as imagens de forma inteligente.
-- Ler todo o capítulo e ver as melhores passagens para criar as imagens
+- Finalizar Gênesis com 10 imgs
+- Ao clicar em uma tab fechar todas as outras.
+
+
+
+v0.9
 - Inserir barra de busca
 
-v0.6
--Ler todo o capítulo e ver as melhores passagens para criar as imagens
 
-
-
-
-
-
+v1
 - Mostrar prévia para a família
 
 

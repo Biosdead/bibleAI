@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #1f1f1f;
     color: #ffffff;
-    margin-bottom: 3%;
 }
 
 main {
@@ -28,7 +27,7 @@ footer {
     background-color: #2c2c2c;
     text-align: center;
     padding-top: 10px;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
     border-top: 2px solid #4a4a4a;
@@ -131,14 +130,22 @@ button:active {
     background-color: #2c2c2c;
 }
 
-/* img:active{
-    -webkit-transform: scale(2,2);
-} */
-
 img:active{
     transform: scale(1.5,1.5);
 }
 
 .ilustrated{
     color: aqua !important;
+}
+
+object {
+    /* border: 15px solid;
+    border-radius: 10%; */
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+object:active{
+    transform: scale(1.5,1.5);
 }

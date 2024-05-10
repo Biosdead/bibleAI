@@ -1,8 +1,11 @@
+// import * as fs from 'node:fs';
+// var fs = require("fs");
 const book = document.getElementById('book');
 const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
 const divChapters = document.getElementById("divChapters");
 const divVerses = document.getElementById("divVerses");
+
     
 
 // Array contendo os nomes dos livros da Bíblia
@@ -11,7 +14,7 @@ const booksOfBible = [
     "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel",
     "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras",
     "Neemias", "Ester", "Jó", "Salmos", "Provérbios",
-    "Eclesiastes", "Cânticos", "Isaías", "Jeremias", "Lamentações",
+    "Eclesiastes", "Cânticos", "Isaías", "Jeremias                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ", "Lamentações",
     "Ezequiel", "Daniel", "Oseias", "Joel", "Amós",
     "Obadias", "Jonas", "Miquéias", "Naum", "Habacuque",
     "Sofonias", "Ageu", "Zacarias", "Malaquias",
@@ -31,28 +34,38 @@ window.onload = function(){
 
     book.innerHTML = bible[0].name;
     chapter.innerHTML = bible[0].name + " 1";
-    for (let i = 0; i < bible[0].chapters[0].length; i++) {
-        let verse = i + 1;
-        let para = document.createElement("p");
-        para.innerHTML = verse + ". " + bible[0].chapters[0][i];
-        book.appendChild(para);
-        if (verse == 2){
-            para.classList.add("ilustrated");
-            let img = document.createElement("img");
-            img.setAttribute("src", "./imgs/gen_1_2.jpg");
-            img.setAttribute("id", "img"+i);
-            img.setAttribute("onclick", "zoom(img"+i+")");
-            book.appendChild(img);
-        }
-        if (verse == 3){
-            para.classList.add("ilustrated");
-            let img = document.createElement("img");
-            img.setAttribute("src", "./imgs/gen_1_3.jpg");
-            img.setAttribute("id", "img"+i);
-            img.setAttribute("onclick", "zoom(img"+i+")");
-            book.appendChild(img);
-        }
-    }
+    renderBookAndChapter(0,0);
+    hideVerses();
+    // for (let i = 0; i < bible[0].chapters[0].length; i++) {
+    //     let verse = i + 1;
+    //     let para = document.createElement("p");
+    //     para.innerHTML = verse + ". " + bible[0].chapters[0][i];
+    //     book.appendChild(para);
+    //     if (verse == 2){
+    //         let realIndexBook = 1;
+    //         let realIndexChapter = 1;
+    //         let realIndexVerse = verse;
+    //         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+realIndexVerse+".jpg";
+    //         para.classList.add("ilustrated");
+    //         let img = document.createElement("img");
+    //         img.setAttribute("src", image);
+    //         img.setAttribute("id", "img"+i);
+    //         img.setAttribute("onclick", "zoom(img"+i+")");
+    //         book.appendChild(img);
+    //     }
+    //     if (verse == 3){
+    //         let realIndexBook = 1;
+    //         let realIndexChapter = 1;
+    //         let realIndexVerse = verse;
+    //         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+realIndexVerse+".jpg";
+    //         para.classList.add("ilustrated");
+    //         let img = document.createElement("img");
+    //         img.setAttribute("src", image);
+    //         img.setAttribute("id", "img"+i);
+    //         img.setAttribute("onclick", "zoom(img"+i+")");
+    //         book.appendChild(img);
+    //     }
+    // }
     
 }
 
@@ -117,23 +130,38 @@ function renderBook(livro){ // Posso apagar
 }
 
 function renderBookAndChapter(livro, chap){
-    while (chapter.hasChildNodes()) {
-        chapter.removeChild(chapter.firstChild);
-      }
-
-    const divChapters = document.getElementById("divChapters");
+    removeChildrenNodes(chapter);
+    let realIndexBook = livro + 1;
+    let realIndexChapter = chap + 1;
+    // const divChapters = document.getElementById("divChapters");
     hideDiv(divChapters);
-    // divChapters.style.display = "none";
     let cap = chap;
-    let TrueChapter = cap + 1;
     book.innerHTML = bible[livro].name;
-    chapter.innerHTML = " Capítulo " + TrueChapter;
+    chapter.innerHTML = " Capítulo " + realIndexChapter;
     for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
         let verse = i + 1;
+        let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+verse+".jpg";
         let para = document.createElement("p");
         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
         para.setAttribute("id","v"+i);
         chapter.appendChild(para);
+        let img = document.createElement("object");
+        img.setAttribute("data", image);
+        chapter.appendChild(img);
+        // para.classList.add("ilustrated");
+        // img.setAttribute("src", image);
+        // img.setAttribute("id", "img"+i);
+        // img.setAttribute("onclick", "zoom(img"+i+")");
+        // img.setAttribute("onload", "load()");
+            
+        
+        // if (img.onload) {    
+            // img.setAttribute("src", image);
+            // img.setAttribute("id", "img"+i);
+            // img.setAttribute("onclick", "zoom(img"+i+")");
+            // img.setAttribute("onload", "load()");
+            
+           
     }
     populateVerses(livro,chap);
 }
@@ -158,14 +186,10 @@ function HideOldTestament() {
 
   function populateChapters(livro) {
     showDiv(divChapters);
-    // divChapters.style.display = "flex";
     HideOldandNewTestament();
-
     const capitulos = document.getElementById("chapters");
     const bookName = document.getElementById("bookName");
-
     removeChildrenNodes(capitulos);
-
     bookName.innerHTML = bible[livro].name;
     let book = bible[livro].chapters; 
     let i = 0;
@@ -196,8 +220,7 @@ function HideOldTestament() {
         const link = document.createElement("a");
         link.textContent = i+1;
         link.href = '#v'+i;
-        // link.setAttribute('onclick','renderBookAndChapter('+livro+','+i+')');
-        link.setAttribute('onclick','hideDiv('+divVerses+')');
+        link.setAttribute('onclick','hideVerses()');
         listItem.appendChild(link);
         versesUl.appendChild(listItem);
        i++;
