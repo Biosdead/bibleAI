@@ -1,5 +1,6 @@
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto" , 'Montserrat' , sans-serif;
+    font-weight: bolder;
     margin: 0;
     padding: 0;
     background-color: #1f1f1f;
@@ -11,7 +12,7 @@ main {
 }
 
 article {
-    margin-bottom: 40px;
+    margin-bottom: 1%;
 }
 
 article h2 {
@@ -39,8 +40,10 @@ footer p {
 
 
 .chapter{
-    border: 5px solid teal;
+    border: 5px solid aqua;
     border-radius: 25px;
+    margin-right: 2%;
+    width: 25%;
 }
 
 #logo{
@@ -54,8 +57,6 @@ img {
     display: block;
     margin: auto;
 }
-
-
 
 /* Estilo do header */
 
@@ -104,6 +105,7 @@ nav ul li a {
     text-decoration: none;
     color: #ffffff;
     font-size: 1rem;
+    width: 100%;
 }
 
 nav ul li a:hover {
@@ -123,7 +125,7 @@ button{
 }
 
 button:hover {
-    background-color: #4a4a4a;
+    background-color: teal;
 }
 
 button:active {
@@ -149,3 +151,43 @@ object {
 object:active{
     transform: scale(1.5,1.5);
 }
+
+.btns{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+/* loader css spinner */
+.loader {
+    width: calc(100px - 14px);
+    height: 50px;
+    border-radius: 50px;
+    background: 
+     radial-gradient(farthest-side,#0000 calc(100% - 15px),#ccc calc(100% - 14px) 99%,#0000) left,
+     radial-gradient(farthest-side,#0000 calc(100% - 15px),#ccc calc(100% - 14px) 99%,#0000) right;
+    background-size: calc(50% + 7px) 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    animation: l10-0 1s infinite linear;
+    margin: auto;
+  }
+  .loader:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto; 
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: teal;
+    transform-origin: -14px 50%;
+    animation: l10-1 0.5s infinite linear;
+  }
+  @keyframes l10-0 { 
+      0%,49.99% { transform:scaleX(1)}
+      50%,100% { transform:scaleX(-1)} 
+  }
+  @keyframes l10-1 { 
+      100% { transform:rotate(1turn)} 
+  }

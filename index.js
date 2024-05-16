@@ -1,12 +1,15 @@
 // import * as fs from 'node:fs';
 // var fs = require("fs");
 const book = document.getElementById('book');
+const loader = document.getElementById('loader');
 const chapter = document.getElementById('chapter');
 const linkhref = document.getElementById('link');
 const divChapters = document.getElementById("divChapters");
 const divVerses = document.getElementById("divVerses");
+var globalChapter = 0; // shows the current chapter
+var globalBook = 0; // shows the current book
 
-    
+
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -26,7 +29,9 @@ const booksOfBible = [
     "Judas", "Apocalipse"
 ];
 
+
 window.onload = function(){
+    
     // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
     populateBookList();
     // Desabilita o menu de contexto
@@ -36,37 +41,6 @@ window.onload = function(){
     chapter.innerHTML = bible[0].name + " 1";
     renderBookAndChapter(0,0);
     hideVerses();
-    // for (let i = 0; i < bible[0].chapters[0].length; i++) {
-    //     let verse = i + 1;
-    //     let para = document.createElement("p");
-    //     para.innerHTML = verse + ". " + bible[0].chapters[0][i];
-    //     book.appendChild(para);
-    //     if (verse == 2){
-    //         let realIndexBook = 1;
-    //         let realIndexChapter = 1;
-    //         let realIndexVerse = verse;
-    //         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+realIndexVerse+".jpg";
-    //         para.classList.add("ilustrated");
-    //         let img = document.createElement("img");
-    //         img.setAttribute("src", image);
-    //         img.setAttribute("id", "img"+i);
-    //         img.setAttribute("onclick", "zoom(img"+i+")");
-    //         book.appendChild(img);
-    //     }
-    //     if (verse == 3){
-    //         let realIndexBook = 1;
-    //         let realIndexChapter = 1;
-    //         let realIndexVerse = verse;
-    //         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+realIndexVerse+".jpg";
-    //         para.classList.add("ilustrated");
-    //         let img = document.createElement("img");
-    //         img.setAttribute("src", image);
-    //         img.setAttribute("id", "img"+i);
-    //         img.setAttribute("onclick", "zoom(img"+i+")");
-    //         book.appendChild(img);
-    //     }
-    // }
-    
 }
 
 
@@ -100,6 +74,7 @@ function populateBookList() {
         // link.onclick = () => renderBook(i);
         link.textContent = book;
         link.setAttribute('onclick','populateChapters('+i+')');
+        // link.classList.add('chapter');
         listItem.appendChild(link);
 
         if(book == "Mateus"){
@@ -130,6 +105,8 @@ function renderBook(livro){ // Posso apagar
 }
 
 function renderBookAndChapter(livro, chap){
+    globalBook = livro;
+    globalChapter = chap;
     removeChildrenNodes(chapter);
     let realIndexBook = livro + 1;
     let realIndexChapter = chap + 1;
@@ -163,6 +140,7 @@ function renderBookAndChapter(livro, chap){
             
            
     }
+    undisplayLoader(); 
     populateVerses(livro,chap);
 }
 
@@ -173,6 +151,10 @@ function HideOldTestament() {
     } else {
         old_testament_books.style.display = "none";
     }
+    var new_testament_books = document.getElementById("new-testament");
+    new_testament_books.style.display = "none";
+    hideChapters();
+    hideVerses();
   }
 
   function HideNewTestament() {
@@ -182,6 +164,10 @@ function HideOldTestament() {
     } else {
         new_testament_books.style.display = "none";
     }
+    var old_testament_books = document.getElementById("old-testament");
+    old_testament_books.style.display = "none";
+    hideChapters();
+    hideVerses();
   }
 
   function populateChapters(livro) {
@@ -269,4 +255,38 @@ function hideChapters(){
 
 function hideVerses(){
     divVerses.style.display = "none";
+}
+
+function NextChapter(){
+    if (globalChapter < bible[globalBook].chapters.length-1) {
+        globalChapter++;
+        renderBookAndChapter(globalBook,globalChapter);
+    } else if (globalBook < bible[globalBook].length-1) {
+        globalBook++;
+        globalChapter = 0;
+        renderBookAndChapter(globalBook,globalChapter);
+    }else{
+        globalBook = 0;
+        globalChapter = 0;
+        renderBookAndChapter(globalBook,globalChapter);
+    }
+}
+
+function PreviousChapter(){
+    if (globalChapter > 0) {
+        globalChapter--;
+        renderBookAndChapter(globalBook,globalChapter);
+    } else if (globalBook > 0) {
+        globalBook--;
+        globalChapter = bible[globalBook].chapters.length-1;
+        renderBookAndChapter(globalBook,globalChapter);
+    }else{
+        globalBook = bible.length-1;
+        globalChapter = bible[globalBook].chapters.length-1;
+        renderBookAndChapter(globalBook,globalChapter);
+    }
+}
+
+function undisplayLoader(){
+    loader.style.display = "none";
 }

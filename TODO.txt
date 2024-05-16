@@ -21,18 +21,36 @@ v0.7
 - Inserir as imagens de forma inteligente. Feito
 
 v0.8
-- Deixar as imagens clicáveis zoom in e out. 
-- Finalizar Gênesis com 10 imgs
-- Ao clicar em uma tab fechar todas as outras.
-
+- Fazer btns de avançar ou retorceder capítulos. Feito
+- Ao clicar em novo ou velho testamento fechar todas as outras tabs. Feito
+- Remover espaço vazio entre body e footer. Feito
+- Inserir spinner de loading. Feito
+- Inserir o footer completo com minhas redes. Feito
 
 
 v0.9
+- Melhorar os btns de capítulos e versos. 
+- Finalizar Gênesis com 10 imgs. 
 - Inserir barra de busca
+- Deixar as imagens clicáveis zoom in e out (Dialog). 
+- Finalizar o modo claro do app
+- Fazer a versão em inglês do app.
+- Melhor acabamento nas imagens com bordas de polariod
+- usar promises ou await e async para carregar as imagens.
+- Escolher uma fonte maneira
+- Melhorar bns Esconder
 
 
 v1
 - Mostrar prévia para a família
+- Para otimizar inserir as imagens no firebase
+- Salvar livro e capítulo ultimo visitados. 
+- Criar versão com diferentes traduções e salvar a selecionada.
+- Finalizar o modo claro do app. 
+- Fazer 10 imagens por livro.
+
+
+Se ficar muito pesado colocar imagens no firebase o acesso.
 
 
 

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bíblia com IA</title>
     <!-- <link rel="stylesheet" href="index.css"> -->
     <link id="link" rel="stylesheet" href="modernStyle.css">
@@ -13,11 +17,11 @@
         <h1>Bíbl<span id="logo">ia</span> - Bíblia ilustrada por IA</h1>
         
         <nav>
-            <button onclick="HideOldTestament()">Antigo Testamento</button>
+            <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
             <ul id="old-testament" style="display: none;">
                 <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
             </ul>
-            <button onclick="HideNewTestament()">Novo Testamento</button>
+            <button class="chapter" onclick="HideNewTestament()">Novo Testamento</button>
             <ul id="new-testament" style="display: none;">
                 <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
             </ul>
@@ -41,17 +45,35 @@
         <article id="genesis1">
             <h1 id="book">Livro</h1>
             <h2 id="chapter"></h2>
-            <br>
+            <!-- <br> -->
             <!-- Adicione mais versículos -->
+            
+            <div id="loader" class="loader"></div>
+
         </article>
     </main>
+
+    <div class="btns">
+        <button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button>
+        <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button>
+    </div>
+
 
     <footer>
         <button onclick="OldMode()" class="chapter">Modo Claro</button>
         <button onclick="FutureMode()" class="chapter">Modo Escuro</button>
-        <p>V0.7</p>
-        <p>© 2024 Bíblia Ilustrada por IA. Todos os direitos reservados.</p>
-        <p>Criado por Lennon Sales Furtado</p>
+        <p>V0.8</p>
+        <p>Me Encontre nas redes Sociais</p>
+        <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://github.com/Biosdead" class="fa fa-github w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://biosdead.github.io/portifolio/" class="fa fa-language w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://www.linkedin.com/in/lennonsfurtado-engsoft/" class="fa fa-linkedin w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <p id="Criado">Criado por Lennon Sales Furtado - Bíblia Ilustrada por IA - Direitos reservados</p>
+    <script>
+        const date = new Date(); 
+        document.getElementById("Criado").innerText += " - " +  date.getFullYear();
+    </script>
     </footer>
     <script src="./jsons/br/aa.js"></script>
     <script src="./index.js"></script>
