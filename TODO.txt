@@ -29,25 +29,32 @@ v0.8
 
 
 v0.9
+- Inserir barra de busca. Feito
+- Salvar livro e capítulo ultimo visitados. Feito
+
+v0.91
+- Escolher uma fonte maneira. 
+- Melhorar bns Esconder
 - Melhorar os btns de capítulos e versos. 
 - Finalizar Gênesis com 10 imgs. 
-- Inserir barra de busca
 - Deixar as imagens clicáveis zoom in e out (Dialog). 
 - Finalizar o modo claro do app
 - Fazer a versão em inglês do app.
-- Melhor acabamento nas imagens com bordas de polariod
+- Melhor acabamento nas imagens com bordas de polariod.
 - usar promises ou await e async para carregar as imagens.
-- Escolher uma fonte maneira
-- Melhorar bns Esconder
+
+
+
+- Finalizar o modo claro do app. 
 
 
 v1
+- Inserir barra de busca com split e excluindo preposições.
 - Mostrar prévia para a família
 - Para otimizar inserir as imagens no firebase
-- Salvar livro e capítulo ultimo visitados. 
-- Criar versão com diferentes traduções e salvar a selecionada.
-- Finalizar o modo claro do app. 
 - Fazer 10 imagens por livro.
+- Criar versão com diferentes traduções e salvar a selecionada.
+- Usar leitor de voz para ler a biblia, web speech api.
 
 
 Se ficar muito pesado colocar imagens no firebase o acesso.

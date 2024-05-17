@@ -6,10 +6,9 @@
     <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courgette&family=Freeman&family=Jacquard+24+Charted&family=Lilita+One&family=Pacifico&family=Permanent+Marker&family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bíblia com IA</title>
-    <!-- <link rel="stylesheet" href="index.css"> -->
     <link id="link" rel="stylesheet" href="modernStyle.css">
 </head>
 <body>
@@ -39,17 +38,24 @@
                 </ul>
                 <button onclick="hideVerses()">Esconder</button>
             </div>
+            <div id="search">
+                    <input placeholder="Procurar..." type="search" id="busca" value="">
+                    <button onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button>
+            </div>
         </nav>
     </header>
     <main>
-        <article id="genesis1">
+        <article>
             <h1 id="book">Livro</h1>
-            <h2 id="chapter"></h2>
-            <!-- <br> -->
+            <!-- <h2 class="freeman-regular" id="chapter"></h2> -->
+            <!-- <h2 class="poetsen-one-regular" id="chapter"></h2> -->
+            <!-- <h2 class="pacifico-regular" id="chapter"></h2> -->
+            <!-- <h2 class="bebas-neue-regular" id="chapter"></h2> -->
+            <h2 class="courgette-regular" id="chapter"></h2>
+            <!-- <h2 class="permanent-marker-regular" id="chapter"></h2> -->
+            <!-- <h2 class="lilita-one-regular" id="chapter"></h2> -->
             <!-- Adicione mais versículos -->
-            
             <div id="loader" class="loader"></div>
-
         </article>
     </main>
 

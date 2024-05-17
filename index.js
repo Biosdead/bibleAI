@@ -31,15 +31,12 @@ const booksOfBible = [
 
 
 window.onload = function(){
-    
-    // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
-    populateBookList();
-    // Desabilita o menu de contexto
-    disableContextMenu();
-
-    book.innerHTML = bible[0].name;
-    chapter.innerHTML = bible[0].name + " 1";
-    renderBookAndChapter(0,0);
+    populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
+    disableContextMenu(); // Desabilita o menu de contexto
+    // book.innerHTML = bible[0].name;
+    // chapter.innerHTML = bible[0].name + " 1";
+    loadData();
+    renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
 }
 
@@ -140,9 +137,22 @@ function renderBookAndChapter(livro, chap){
             
            
     }
+    saveData();
     undisplayLoader(); 
     populateVerses(livro,chap);
 }
+
+function renderBookChapterVerse(livro, chap, ver){
+    let realIndexChapter = chap + 1;
+    let realIndexVerse = ver + 1;
+    let bookchapverse = document.createElement("p");
+    bookchapverse.innerHTML = bible[livro].name + " - " + realIndexChapter + " : " + realIndexVerse;
+    let para = document.createElement("p");
+    para.innerHTML = realIndexVerse + ". " + bible[livro].chapters[chap][ver];
+    chapter.appendChild(para);
+    chapter.appendChild(bookchapverse); 
+}
+
 
 function HideOldTestament() {
     var old_testament_books = document.getElementById("old-testament");
@@ -289,4 +299,49 @@ function PreviousChapter(){
 
 function undisplayLoader(){
     loader.style.display = "none";
+}
+
+function search(){
+    let search = document.getElementById("busca").value;
+    if (search == ""){
+        alert("Insira um texto no campo Procurar...");
+    }else {
+    removeChildrenNodes(chapter);
+    book.innerHTML = "Resultados";
+    chapter.innerHTML = "Procurar por - " + search;
+    let encontrado = false;
+    let i = 0;
+    let j = 0;
+    for (let i = 0; i < bible.length; i++) {
+        for (let j = 0; j < bible[i].chapters.length; j++) {
+            for (let k = 0; k < bible[i].chapters[j].length; k++) {
+                if (bible[i].chapters[j][k].toLowerCase().includes(search.toLowerCase())) {
+                    encontrado = true;
+                    console.log("🚀 ~ search ~ bible[i].chapters[j][k]:", bible[i].chapters[j][k].toLowerCase());
+                    console.log("🚀 ~ search ~ search:", search)
+                    renderBookChapterVerse(i,j,k);
+                    // return;
+                }
+            }
+                
+                
+        }
+    }
+    if (encontrado == false) {
+        alert("Nenhum resultado encontrado");
+        renderBook(globalBook,globalChapter);
+    }
+}
+}
+
+function saveData(){
+    localStorage.setItem("book", globalBook);
+    localStorage.setItem("chapter", globalChapter);
+}
+
+function loadData(){
+    if (localStorage.getItem("book") != null) {
+    globalBook = parseInt(localStorage.getItem("book"));
+    globalChapter = parseInt(localStorage.getItem("chapter"));
+    }
 }
