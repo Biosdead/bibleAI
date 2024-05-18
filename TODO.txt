@@ -33,19 +33,20 @@ v0.9
 - Salvar livro e capítulo ultimo visitados. Feito
 
 v0.91
-- Escolher uma fonte maneira. 
-- Melhorar bns Esconder
+- Escolher uma fonte maneira. Feito
+- Finalizar o modo claro do app. Feito
+
+
+v0.92
+- Melhorar btns Esconder. 
+- Salvar modo Claro ou escuro. 
+- label para o modo claro e modo escuro.
 - Melhorar os btns de capítulos e versos. 
 - Finalizar Gênesis com 10 imgs. 
 - Deixar as imagens clicáveis zoom in e out (Dialog). 
-- Finalizar o modo claro do app
 - Fazer a versão em inglês do app.
 - Melhor acabamento nas imagens com bordas de polariod.
 - usar promises ou await e async para carregar as imagens.
-
-
-
-- Finalizar o modo claro do app. 
 
 
 v1
@@ -55,7 +56,7 @@ v1
 - Fazer 10 imagens por livro.
 - Criar versão com diferentes traduções e salvar a selecionada.
 - Usar leitor de voz para ler a biblia, web speech api.
-
+- Fazer uma única barra de busca com botão 
 
 Se ficar muito pesado colocar imagens no firebase o acesso.
 

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto&family=Courgette&family=Poetsen+One'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courgette&family=Freeman&family=Jacquard+24+Charted&family=Lilita+One&family=Pacifico&family=Permanent+Marker&family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bíblia com IA</title>
-    <link id="link" rel="stylesheet" href="modernStyle.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
@@ -39,21 +39,16 @@
                 <button onclick="hideVerses()">Esconder</button>
             </div>
             <div id="search">
-                    <input placeholder="Procurar..." type="search" id="busca" value="">
-                    <button onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button>
+                    <input class="chapterSmall" placeholder="Procurar..." type="search" id="busca" value="">
+                    <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
     <main>
         <article>
-            <h1 id="book">Livro</h1>
-            <!-- <h2 class="freeman-regular" id="chapter"></h2> -->
+            <h1 class="font-reader" id="book">Livro</h1>
             <!-- <h2 class="poetsen-one-regular" id="chapter"></h2> -->
-            <!-- <h2 class="pacifico-regular" id="chapter"></h2> -->
-            <!-- <h2 class="bebas-neue-regular" id="chapter"></h2> -->
-            <h2 class="courgette-regular" id="chapter"></h2>
-            <!-- <h2 class="permanent-marker-regular" id="chapter"></h2> -->
-            <!-- <h2 class="lilita-one-regular" id="chapter"></h2> -->
+            <h2 class="font-reader" id="chapter"></h2>
             <!-- Adicione mais versículos -->
             <div id="loader" class="loader"></div>
         </article>
@@ -66,9 +61,9 @@
 
 
     <footer>
-        <button onclick="OldMode()" class="chapter">Modo Claro</button>
-        <button onclick="FutureMode()" class="chapter">Modo Escuro</button>
-        <p>V0.8</p>
+        <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-off' style='font-size:2rem;'></i></button>
+        <!-- <button onclick="FutureMode()" class="chapter"><i class='fa fa-toggle-on'></i></button> -->
+        <p>V0.91</p>
         <p>Me Encontre nas redes Sociais</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>

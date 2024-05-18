@@ -1,13 +1,14 @@
-// import * as fs from 'node:fs';
-// var fs = require("fs");
 const book = document.getElementById('book');
 const loader = document.getElementById('loader');
 const chapter = document.getElementById('chapter');
-const linkhref = document.getElementById('link');
 const divChapters = document.getElementById("divChapters");
 const divVerses = document.getElementById("divVerses");
 var globalChapter = 0; // shows the current chapter
 var globalBook = 0; // shows the current book
+var darkModeBtn = document.getElementById('darkMode');
+// var darkModeOn = (localStorage.getItem('darkMode')!=null)?localStorage.getItem('darkMode'):true; // switchs between the dark mode and light mode
+var darkModeOn = false; // switchs between the dark mode and light mode
+var r = document.querySelector(':root'); // select the root element to change the css variables.
 
 
 
@@ -33,20 +34,14 @@ const booksOfBible = [
 window.onload = function(){
     populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
     disableContextMenu(); // Desabilita o menu de contexto
-    // book.innerHTML = bible[0].name;
-    // chapter.innerHTML = bible[0].name + " 1";
+    console.log("🚀 ~ saveDarkMode ~ darkModeOn Antes:", darkModeOn);
+    console.log("🚀 ~ saveDarkMode ~ darkModeLoad:", localStorage.getItem('darkMode'));
+    // darkMode();
+    // loadDarkMode(); // carregar o estado atual do darkmode
+    console.log("🚀 ~ saveDarkMode ~ darkModeOn Depois:", darkModeOn);
     loadData();
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
-}
-
-
-function OldMode(){
-    linkhref.href = "index.css";
-}
-
-function FutureMode(){
-    linkhref.href = "modernStyle.css";
 }
 
 function zoom(id){
@@ -343,5 +338,77 @@ function loadData(){
     if (localStorage.getItem("book") != null) {
     globalBook = parseInt(localStorage.getItem("book"));
     globalChapter = parseInt(localStorage.getItem("chapter"));
+    }
+}
+
+function darkMode() {
+    console.log("🚀 ~ darkMode ~ dentro do dark mode Antes Antes:", darkModeOn)
+    darkModeOn = !darkModeOn;
+    console.log("🚀 ~ darkMode ~ dentro do dark mode Antes:", darkModeOn)
+    if (darkModeOn == true) {
+        darkModeBtn.classList.remove('fa-toggle-on');
+        darkModeBtn.classList.add('fa-toggle-off');
+        lightMode();
+    }else{
+        darkModeBtn.classList.remove('fa-toggle-off');
+        darkModeBtn.classList.add('fa-toggle-on');
+        shadowMode();
+    }
+    saveDarkMode(darkModeOn);
+    console.log("🚀 ~ darkMode ~ dentro do dark mode Depois:", darkModeOn)
+}
+
+function lightMode(){
+    r.style.setProperty('--font-family', "Poetsen One");
+    r.style.setProperty('--backgorund-color', "#ffffff");
+    r.style.setProperty('--font-color', '#333333');
+    r.style.setProperty('--footer-color', '#f8f4e6');
+    r.style.setProperty('--footer-border', '#c0c0c0');
+    r.style.setProperty('--contraster-color', 'teal');
+    r.style.setProperty('--contraster-color2', 'aqua');
+}
+
+function shadowMode(){
+    // linkhref.href = "modernStyle.css";
+    
+    r.style.setProperty('--font-family', 'Courgette, cursive');
+    r.style.setProperty('--backgorund-color', '#1f1f1f');
+    r.style.setProperty('--font-color', '#ffffff');
+    r.style.setProperty('--footer-color', '#2c2c2c');
+    r.style.setProperty('--footer-border', '#4a4a4a');
+    r.style.setProperty('--contraster-color', 'aqua');
+    r.style.setProperty('--contraster-color2', 'teal');
+
+    // --background-color: #ffffff; /* Cor de fundo */
+    // --font-color: #333333; /* Cor do texto */
+    // --footer-color: #f8f4e6; /* Cor do rodapé */
+    // --footer-border: #c0c0c0; /* Cor da borda do rodapé */
+    // --contraster-color: #008080; /* Cor de destaque */
+    // --contraster-color2: #008000; /* Segunda cor de destaque */
+}
+
+function saveDarkMode(d) {
+    localStorage.setItem('darkMode', d);
+    
+}
+
+function loadDarkMode() {
+    if (localStorage.getItem("darkMode") != null) {
+        darkModeOn = localStorage.getItem('darkMode');
+        console.log("🚀 ~ loadDarkMode ~ dentro do load:", darkModeOn)
+        
+    }else {
+        darkModeOn = false;
+    }
+    if (darkModeOn == true) {
+        console.log("🚀 ~ Entrou1 ~ darkModeOn:", darkModeOn)
+        darkModeBtn.classList.remove('fa-toggle-on');
+        darkModeBtn.classList.add('fa-toggle-off');
+        lightMode();
+    }else if(darkModeOn == false){
+        console.log("🚀 ~ Entrou2 ~ darkModeOn:", darkModeOn)
+        darkModeBtn.classList.remove('fa-toggle-off');
+        darkModeBtn.classList.add('fa-toggle-on');
+        shadowMode();
     }
 }
