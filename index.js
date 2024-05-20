@@ -6,11 +6,10 @@ const divVerses = document.getElementById("divVerses");
 var globalChapter = 0; // shows the current chapter
 var globalBook = 0; // shows the current book
 var darkModeBtn = document.getElementById('darkMode');
-// var darkModeOn = (localStorage.getItem('darkMode')!=null)?parseInt(localStorage.getItem('darkMode')):0; // switchs between the dark mode and light mode
 var darkModeOn = 0; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
 var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
-
+var searchBar = document.getElementById("busca");
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -38,6 +37,7 @@ window.onload = function(){
     loadData();
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
+    searchBarListener();
 }
 
 function zoom(id){
@@ -190,6 +190,12 @@ function HideOldTestament() {
         capitulos.appendChild(listItem);
        i++;
     });
+    const btnHide = document.createElement("button");
+    btnHide.textContent = "Minimizar";
+    btnHide.setAttribute('onclick','hideChapters()');
+    btnHide.classList.add("chapterSpecial");
+    capitulos.appendChild(btnHide);
+    // <button class="chapter" onclick="hideChapters()">Minimizar</button>
   }
 
   function populateVerses(livro,capitulo) {
@@ -212,6 +218,12 @@ function HideOldTestament() {
         versesUl.appendChild(listItem);
        i++;
     });
+    const btnHide = document.createElement("button");
+    btnHide.textContent = "Minimizar";
+    btnHide.setAttribute('onclick','hideVerses()');
+    btnHide.classList.add("chapterSpecial");
+    versesUl.appendChild(btnHide);
+    // <button onclick="hideVerses()">Minimizar</button>
   }
 
 //   function zoom() {
@@ -296,6 +308,8 @@ function search(){
     let search = document.getElementById("busca").value;
     if (search == ""){
         alert("Insira um texto no campo Procurar...");
+        renderBookAndChapter(globalBook,globalChapter);
+        hideVerses();
     }else {
     removeChildrenNodes(chapter);
     book.innerHTML = "Resultados";
@@ -320,7 +334,8 @@ function search(){
     }
     if (encontrado == false) {
         alert("Nenhum resultado encontrado");
-        renderBook(globalBook,globalChapter);
+        renderBookAndChapter(globalBook,globalChapter);
+        hideVerses();
     }
 }
 }
@@ -345,14 +360,12 @@ function darkMode() {
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
-        // saveDarkMode(1);
     }else if (darkModeOn==0){
         lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
         lblDM.innerText = "Ativar Modo Claro";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
-        // saveDarkMode(0);
     }
     saveDarkMode(darkModeOn);
 }
@@ -407,4 +420,18 @@ function loadDarkMode() {
         darkModeOn = 0;
     }
     darkModeChage();
+}
+
+
+function searchBarListener() {
+    // Execute a function when the user presses a key on the keyboard
+searchBar.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    // event.preventDefault();
+    // Trigger the button element with a click
+    search();
+  }
+});
 }

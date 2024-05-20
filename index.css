@@ -1,4 +1,5 @@
 :root{
+    /* Dark mode */
     --font-family:"Courgette", cursive; /* "Poetsen One", sans-serif; */
     --backgorund-color: #1f1f1f;
     --font-color: #ffffff;
@@ -7,6 +8,8 @@
     --contraster-color:aqua;
     --contraster-color2:teal;
 
+
+    /* Light mode */
     /*--background-color: #ffffff; 
     --font-color: #333333; 
     --footer-color: #f8f4e6; 
@@ -67,7 +70,17 @@ footer p {
     border: 5px solid var(--contraster-color);
     border-radius: 25px;
     margin-right: 2%;
-    width: 25%;
+    min-width: 30%;
+    max-width: fit-content;
+    height: fit-content;
+}
+
+.chapterSpecial{
+    border: 5px solid var(--contraster-color);
+    border-radius: 25px;
+    margin-right: 2%;
+    width: 80%;
+    height: fit-content;
 }
 
 .chapterSmall{
@@ -120,18 +133,24 @@ nav ul {
     background-color: var(--footer-color);
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    
 }
+
+/* .container {
+    display: block;
+} */
 
 nav ul li {
     border: white 3px solid;
     border-radius: 10px;
-    width: 22%;
-    margin-right: 1%;
-    margin-bottom: 1%; /* Espaçamento entre os itens */
+    min-width: 30%;
+    max-width: fit-content;
+    height: fit-content;
+    margin-right: 2%;
+    margin-bottom: 2%; /* Espaçamento entre os itens */
 }
 
 nav ul li a {
+    display: block;
     text-decoration: none;
     color: var(--font-color);
     font-size: 1rem;
@@ -225,3 +244,18 @@ object:active{
   #lblDarkMode{
     margin-right: 1%;
   }
+
+
+  #search {
+    position: relative;
+    display: inline-block;
+}
+
+#busca {
+    padding-left: 30px; /* Espaço à esquerda para o ícone */
+    background-image: url('./imgs/lupa.png');
+    background-repeat: no-repeat;
+    background-position: 5px center; /* Posicionamento do ícone */
+    background-size: 20px; /* Tamanho do ícone */
+}
+

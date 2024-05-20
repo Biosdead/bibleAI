@@ -24,23 +24,25 @@
             <ul id="new-testament" style="display: none;">
                 <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
             </ul>
-            <div id="divChapters" style="display: none;">
+            <div class="container" id="divChapters" style="display: none;">
                 <p>Capítulos de <span  id="bookName">livro</span></p>
                 <br>
                 <ul id="chapters">
                 </ul>
-                <button onclick="hideChapters()">Esconder</button>
+                <!-- <button class="chapter" onclick="hideChapters()">Minimizar</button> -->
             </div>
-            <div id="divVerses" style="display: none;">
+            <div class="container" id="divVerses" style="display: none;">
                 <p><span  id="bookNameChapter">livro - </span></p>
                 <br>
                 <ul id="verses">
                 </ul>
-                <button onclick="hideVerses()">Esconder</button>
+                <!-- <button onclick="hideVerses()">Minimizar</button> -->
             </div>
+            <br>
+            <br>
             <div id="search">
                     <input class="chapterSmall" placeholder="Procurar..." type="search" id="busca" value="">
-                    <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button>
+                    <!-- <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button> -->
             </div>
         </nav>
     </header>
@@ -64,7 +66,7 @@
         <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
         <br>
         <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
-        <p>V0.93</p>
+        <p>V0.93b</p>
         <p>Me Encontre nas redes Sociais</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
