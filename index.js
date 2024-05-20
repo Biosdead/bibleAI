@@ -6,10 +6,10 @@ const divVerses = document.getElementById("divVerses");
 var globalChapter = 0; // shows the current chapter
 var globalBook = 0; // shows the current book
 var darkModeBtn = document.getElementById('darkMode');
-// var darkModeOn = (localStorage.getItem('darkMode')!=null)?localStorage.getItem('darkMode'):true; // switchs between the dark mode and light mode
-var darkModeOn = false; // switchs between the dark mode and light mode
+// var darkModeOn = (localStorage.getItem('darkMode')!=null)?parseInt(localStorage.getItem('darkMode')):0; // switchs between the dark mode and light mode
+var darkModeOn = 0; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
-
+var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 
 
 // Array contendo os nomes dos livros da Bíblia
@@ -34,11 +34,7 @@ const booksOfBible = [
 window.onload = function(){
     populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
     disableContextMenu(); // Desabilita o menu de contexto
-    console.log("🚀 ~ saveDarkMode ~ darkModeOn Antes:", darkModeOn);
-    console.log("🚀 ~ saveDarkMode ~ darkModeLoad:", localStorage.getItem('darkMode'));
-    // darkMode();
-    // loadDarkMode(); // carregar o estado atual do darkmode
-    console.log("🚀 ~ saveDarkMode ~ darkModeOn Depois:", darkModeOn);
+    loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
@@ -342,21 +338,43 @@ function loadData(){
 }
 
 function darkMode() {
-    console.log("🚀 ~ darkMode ~ dentro do dark mode Antes Antes:", darkModeOn)
-    darkModeOn = !darkModeOn;
-    console.log("🚀 ~ darkMode ~ dentro do dark mode Antes:", darkModeOn)
-    if (darkModeOn == true) {
+    darkModeOn = (darkModeOn==1)?0:1;
+    if (darkModeOn==1) {
+        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
+        lblDM.innerText = "Ativar Modo Escuro";
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
-    }else{
+        // saveDarkMode(1);
+    }else if (darkModeOn==0){
+        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
+        lblDM.innerText = "Ativar Modo Claro";
+        darkModeBtn.classList.remove('fa-toggle-off');
+        darkModeBtn.classList.add('fa-toggle-on');
+        shadowMode();
+        // saveDarkMode(0);
+    }
+    saveDarkMode(darkModeOn);
+}
+
+
+
+function darkModeChage(){
+    if (darkModeOn==1) {
+        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
+        lblDM.innerText = "Ativar Modo Escuro";
+        darkModeBtn.classList.remove('fa-toggle-on');
+        darkModeBtn.classList.add('fa-toggle-off');
+        lightMode();
+    }else if (darkModeOn==0){
+        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
+        lblDM.innerText = "Ativar Modo Claro";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
     }
-    saveDarkMode(darkModeOn);
-    console.log("🚀 ~ darkMode ~ dentro do dark mode Depois:", darkModeOn)
 }
+
 
 function lightMode(){
     r.style.setProperty('--font-family', "Poetsen One");
@@ -364,51 +382,29 @@ function lightMode(){
     r.style.setProperty('--font-color', '#333333');
     r.style.setProperty('--footer-color', '#f8f4e6');
     r.style.setProperty('--footer-border', '#c0c0c0');
-    r.style.setProperty('--contraster-color', 'teal');
-    r.style.setProperty('--contraster-color2', 'aqua');
+    r.style.setProperty('--contraster-color', 'teal'); // --contraster-color: #008080;
+    r.style.setProperty('--contraster-color2', 'aqua'); // --contraster-color2: #008000;
 }
 
 function shadowMode(){
-    // linkhref.href = "modernStyle.css";
-    
     r.style.setProperty('--font-family', 'Courgette, cursive');
     r.style.setProperty('--backgorund-color', '#1f1f1f');
     r.style.setProperty('--font-color', '#ffffff');
     r.style.setProperty('--footer-color', '#2c2c2c');
     r.style.setProperty('--footer-border', '#4a4a4a');
-    r.style.setProperty('--contraster-color', 'aqua');
-    r.style.setProperty('--contraster-color2', 'teal');
-
-    // --background-color: #ffffff; /* Cor de fundo */
-    // --font-color: #333333; /* Cor do texto */
-    // --footer-color: #f8f4e6; /* Cor do rodapé */
-    // --footer-border: #c0c0c0; /* Cor da borda do rodapé */
-    // --contraster-color: #008080; /* Cor de destaque */
-    // --contraster-color2: #008000; /* Segunda cor de destaque */
+    r.style.setProperty('--contraster-color', 'aqua');  
+    r.style.setProperty('--contraster-color2', 'teal');  
 }
 
 function saveDarkMode(d) {
-    localStorage.setItem('darkMode', d);
-    
+    localStorage.setItem("darkMode", d);   
 }
 
 function loadDarkMode() {
     if (localStorage.getItem("darkMode") != null) {
-        darkModeOn = localStorage.getItem('darkMode');
-        console.log("🚀 ~ loadDarkMode ~ dentro do load:", darkModeOn)
-        
+        darkModeOn = parseInt(localStorage.getItem('darkMode'));
     }else {
-        darkModeOn = false;
+        darkModeOn = 0;
     }
-    if (darkModeOn == true) {
-        console.log("🚀 ~ Entrou1 ~ darkModeOn:", darkModeOn)
-        darkModeBtn.classList.remove('fa-toggle-on');
-        darkModeBtn.classList.add('fa-toggle-off');
-        lightMode();
-    }else if(darkModeOn == false){
-        console.log("🚀 ~ Entrou2 ~ darkModeOn:", darkModeOn)
-        darkModeBtn.classList.remove('fa-toggle-off');
-        darkModeBtn.classList.add('fa-toggle-on');
-        shadowMode();
-    }
+    darkModeChage();
 }

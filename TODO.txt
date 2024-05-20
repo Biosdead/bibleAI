@@ -38,25 +38,29 @@ v0.91
 
 
 v0.92
-- Melhorar btns Esconder. 
-- Salvar modo Claro ou escuro. 
-- label para o modo claro e modo escuro.
+- label para o modo claro e modo escuro. Feito
+- Finalizar Gênesis com 10 imgs. Feito
+- Salvar modo Claro ou escuro. Feito
+
+v0.93
+- Melhorar btns Esconder para voltar. 
 - Melhorar os btns de capítulos e versos. 
-- Finalizar Gênesis com 10 imgs. 
 - Deixar as imagens clicáveis zoom in e out (Dialog). 
-- Fazer a versão em inglês do app.
 - Melhor acabamento nas imagens com bordas de polariod.
 - usar promises ou await e async para carregar as imagens.
+- Fazer uma única barra de busca com botão.
+- Criar versão com diferentes traduções e salvar a selecionada.
 
 
 v1
 - Inserir barra de busca com split e excluindo preposições.
-- Mostrar prévia para a família
-- Para otimizar inserir as imagens no firebase
 - Fazer 10 imagens por livro.
-- Criar versão com diferentes traduções e salvar a selecionada.
 - Usar leitor de voz para ler a biblia, web speech api.
-- Fazer uma única barra de busca com botão 
+- Fazer a versão em inglês do app.
+
+v1.1 
+- Fazer biblía com gamificação, mostando quantos capítulos faltam pro fim do livro através de uma barra de progressos.
+- Para otimizar inserir as imagens no firebase.
 
 Se ficar muito pesado colocar imagens no firebase o acesso.
 
