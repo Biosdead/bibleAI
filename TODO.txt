@@ -44,10 +44,14 @@ v0.92
 
 v0.93
 - Melhorar btns Esconder para voltar. 
-- Melhorar os btns de capítulos e versos. 
+- Melhorar os btns de capítulos e versos.
+
+v0.94
 - Deixar as imagens clicáveis zoom in e out (Dialog). 
 - Melhor acabamento nas imagens com bordas de polariod.
 - usar promises ou await e async para carregar as imagens.
+
+v0.95
 - Fazer uma única barra de busca com botão.
 - Criar versão com diferentes traduções e salvar a selecionada.
 
