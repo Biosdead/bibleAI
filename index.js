@@ -11,6 +11,7 @@ var r = document.querySelector(':root'); // select the root element to change th
 var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 var searchBar = document.getElementById("busca");
 const dialogo = document.querySelector("dialog");
+var imgSelected = document.getElementById("imgSelected");
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -94,47 +95,162 @@ function renderBook(livro){ // Posso apagar
     populateChapters(livro);
 }
 
+// function renderBookAndChapter(livro, chap){
+//     globalBook = livro;
+//     globalChapter = chap;
+//     removeChildrenNodes(chapter);
+//     let realIndexBook = livro + 1;
+//     let realIndexChapter = chap + 1;
+//     // const divChapters = document.getElementById("divChapters");
+//     hideDiv(divChapters);
+//     let cap = chap;
+//     book.innerHTML = bible[livro].name;
+//     chapter.innerHTML = " Capítulo " + realIndexChapter;
+//     for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
+//         let verse = i + 1;
+//         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+verse+".jpg";
+//         let para = document.createElement("p");
+//         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
+//         let img = document.createElement("img");
+//         // let img = document.createElement("object");
+//         let myPromise = new Promise(function(myResolve, myReject) {
+//             // "Producing Code" (May take some time)
+//             console.log("log" + img.setAttribute("src", image));
+//             if (img.setAttribute("src", image)) {
+//                 myResolve(console.log("Funcinou!" + image));
+//             } else if (condition) {
+//                 myReject(console.log("Imagem não encontrada" + image));
+//             }   
+//             });
+            
+//             // "Consuming Code" (Must wait for a fulfilled Promise)
+//             myPromise.then(
+//               function(value) { 
+//                 img.setAttribute("data", image);
+//                 para.classList.add("ilustrated");
+//                 img.setAttribute("onclick", "fullscreen(image"+i+")");
+//                 chapter.appendChild(img);
+//              },
+//               function(error) { console.log("Imagem não existe"); }
+//             );
+//         para.setAttribute("id","v"+i);
+//         chapter.appendChild(para);
+        
+        
+        
+//         // para.classList.add("ilustrated");
+//         // img.setAttribute("src", image);
+//         // img.setAttribute("id", "img"+i);
+//         // img.setAttribute("onclick", "zoom(img"+i+")");
+        
+//         // img.setAttribute("onload", "load()");
+            
+        
+//         // if (img.onload) {    
+//             // img.setAttribute("src", image);
+//             // img.setAttribute("id", "img"+i);
+//             // img.setAttribute("onclick", "zoom(img"+i+")");
+//             // img.setAttribute("onload", "load()");
+            
+           
+//     }
+//     saveData();
+//     undisplayLoader(); 
+//     populateVerses(livro,chap);
+// }
+
+// function renderBookAndChapter(livro, chap){
+//     globalBook = livro;
+//     globalChapter = chap;
+//     removeChildrenNodes(chapter);
+//     let realIndexBook = livro + 1;
+//     let realIndexChapter = chap + 1;
+//     hideDiv(divChapters);
+//     let cap = chap;
+//     book.innerHTML = bible[livro].name;
+//     chapter.innerHTML = " Capítulo " + realIndexChapter;
+
+//     for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
+//         let verse = i + 1;
+//         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+verse+".jpg";
+//         let para = document.createElement("p");
+//         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
+//         para.setAttribute("id","v"+i);       
+//         let img = document.createElement("img");
+//         // Verificar se a imagem existe
+//         fetch(image).then(response => {
+//             if (response.ok) {
+//                 // Imagem existe, adicionar ao parágrafo
+//                 img.setAttribute("src", image);
+//                 para.classList.add("ilustrated");
+//                 img.setAttribute("onclick", "fullscreen(image"+i+")");
+//                 // img.setAttribute("style", "order:"+i+";");
+//                 // img.style.order = i;
+//                 chapter.appendChild(para);
+//                 chapter.appendChild(img);
+//             }
+//         }).catch(error => {
+//             console.log("Imagem não encontrada: " + image);
+//         });
+//         // para.style.order = i;
+//         chapter.appendChild(para);
+//     }
+//     saveData();
+//     undisplayLoader(); 
+//     populateVerses(livro, chap);
+// }
+
+
 function renderBookAndChapter(livro, chap){
     globalBook = livro;
     globalChapter = chap;
     removeChildrenNodes(chapter);
     let realIndexBook = livro + 1;
     let realIndexChapter = chap + 1;
-    // const divChapters = document.getElementById("divChapters");
     hideDiv(divChapters);
     let cap = chap;
     book.innerHTML = bible[livro].name;
     chapter.innerHTML = " Capítulo " + realIndexChapter;
+
+    let elementsToAppend = [];
+    let promises = [];
+
     for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
         let verse = i + 1;
         let image = "./imgs/"+realIndexBook+"_"+realIndexChapter+"_"+verse+".jpg";
         let para = document.createElement("p");
         para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
-        para.setAttribute("id","v"+i);
-        chapter.appendChild(para);
-        let img = document.createElement("object");
-        img.setAttribute("data", image);
-        chapter.appendChild(img);
-        // para.classList.add("ilustrated");
-        // img.setAttribute("src", image);
-        // img.setAttribute("id", "img"+i);
-        // img.setAttribute("onclick", "zoom(img"+i+")");
-        img.setAttribute("onclick", "fullscreen()");
-        // img.setAttribute("onload", "load()");
-            
-        
-        // if (img.onload) {    
-            // img.setAttribute("src", image);
-            // img.setAttribute("id", "img"+i);
-            // img.setAttribute("onclick", "zoom(img"+i+")");
-            // img.setAttribute("onload", "load()");
-            
-           
+        para.setAttribute("id", "v" + i);
+
+        let img = document.createElement("img");
+        let promise = fetch(image).then(response => {
+            if (response.ok) {
+                img.setAttribute("src", image);
+                img.setAttribute("onclick", "fullscreen(image"+i+")");
+                para.classList.add("ilustrated");
+                para.appendChild(img);
+            }
+        }).catch(error => {
+            console.log("Imagem não encontrada: " + image);
+        });
+
+        elementsToAppend.push({para: para, promise: promise});
     }
+
+    // Aguardar todas as promessas serem resolvidas e depois adicionar os elementos ao DOM na ordem correta
+    Promise.all(elementsToAppend.map(element => element.promise)).then(() => {
+        elementsToAppend.forEach(element => {
+            chapter.appendChild(element.para);
+        });
+    });
+
     saveData();
     undisplayLoader(); 
-    populateVerses(livro,chap);
+    populateVerses(livro, chap);
 }
+
+
+
 
 function renderBookChapterVerse(livro, chap, ver){
     let realIndexChapter = chap + 1;
@@ -447,7 +563,8 @@ function closeDialog() {
     dialogo.close();
 }
 
-function fullscreen() {
-    console.log('fullscreen');
-    document.documentElement.requestFullscreen();
+function fullscreen(i) {
+    console.log('fullscreen'+i);
+    imgSelected.setAttribute('src',document.getElementById(imgSelected).src);
+    openDialog();
 }

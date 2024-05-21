@@ -48,12 +48,13 @@ v0.93
 - Fazer uma única barra de busca com botão. Feito
 
 v0.94
-- Deixar as imagens clicáveis zoom in e out (Dialog). 
-- Melhor acabamento nas imagens com bordas de polariod.
-- usar promises ou await e async para carregar as imagens.
+- Melhor acabamento nas imagens com bordas de polariod. Feito
+- usar promises ou await e async para carregar as imagens. Feito
 
 v0.95
+- Deixar as imagens clicáveis zoom in e out (Dialog). 
 - Criar versão com diferentes traduções e salvar a selecionada.
+- Corrigir bug de terminar o exodo e voltar para genesis.
 
 
 v1
