@@ -10,6 +10,7 @@ var darkModeOn = 0; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
 var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 var searchBar = document.getElementById("busca");
+const dialogo = document.querySelector("dialog");
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -43,6 +44,7 @@ window.onload = function(){
 function zoom(id){
     console.log("img" + id);
     // document.getElementById(""+id).style.transform = "scale(2,2)";
+    openDialog();
 
 }
 
@@ -117,6 +119,7 @@ function renderBookAndChapter(livro, chap){
         // img.setAttribute("src", image);
         // img.setAttribute("id", "img"+i);
         // img.setAttribute("onclick", "zoom(img"+i+")");
+        img.setAttribute("onclick", "fullscreen()");
         // img.setAttribute("onload", "load()");
             
         
@@ -434,4 +437,17 @@ searchBar.addEventListener("keypress", function(event) {
     search();
   }
 });
+}
+
+function openDialog() {
+    dialogo.showModal();
+}
+
+function closeDialog() {
+    dialogo.close();
+}
+
+function fullscreen() {
+    console.log('fullscreen');
+    document.documentElement.requestFullscreen();
 }

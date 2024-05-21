@@ -13,8 +13,8 @@
 </head>
 <body>
     <header>
-        <h1>Bíbl<span id="logo">ia</span> - Bíblia ilustrada por IA</h1>
-        
+        <h1 class="font-reader">Bíbl<span id="logo">ia</span> - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h1>
+        <br>
         <nav>
             <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
             <ul id="old-testament" style="display: none;">
@@ -45,9 +45,28 @@
                     <!-- <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button> -->
             </div>
         </nav>
+        <!-- <button class="chapterSpecial" onclick="openDialog()">Mostrar Dialogo</button> -->
     </header>
     <main>
         <article>
+            
+            <dialog id="DialogMain">
+                <div class="dialogTitle">
+                    <h2 class="font-reader">Bíbl<span id="logo">ia</span> - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h2>
+                </div>
+                <div class="dialogBody">
+                        <fieldset>
+                            <figure>
+                            <img id="imgSelected" src="./imgs/1_1_2.jpg">
+                            <figcaption id="legenda">A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas.</figcaption>
+                        </figure>
+                        </fieldset>     
+                </div>
+                <div class="dialogBtns">
+                    <button class="chapterSpecial" onclick="closeDialog()">Fechar</button>
+                </div>
+            </dialog>
+
             <h1 class="font-reader" id="book">Livro</h1>
             <!-- <h2 class="poetsen-one-regular" id="chapter"></h2> -->
             <h2 class="font-reader" id="chapter"></h2>
@@ -66,7 +85,7 @@
         <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
         <br>
         <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
-        <p>V0.93c</p>
+        <p>V0.941</p>
         <p>Me Encontre nas redes Sociais</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>

@@ -31,6 +31,7 @@ body {
     font-family: var(--font-family);
     font-weight: 400;
     font-style: normal;
+    color: var(--font-color);
 }
   
 
@@ -198,7 +199,7 @@ object {
 }
 
 object:active{
-    transform: scale(1.5,1.5);
+    /* transform: scale(1.5,1.5); */
 }
 
 .btns{
@@ -255,7 +256,37 @@ object:active{
     padding-left: 30px; /* Espaço à esquerda para o ícone */
     background-image: url('./imgs/lupa.png');
     background-repeat: no-repeat;
-    background-position: 5px center; /* Posicionamento do ícone */
+    background-position: 3% center; /* Posicionamento do ícone */
     background-size: 20px; /* Tamanho do ícone */
+}
+
+
+/* Dialog */
+
+dialog::backdrop {
+    background-color: rgb(var(--contraster-color) / 25%);
+    filter: blur(1.7rem);
+}
+
+dialog {
+    z-index: 1;
+    border-radius: 25px;
+    background-color: var(--footer-border);
+    width: 90%;
+    height: 60%;
+    text-align: center;
+    font-size: small;
+}
+
+.dialogBody {
+    margin: auto;
+    width: 80%;
+    font-size: medium;
+}
+
+
+.dialogBtns{
+    display: flex;
+    justify-content: center;
 }
 
