@@ -184,24 +184,12 @@ button:active {
     background-color: var(--footer-color);
 }
 
-img:active{
+/* img:active{
     transform: scale(1.5,1.5);
-}
+} */
 
 .ilustrated{
     color: var(--contraster-color) !important;
-}
-
-object {
-    /* border: 15px solid;
-    border-radius: 10%; */
-    width: 50%;
-    display: block;
-    margin: auto;
-}
-
-object:active{
-    /* transform: scale(1.5,1.5); */
 }
 
 .btns{
@@ -266,29 +254,48 @@ object:active{
 /* Dialog */
 
 dialog::backdrop {
-    background-color: rgb(var(--contraster-color) / 25%);
+    background-color: rgb(var(--contraster-color) / 50%);
     filter: blur(1.7rem);
+    z-index: 1;
 }
 
 dialog {
     z-index: 1;
     border-radius: 25px;
     background-color: var(--footer-border);
-    width: 90%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     text-align: center;
     font-size: small;
 }
 
-.dialogBody {
-    margin: auto;
-    width: 80%;
-    font-size: medium;
+dialog figure {
+    /* margin: auto; */
+    margin-left: -40%;
+    width: 180%;
+    height: 180%;
 }
+
+dialog p {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    justify-content: center;
+}
+
+/* .dialogBody {
+    margin: auto;
+    width: 100%;
+    font-size: 1rem;
+} */
 
 
 .dialogBtns{
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 10%;
+    margin: auto;
+    position: fixed;
+    bottom: 0;
+    font-size: 1rem;
 }
 

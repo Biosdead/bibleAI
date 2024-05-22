@@ -52,22 +52,32 @@ v0.94
 - usar promises ou await e async para carregar as imagens. Feito
 
 v0.95
-- Deixar as imagens clicáveis zoom in e out (Dialog). 
-- Criar versão com diferentes traduções e salvar a selecionada.
-- Corrigir bug de terminar o exodo e voltar para genesis.
+- Inserir e remover o loader a cada carregamento de capítulo. Feito
+- Esconder os verspiculos ao passar por próximo capítulo. Feito
+- Corrigir bug de terminar o exodo e voltar para genesis. Feito
+- Deixar as imagens clicáveis zoom in e out (Dialog). Feito, falta Melhorar
+
+v0.96
+- Fazer um botão de feedback.
+- Fazer icone
+- Fazer nome final.
 
 
 v1
-- Inserir barra de busca com split e excluindo preposições.
 - Fazer 10 imagens por livro.
-- Usar leitor de voz para ler a biblia, web speech api.
 - Fazer a versão em inglês do app.
+
+
 
 v1.1 
 - Fazer biblía com gamificação, mostando quantos capítulos faltam pro fim do livro através de uma barra de progressos.
-- Para otimizar inserir as imagens no firebase.
+- Para otimizar inserir as imagens no firebase. Se ficar muito pesado colocar imagens no firebase o acesso.
+- Inserir barra de busca com split e excluindo preposições.
+- Criar versão com diferentes traduções e salvar a selecionada.
+- Usar leitor de voz para ler a biblia, web speech api.
+- Fazer galeria de imagens com os seus versículos.
 
-Se ficar muito pesado colocar imagens no firebase o acesso.
+
 
 
 
