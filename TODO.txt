@@ -61,14 +61,14 @@ v0.96
 - Deixar as imagens clicáveis zoom in e out (Dialog). Melhorado. Feito
 
 v0.97
-- Fazer um botão de feedback.
-- Fazer icone. 
-- Fazer nome final.
+- Fazer um botão de feedback. Feito.
+- Fazer icone. Feito.
 
 
 v1
 - Fazer 10 imagens por livro.
 - Fazer a versão em inglês do app.
+- Fazer nome final. 
 
 
 
