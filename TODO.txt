@@ -58,8 +58,11 @@ v0.95
 - Deixar as imagens clicáveis zoom in e out (Dialog). Feito, falta Melhorar
 
 v0.96
+- Deixar as imagens clicáveis zoom in e out (Dialog). Melhorado
+
+v0.97
 - Fazer um botão de feedback.
-- Fazer icone
+- Fazer icone. 
 - Fazer nome final.
 
 
