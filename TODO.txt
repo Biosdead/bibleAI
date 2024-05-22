@@ -58,7 +58,7 @@ v0.95
 - Deixar as imagens clicáveis zoom in e out (Dialog). Feito, falta Melhorar
 
 v0.96
-- Deixar as imagens clicáveis zoom in e out (Dialog). Melhorado
+- Deixar as imagens clicáveis zoom in e out (Dialog). Melhorado. Feito
 
 v0.97
 - Fazer um botão de feedback.
