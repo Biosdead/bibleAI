@@ -244,7 +244,7 @@ button:active {
 
 #busca {
     padding-left: 30px; /* Espaço à esquerda para o ícone */
-    background-image: url('./imgs/lupa.png');
+    background-image: url('./imgs/btns/lupa.png');
     background-repeat: no-repeat;
     background-position: 3% center; /* Posicionamento do ícone */
     background-size: 20px; /* Tamanho do ícone */
