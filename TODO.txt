@@ -64,6 +64,9 @@ v0.97
 - Fazer um botão de feedback. Feito.
 - Fazer icone. Feito.
 
+v99
+- Fazer a versão em inglês do app. Feito.
+
 v0.98_Rute
 - Fazer 10 imagens por livro.
 
@@ -72,8 +75,7 @@ v0.99
 - Fazer o genesis com cada capítulo com uma imagem
 - Fazer nome final. 
 
-v1
-- Fazer a versão em inglês do app.
+
 
 v1.1 
 - Fazer biblía com gamificação, mostando quantos capítulos faltam pro fim do livro através de uma barra de progressos.

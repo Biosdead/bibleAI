@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +8,55 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto&family=Courgette&family=Poetsen+One'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Bíblia com IA</title>
+    <title>Bible with AI</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <h1 class="font-reader">Bíbl<span id="logo">ia</span> Imaginada - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h1>
+        <h1 class="font-reader">Bible Imagined - Bible illustrated by <span id="logo">Artificial Intelligence</span></h1>
         <br>
         <nav>
-            <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
+            <button class="chapter" onclick="HideOldTestament()">Old Testament</button>
             <ul id="old-testament" style="display: none;">
-                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+                <!-- Names of the Bible books will be dynamically added here -->
             </ul>
-            <button class="chapter" onclick="HideNewTestament()">Novo Testamento</button>
+            <button class="chapter" onclick="HideNewTestament()">New Testament</button>
             <ul id="new-testament" style="display: none;">
-                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+                <!-- Names of the Bible books will be dynamically added here -->
             </ul>
             <div class="container" id="divChapters" style="display: none;">
-                <p>Capítulos de <span  id="bookName">livro</span></p>
+                <p>Chapters of <span id="bookName">book</span></p>
                 <br>
                 <ul id="chapters">
                 </ul>
-                <!-- <button class="chapter" onclick="hideChapters()">Minimizar</button> -->
+                <!-- <button class="chapter" onclick="hideChapters()">Minimize</button> -->
             </div>
             <div class="container" id="divVerses" style="display: none;">
-                <p><span  id="bookNameChapter">livro - </span></p>
+                <p><span id="bookNameChapter">book - </span></p>
                 <br>
                 <ul id="verses">
                 </ul>
-                <!-- <button onclick="hideVerses()">Minimizar</button> -->
+                <!-- <button onclick="hideVerses()">Minimize</button> -->
             </div>
             <br>
             <br>
             <div id="search">
-                    <input class="chapterSmall" placeholder="Procurar..." type="search" id="busca" value="">
-                    <!-- <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button> -->
+                <input class="chapterSmall" placeholder="Search..." type="search" id="busca" value="">
+                <!-- <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button> -->
             </div>
             <br>
             <br>
-            <a href="./indexEn.html" class="chapter">Inglês</a>
+            <a href="./index.html" class="chapter ul"">Português</a>
         </nav>
-        <!-- <button class="chapterSpecial" onclick="openDialog()">Mostrar Dialogo</button> -->
+        <!-- <button class="chapterSpecial" onclick="openDialog()">Show Dialog</button> -->
     </header>
     <main>
         <article>
 
-
-
-
-            <!-- Inicio do Dialog -->
+            <!-- Start of Dialog -->
             <dialog id="DialogMain">
                 <!-- <div class="dialogTitle">
-                    <h2 class="font-reader">Bíbl<span id="logo">ia</span> - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h2>
+                    <h2 class="font-reader">Bible - Bible illustrated by <span id="logo">Artificial Intelligence</span></h2>
                 </div> -->
                 <!-- <div class="dialogBody"> -->
                         <fieldset>
@@ -71,46 +68,42 @@
                         </fieldset>     
                 <!-- </div> -->
                 <div class="dialogBtns">
-                    <button class="chapterSpecial" onclick="closeDialog()">Voltar</button>
+                    <button class="chapterSpecial" onclick="closeDialog()">Back</button>
                 </div>
             </dialog>
-            <!-- Fim do Dialog -->
+            <!-- End of Dialog -->
 
-
-
-
-            <h1 class="font-reader" id="book">Livro</h1>
+            <h1 class="font-reader" id="book">Book</h1>
             <!-- <h2 class="poetsen-one-regular" id="chapter"></h2> -->
             <h2 class="font-reader" id="chapter"></h2>
-            <!-- Adicione mais versículos -->
+            <!-- Add more verses -->
             <div id="loader" class="loader"></div>
         </article>
     </main>
 
     <div class="btns">
-        <button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button>
-        <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button>
+        <button onclick="PreviousChapter()" class="chapter">Previous Chapter</button>
+        <button onclick="NextChapter()" class="chapter">Next Chapter</button>
     </div>
-
 
     <footer>
         <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
         <br>
-        <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
-        <p>v0.99_Samuel1</p>
-        <p>Me Encontre nas redes Sociais</p>
+        <label for="darkMode" id="lblDarkMode">Activate Light Mode</label>
+        <p>v0.98_Ruth</p>
+        <p>Find me on social media</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://github.com/Biosdead" class="fa fa-github w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://biosdead.github.io/portifolio/" class="fa fa-language w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.linkedin.com/in/lennonsfurtado-engsoft/" class="fa fa-linkedin w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
-        <p id="Criado">Criado por Lennon Sales Furtado - Bíblia Ilustrada por IA - Direitos reservados</p>
+        <p id="Created">Created by Lennon Sales Furtado - Bible Illustrated by AI - All rights reserved</p>
     <script>
         const date = new Date(); 
-        document.getElementById("Criado").innerText += " - " +  date.getFullYear();
+        document.getElementById("Created").innerText += " - " +  date.getFullYear();
     </script>
     </footer>
-    <script src="./jsons/br/aa.js"></script>
-    <script src="./index.js"></script>
+    <script src="./jsons/en/kjv.js"></script>
+    <script src="./indexEn.js"></script>
 </body>
 </html>

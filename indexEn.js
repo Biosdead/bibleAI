@@ -13,41 +13,36 @@ var searchBar = document.getElementById("busca");
 const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
-var bible = bible;
+var bible = bibleEnglish; 
 
-// Array contendo os nomes dos livros da Bíblia
+// Array containing the names of the books of the Bible
 const booksOfBible = [
-    "Gênesis", "Êxodo", "Levítico", "Números", "Deuteronômio",
-    "Josué", "Juízes", "Rute", "1 Samuel", "2 Samuel",
-    "1 Reis", "2 Reis", "1 Crônicas", "2 Crônicas", "Esdras",
-    "Neemias", "Ester", "Jó", "Salmos", "Provérbios",
-    "Eclesiastes", "Cânticos", "Isaías", "Jeremias                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ", "Lamentações",
-    "Ezequiel", "Daniel", "Oseias", "Joel", "Amós",
-    "Obadias", "Jonas", "Miquéias", "Naum", "Habacuque",
-    "Sofonias", "Ageu", "Zacarias", "Malaquias",
-    "Mateus", "Marcos", "Lucas", "João", "Atos",
-    "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas", "Efésios",
-    "Filipenses", "Colossenses", "1 Tessalonicenses", "2 Tessalonicenses", "1 Timóteo",
-    "2 Timóteo", "Tito", "Filemom", "Hebreus", "Tiago",
-    "1 Pedro", "2 Pedro", "1 João", "2 João", "3 João",
-    "Judas", "Apocalipse"
+    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
+    "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra",
+    "Nehemiah", "Esther", "Job", "Psalms", "Proverbs",
+    "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+    "Ezekiel", "Daniel", "Hosea", "Joel", "Amos",
+    "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+    "Zephaniah", "Haggai", "Zechariah", "Malachi",
+    "Matthew", "Mark", "Luke", "John", "Acts",
+    "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+    "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy",
+    "2 Timothy", "Titus", "Philemon", "Hebrews", "James",
+    "1 Peter", "2 Peter", "1 John", "2 John", "3 John",
+    "Jude", "Revelation"
 ];
 
 
-
 window.onload = function(){
-    populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
-    disableContextMenu(); // Desabilita o menu de contexto
-    loadDarkMode(); // carregar o estado atual do darkmode
+    populateBookList(); // Call the function to fill the header with the names of the books of the Bible
+    disableContextMenu(); // Disable context menu
+    loadDarkMode(); // load the current state of dark mode
     loadData();
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
     searchBarListener();
 }
-
-// function zoom(id){
-//     openDialog();
-// }
 
 function translate(){
 
@@ -56,7 +51,7 @@ function translate(){
 
 
 
-// Função para preencher o cabeçalho com os nomes dos livros da Bíblia
+// Function to fill the header with the names of the books of the Bible
 function populateBookList() {
     let old_testament = true;
     const bookListOld = document.getElementById("old-testament");
@@ -66,13 +61,11 @@ function populateBookList() {
         const listItem = document.createElement("li");
         const link = document.createElement("a");
         link.href = '#';
-        // link.onclick = () => renderBook(i);
         link.textContent = book;
         link.setAttribute('onclick','populateChapters('+i+')');
-        // link.classList.add('chapter');
         listItem.appendChild(link);
 
-        if(book == "Mateus"){
+        if(book == "Matthew"){
             old_testament = false;
         }
 
@@ -85,7 +78,7 @@ function populateBookList() {
     });
 }
 
-function renderBook(livro){ // Posso apagar
+function renderBook(livro){ // I can delete
     let cap = 0;
     let TrueChapter = cap + 1;
     book.innerHTML = bible[livro].name;
@@ -109,7 +102,7 @@ function renderBookAndChapter(livro, chap){
     hideDiv(divChapters);
     let cap = chap;
     book.innerHTML = bible[livro].name;
-    chapter.innerHTML = " Capítulo " + realIndexChapter;
+    chapter.innerHTML = " Chapter " + realIndexChapter;
 
     let elementsToAppend = [];
     let promises = [];
@@ -124,20 +117,19 @@ function renderBookAndChapter(livro, chap){
         let promise = fetch(image).then(response => {
             if (response.ok) {
                 img.setAttribute("src", image);
-                // img.setAttribute("onclick", "fullscreen('"+"imagem"+i+"')");
                 img.setAttribute("onclick", "fullscreen('"+image+"','"+para.innerHTML+"')");
                 img.setAttribute("id", "imagem"+i);
                 para.classList.add("ilustrated");
                 para.appendChild(img);
             }
         }).catch(error => {
-            console.log("Imagem não encontrada: " + image);
+            console.log("Image not found: " + image);
         });
 
         elementsToAppend.push({para: para, promise: promise});
     }
 
-    // Aguardar todas as promessas serem resolvidas e depois adicionar os elementos ao DOM na ordem correta
+    // Wait for all promises to be resolved and then add the elements to the DOM in the correct order
     Promise.all(elementsToAppend.map(element => element.promise)).then(() => {
         elementsToAppend.forEach(element => {
             chapter.appendChild(element.para);
@@ -210,7 +202,7 @@ function HideOldTestament() {
        i++;
     });
     const btnHide = document.createElement("button");
-    btnHide.textContent = "Minimizar";
+    btnHide.textContent = "Minimize";
     btnHide.setAttribute('onclick','hideChapters()');
     btnHide.classList.add("chapterSpecial");
     capitulos.appendChild(btnHide);
@@ -237,20 +229,11 @@ function HideOldTestament() {
        i++;
     });
     const btnHide = document.createElement("button");
-    btnHide.textContent = "Minimizar";
+    btnHide.textContent = "Minimize";
     btnHide.setAttribute('onclick','hideVerses()');
     btnHide.classList.add("chapterSpecial");
     versesUl.appendChild(btnHide);
   }
-
-//   function zoom() {
-//     var img = document.getElementById("img");
-//     if (img.style.display === "none") {
-//         img.style.display = "block";
-//     } else {
-//         img.style.display = "none";
-//     }
-//   }
 
 function HideOldandNewTestament(){
     var old_testament_books = document.getElementById("old-testament");
@@ -265,7 +248,7 @@ function removeChildrenNodes(node){
       }
 }
 
-function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
+function disableContextMenu(){ // disable the second left btn click.
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault(); 
     });
@@ -326,21 +309,21 @@ function displayLoader(){
 function search(){
     let search = document.getElementById("busca").value;
     if (search == ""){
-        alert("Insira um texto no campo Procurar...");
+        alert("Insert text in the search field...");
         renderBookAndChapter(globalBook,globalChapter);
         hideVerses();
     }else {
     removeChildrenNodes(chapter);
-    book.innerHTML = "Resultados";
-    chapter.innerHTML = "Procurar por - " + search;
-    let encontrado = false;
+    book.innerHTML = "Results";
+    chapter.innerHTML = "Search for - " + search;
+    let found = false;
     let i = 0;
     let j = 0;
     for (let i = 0; i < bible.length; i++) {
         for (let j = 0; j < bible[i].chapters.length; j++) {
             for (let k = 0; k < bible[i].chapters[j].length; k++) {
                 if (bible[i].chapters[j][k].toLowerCase().includes(search.toLowerCase())) {
-                    encontrado = true;
+                    found = true;
                     console.log("🚀 ~ search ~ bible[i].chapters[j][k]:", bible[i].chapters[j][k].toLowerCase());
                     console.log("🚀 ~ search ~ search:", search)
                     renderBookChapterVerse(i,j,k);
@@ -350,8 +333,8 @@ function search(){
                 
         }
     }
-    if (encontrado == false) {
-        alert("Nenhum resultado encontrado");
+    if (found == false) {
+        alert("No results found");
         renderBookAndChapter(globalBook,globalChapter);
         hideVerses();
     }
@@ -373,14 +356,14 @@ function loadData(){
 function darkMode() {
     darkModeOn = (darkModeOn==1)?0:1;
     if (darkModeOn==1) {
-        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Escuro";
+        lblDM.innerText = "Activate Dark Mode" + darkModeOn;
+        lblDM.innerText = "Activate Dark Mode";
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
     }else if (darkModeOn==0){
-        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Claro";
+        lblDM.innerText = "Activate Light Mode" + darkModeOn;
+        lblDM.innerText = "Activate Light Mode";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
@@ -392,14 +375,14 @@ function darkMode() {
 
 function darkModeChage(){
     if (darkModeOn==1) {
-        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Escuro";
+        lblDM.innerText = "Activate Dark Mode" + darkModeOn;
+        lblDM.innerText = "Activate Dark Mode";
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
     }else if (darkModeOn==0){
-        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Claro";
+        lblDM.innerText = "Activate Light Mode" + darkModeOn;
+        lblDM.innerText = "Activate Light Mode";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
@@ -462,8 +445,8 @@ function closeDialog() {
     dialogo.close();
 }
 
-function fullscreen(fonteDaImg,versiculo) {
-    imgSelected.setAttribute('src',fonteDaImg);
-    document.getElementById("legenda").innerHTML = versiculo;
+function fullscreen(imageSrc, verse) {
+    imgSelected.setAttribute('src',imageSrc);
+    document.getElementById("legenda").innerHTML = verse;
     openDialog();
 }
