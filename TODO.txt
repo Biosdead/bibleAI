@@ -64,16 +64,18 @@ v0.97
 - Fazer um botão de feedback. Feito.
 - Fazer icone. Feito.
 
-v99
+
+v0.98
 - Fazer a versão em inglês do app. Feito.
 
-v0.98_Rute
+
+v99
+- Verificar qual é a tradução mais lida da biblia em BR e EN.
+- Pedir por chat gpt gerar essa versão para mim em JSON.
 - Fazer 10 imagens por livro.
-
-
-v0.99
 - Fazer o genesis com cada capítulo com uma imagem
 - Fazer nome final. 
+- Limpar código.
 
 
 
