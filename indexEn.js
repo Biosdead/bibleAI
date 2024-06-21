@@ -13,7 +13,7 @@ var searchBar = document.getElementById("busca");
 const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
-var bible = bibleEnglish; 
+var bible = bibleBBE; 
 
 // Array containing the names of the books of the Bible
 const booksOfBible = [
