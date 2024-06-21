@@ -13,7 +13,7 @@ var searchBar = document.getElementById("busca");
 const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
-var bible = bible;
+var bible = bibleAA;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -466,4 +466,30 @@ function fullscreen(fonteDaImg,versiculo) {
     imgSelected.setAttribute('src',fonteDaImg);
     document.getElementById("legenda").innerHTML = versiculo;
     openDialog();
+}
+
+
+function bibleTranslation() {
+    var version = document.getElementById("version").selectedIndex;
+    switch (version) {
+        case 0:
+            console.log("ARA")
+            bible = bibleARA;
+            break;
+        case 1:
+            console.log("AA")
+            bible = bibleAA;
+            break;
+        case 2:
+            console.log("ACF")
+            bible = bibleACF;
+            break;
+        case 3:
+            bible = bibleNVI;
+            console.log("NVI")
+            break;      
+        default:
+            var bible = bibleAA;
+            break;
+    }
 }
