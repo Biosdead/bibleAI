@@ -46,17 +46,15 @@
             </div>
             <br>
             <br>
-            <a href="./indexEn.html" class="chapter">Inglês</a>
+            <!-- <a href="./indexEn.html" class="chapter">Inglês</a> -->
+            
             <label for="version">Escolha a tradução:</label>
-
-            <select name="version" id="version">
-              <option onclick="bibleTranslation()" value="ara">Almeida Revista e Atualizada</option>
+            <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
               <option value="aa">Almeida Atualizada</option>
+              <option  value="ara">Almeida Revista e Atualizada</option>
               <option value="acf">Almeida Corrigida Fiel</option>
               <option value="nvi">Nova Versão Internacional</option>
             </select>
-            <button onclick="bibleTranslation()">Selecionar</button>
-
         </nav>
         <!-- <button class="chapterSpecial" onclick="openDialog()">Mostrar Dialogo</button> -->
     </header>
@@ -107,7 +105,7 @@
         <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
         <br>
         <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
-        <p>v0.99_Habacuque e Teste de escolha de versão da biblia</p>
+        <p>v0.99_Marcos & escolha de versão da biblia</p>
         <p>Qualquer sugestão  - Me Contate nas redes Sociais</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>

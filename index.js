@@ -14,6 +14,8 @@ const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
 var bible = bibleAA;
+var globalSelectorIndex;
+// document.getElementById("version").selectedIndex = 1;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -38,22 +40,13 @@ const booksOfBible = [
 window.onload = function(){
     populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
     disableContextMenu(); // Desabilita o menu de contexto
+    // loadBibleVersion();
     loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
     searchBarListener();
 }
-
-// function zoom(id){
-//     openDialog();
-// }
-
-function translate(){
-
-}
-
-
 
 
 // Função para preencher o cabeçalho com os nomes dos livros da Bíblia
@@ -370,6 +363,20 @@ function loadData(){
     }
 }
 
+function saveBibleVersion(){
+    localStorage.setItem("bible", bible);
+    localStorage.setItem("selectorIndex", globalSelectorIndex);
+}
+
+function loadBibleVersion(){
+    if (localStorage.getItem("bible") != null) {
+    bible = localStorage.getItem("bible");
+    globalSelectorIndex = parseInt(localStorage.getItem("selectorIndex"));
+    }
+}
+
+
+
 function darkMode() {
     darkModeOn = (darkModeOn==1)?0:1;
     if (darkModeOn==1) {
@@ -473,23 +480,43 @@ function bibleTranslation() {
     var version = document.getElementById("version").selectedIndex;
     switch (version) {
         case 0:
-            console.log("ARA")
-            bible = bibleARA;
-            break;
-        case 1:
             console.log("AA")
             bible = bibleAA;
+            renderBookAndChapter(globalBook,globalChapter);
+            hideVerses();
+            globalSelectorIndex = 0;
+            saveBibleVersion();
+            break;
+        case 1:
+            console.log("ARA")
+            bible = bibleARA;
+            renderBookAndChapter(globalBook,globalChapter);
+            hideVerses();
+            globalSelectorIndex = 1;
+            saveBibleVersion();
             break;
         case 2:
             console.log("ACF")
             bible = bibleACF;
+            renderBookAndChapter(globalBook,globalChapter);
+            hideVerses();
+            globalSelectorIndex = 2;
+            saveBibleVersion();
             break;
         case 3:
             bible = bibleNVI;
             console.log("NVI")
+            renderBookAndChapter(globalBook,globalChapter);
+            hideVerses();
+            globalSelectorIndex = 3;
+            saveBibleVersion();
             break;      
         default:
             var bible = bibleAA;
+            renderBookAndChapter(globalBook,globalChapter);
+            hideVerses();
+            globalSelectorIndex = 0;
+            saveBibleVersion();
             break;
     }
 }
