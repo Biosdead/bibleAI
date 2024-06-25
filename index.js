@@ -14,8 +14,9 @@ const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
 var bible = bibleAA;
-var globalSelectorIndex;
-// document.getElementById("version").selectedIndex = 1;
+var globalSelectorIndex = 0;
+var selectVersionBtn = document.getElementById("version").selectedIndex;
+// document.getElementById("version").selectedIndex = 3;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -40,10 +41,10 @@ const booksOfBible = [
 window.onload = function(){
     populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
     disableContextMenu(); // Desabilita o menu de contexto
-    // loadBibleVersion();
     loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
-    renderBookAndChapter(globalBook,globalChapter);
+    loadBibleVersion();
+    // renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
     searchBarListener();
 }
@@ -364,14 +365,15 @@ function loadData(){
 }
 
 function saveBibleVersion(){
-    localStorage.setItem("bible", bible);
+    // localStorage.setItem("bible", bible);
     localStorage.setItem("selectorIndex", globalSelectorIndex);
 }
 
 function loadBibleVersion(){
-    if (localStorage.getItem("bible") != null) {
-    bible = localStorage.getItem("bible");
+    if (localStorage.getItem("selectorIndex") != null) {
     globalSelectorIndex = parseInt(localStorage.getItem("selectorIndex"));
+    document.getElementById("version").selectedIndex = globalSelectorIndex;
+    bibleTranslation();
     }
 }
 
@@ -477,7 +479,7 @@ function fullscreen(fonteDaImg,versiculo) {
 
 
 function bibleTranslation() {
-    var version = document.getElementById("version").selectedIndex;
+    let version = document.getElementById("version").selectedIndex;
     switch (version) {
         case 0:
             console.log("AA")
@@ -486,6 +488,7 @@ function bibleTranslation() {
             hideVerses();
             globalSelectorIndex = 0;
             saveBibleVersion();
+            document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
         case 1:
             console.log("ARA")
@@ -494,6 +497,7 @@ function bibleTranslation() {
             hideVerses();
             globalSelectorIndex = 1;
             saveBibleVersion();
+            document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
         case 2:
             console.log("ACF")
@@ -502,6 +506,7 @@ function bibleTranslation() {
             hideVerses();
             globalSelectorIndex = 2;
             saveBibleVersion();
+            document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
         case 3:
             bible = bibleNVI;
@@ -510,13 +515,21 @@ function bibleTranslation() {
             hideVerses();
             globalSelectorIndex = 3;
             saveBibleVersion();
+            document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;      
         default:
-            var bible = bibleAA;
+            bible = bibleAA;
             renderBookAndChapter(globalBook,globalChapter);
             hideVerses();
             globalSelectorIndex = 0;
             saveBibleVersion();
+            document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
     }
+}
+
+function biblia() {
+    bible = bibleNVI;
+    renderBookAndChapter(globalBook,globalChapter);
+    hideVerses();
 }
