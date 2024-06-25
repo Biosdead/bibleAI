@@ -374,6 +374,10 @@ function loadBibleVersion(){
     globalSelectorIndex = parseInt(localStorage.getItem("selectorIndex"));
     document.getElementById("version").selectedIndex = globalSelectorIndex;
     bibleTranslation();
+    }else{
+        globalSelectorIndex = 0; 
+        document.getElementById("version").selectedIndex = globalSelectorIndex;
+        bibleTranslation();
     }
 }
 
