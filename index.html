@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <h1 class="font-reader">Bíbl<span id="logo">ia</span> Imaginada - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h1>
+        <h1 class="font-reader">Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span></h1>
         <br>
         <nav>
             <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
@@ -48,13 +48,13 @@
             <br>
             <!-- <a href="./indexEn.html" class="chapter">Inglês</a> -->
             
-            <label for="version">Escolha a tradução:</label>
-            <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+            <!-- <label for="version">Escolha a tradução:</label> -->
+            <!-- <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
               <option value="aa">Almeida Atualizada</option>
               <option  value="ara">Almeida Revista e Atualizada</option>
               <option value="acf">Almeida Corrigida Fiel</option>
               <option value="nvi">Nova Versão Internacional</option>
-            </select>
+            </select> -->
 
             <!-- <button onclick="biblia()">Teste</button> -->
         </nav>
@@ -104,9 +104,18 @@
 
 
     <footer>
+        <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
+        <br>
         <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
         <br>
-        <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
+        <label for="version">Escolha a tradução:</label>
+        <br>    
+        <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+            <option value="aa">Almeida Atualizada</option>
+            <option  value="ara">Almeida Revista e Atualizada</option>
+            <option value="acf">Almeida Corrigida Fiel</option>
+            <option value="nvi">Nova Versão Internacional</option>
+          </select>
         <p>v1.0 - Lucas</p>
         <p>Qualquer sugestão  - Me Contate nas redes Sociais</p>
         <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
