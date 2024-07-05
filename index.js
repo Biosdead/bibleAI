@@ -40,7 +40,7 @@ const booksOfBible = [
 
 window.onload = function(){
     populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
-    disableContextMenu(); // Desabilita o menu de contexto
+    // disableContextMenu(); // Desabilita o menu de contexto
     loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
     loadBibleVersion();
