@@ -504,8 +504,8 @@ function fullscreen(fonteDaImg,versiculo) {
     // var blob = fetch(fonteDaImg).then(r=>r.blob());
     let files = fonteDaImg;
     shareData = {
-        files: filesArray,
         title: "Bíblia Ilustrada por IA",
+        files: filesArray,
         text: livroNome + " : " + capNumero + " - " + versiculo,
         url: "https://biosdead.github.io/bibleAI/",
     }
