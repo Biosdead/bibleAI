@@ -479,17 +479,34 @@ function closeDialog() {
 function fullscreen(fonteDaImg,versiculo) {
     imgSelected.setAttribute('src',fonteDaImg);
     document.getElementById("legenda").innerHTML = versiculo;
-    var blob = fetch(fonteDaImg).then(r=>r.blob());
+
+    let livroNome = bible[globalBook].name;
+    let capNumero = globalChapter +1;
+
+    console.log("fonteIMG: " + fonteDaImg);
+
+    // const response =  fetch(fonteDaImg);
+    // const blob = response.blob();
+    const blob = fetch(fonteDaImg).then(r=>r.blob());
+    const filesArray = [
+    new File(
+      [blob],
+    //   livroNome+''+capNumero+''+versiculo+'.jpg',
+    'meme.jpg',
+      {
+        type: "image/jpg",
+        lastModified: new Date().getTime()
+      }
+   )
+  ];
+
+    
+    // var blob = fetch(fonteDaImg).then(r=>r.blob());
     let files = fonteDaImg;
     shareData = {
-        image: files,
+        files: filesArray,
         title: "Bíblia Ilustrada por IA",
-        // files: [
-        //     new File([blob], 'file.png', {
-        //       type: blob.type,
-        //     }),
-        //   ],
-        text: versiculo,
+        text: livroNome + " : " + capNumero + " - " + versiculo,
         url: "https://biosdead.github.io/bibleAI/",
     }
     openDialog();
