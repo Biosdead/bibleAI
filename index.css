@@ -82,8 +82,9 @@ footer p {
     border: 5px solid var(--contraster-color);
     border-radius: 25px;
     margin-right: 2%;
-    width: 80%;
+    width: 47%;
     height: fit-content;
+    /* margin-bottom: 5%; */
 }
 
 .chapterSmall{

@@ -17,6 +17,7 @@ var bible = bibleAA;
 var globalSelectorIndex = 0;
 var selectVersionBtn = document.getElementById("version").selectedIndex;
 // document.getElementById("version").selectedIndex = 3;
+var shareData;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -478,6 +479,19 @@ function closeDialog() {
 function fullscreen(fonteDaImg,versiculo) {
     imgSelected.setAttribute('src',fonteDaImg);
     document.getElementById("legenda").innerHTML = versiculo;
+    var blob = fetch(fonteDaImg).then(r=>r.blob());
+    let files = fonteDaImg;
+    shareData = {
+        image: files,
+        title: "Bíblia Ilustrada por IA",
+        // files: [
+        //     new File([blob], 'file.png', {
+        //       type: blob.type,
+        //     }),
+        //   ],
+        text: versiculo,
+        url: "https://biosdead.github.io/bibleAI/",
+    }
     openDialog();
 }
 
@@ -536,4 +550,12 @@ function biblia() {
     bible = bibleNVI;
     renderBookAndChapter(globalBook,globalChapter);
     hideVerses();
+}
+
+function shareDialog() {
+    try {
+         navigator.share(shareData);
+    } catch (err) {
+        console.log(`Error: ${err}`);
+      }
 }
