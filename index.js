@@ -18,6 +18,8 @@ var globalSelectorIndex = 0;
 var selectVersionBtn = document.getElementById("version").selectedIndex;
 // document.getElementById("version").selectedIndex = 3;
 var shareData;
+var imgSouce;
+var imgVerse;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -479,36 +481,8 @@ function closeDialog() {
 function fullscreen(fonteDaImg,versiculo) {
     imgSelected.setAttribute('src',fonteDaImg);
     document.getElementById("legenda").innerHTML = versiculo;
-
-    let livroNome = bible[globalBook].name;
-    let capNumero = globalChapter +1;
-
-    console.log("fonteIMG: " + fonteDaImg);
-
-    // const response =  fetch(fonteDaImg);
-    // const blob = response.blob();
-    const blob = fetch(fonteDaImg).then(r=>r.blob());
-    const filesArray = [
-    new File(
-      [blob],
-    //   livroNome+''+capNumero+''+versiculo+'.jpg',
-    'meme.jpg',
-      {
-        type: "image/jpg",
-        lastModified: new Date().getTime()
-      }
-   )
-  ];
-
-    
-    // var blob = fetch(fonteDaImg).then(r=>r.blob());
-    let files = fonteDaImg;
-    shareData = {
-        title: "Bíblia Ilustrada por IA",
-        files: filesArray,
-        text: livroNome + " : " + capNumero + " - " + versiculo,
-        url: "https://biosdead.github.io/bibleAI/",
-    }
+    imgSouce = fonteDaImg;
+    imgVerse = versiculo;
     openDialog();
 }
 
@@ -569,7 +543,38 @@ function biblia() {
     hideVerses();
 }
 
-function shareDialog() {
+async function shareDialog() {
+
+
+    let livroNome = bible[globalBook].name;
+    let capNumero = globalChapter +1;
+
+    
+    const response = await fetch(imgSouce);
+    const blob = await response.blob();
+    // const blob = fetch(fonteDaImg).then(r=>r.blob());
+    const filesArray = [
+    new File(
+      [blob],
+    //   livroNome+''+capNumero+''+versiculo+'.jpg',
+    'meme.jpg',
+      {
+        type: "image/jpg",
+        lastModified: new Date().getTime()
+      }
+   )
+  ];
+
+    
+    // var blob = fetch(fonteDaImg).then(r=>r.blob());
+    // let files = fonteDaImg;
+    shareData = {
+        title: "Bíblia Ilustrada por IA",
+        files: filesArray,
+        text: livroNome + " : " + capNumero + " - " + imgVerse,
+        url: "https://biosdead.github.io/bibleAI/",
+    }
+
     try {
          navigator.share(shareData);
     } catch (err) {
