@@ -20,6 +20,7 @@ var selectVersionBtn = document.getElementById("version").selectedIndex;
 var shareData;
 var imgSouce;
 var imgVerse;
+var imageVerseNumber;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -122,7 +123,7 @@ function renderBookAndChapter(livro, chap){
             if (response.ok) {
                 img.setAttribute("src", image);
                 // img.setAttribute("onclick", "fullscreen('"+"imagem"+i+"')");
-                img.setAttribute("onclick", "fullscreen('"+image+"','"+para.innerHTML+"')");
+                img.setAttribute("onclick", "fullscreen('"+image+"','"+para.innerHTML+"','"+verse+"')");
                 img.setAttribute("id", "imagem"+i);
                 para.classList.add("ilustrated");
                 para.appendChild(img);
@@ -478,11 +479,12 @@ function closeDialog() {
     dialogo.close();
 }
 
-function fullscreen(fonteDaImg,versiculo) {
+function fullscreen(fonteDaImg,versiculo,numero) {
     imgSelected.setAttribute('src',fonteDaImg);
     document.getElementById("legenda").innerHTML = versiculo;
     imgSouce = fonteDaImg;
     imgVerse = versiculo;
+    imageVerseNumber = numero;
     openDialog();
 }
 
@@ -491,7 +493,6 @@ function bibleTranslation() {
     let version = document.getElementById("version").selectedIndex;
     switch (version) {
         case 0:
-            console.log("AA")
             bible = bibleAA;
             renderBookAndChapter(globalBook,globalChapter);
             hideVerses();
@@ -500,7 +501,6 @@ function bibleTranslation() {
             document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
         case 1:
-            console.log("ARA")
             bible = bibleARA;
             renderBookAndChapter(globalBook,globalChapter);
             hideVerses();
@@ -509,7 +509,6 @@ function bibleTranslation() {
             document.getElementById("version").selectedIndex = globalSelectorIndex;
             break;
         case 2:
-            console.log("ACF")
             bible = bibleACF;
             renderBookAndChapter(globalBook,globalChapter);
             hideVerses();
@@ -519,7 +518,6 @@ function bibleTranslation() {
             break;
         case 3:
             bible = bibleNVI;
-            console.log("NVI")
             renderBookAndChapter(globalBook,globalChapter);
             hideVerses();
             globalSelectorIndex = 3;
@@ -545,19 +543,15 @@ function biblia() {
 
 async function shareDialog() {
 
-
     let livroNome = bible[globalBook].name;
     let capNumero = globalChapter +1;
-
-    
     const response = await fetch(imgSouce);
     const blob = await response.blob();
-    // const blob = fetch(fonteDaImg).then(r=>r.blob());
+    
     const filesArray = [
     new File(
       [blob],
-    //   livroNome+''+capNumero+''+versiculo+'.jpg',
-    'meme.jpg',
+      livroNome+''+capNumero+''+imageVerseNumber+'.jpg',
       {
         type: "image/jpg",
         lastModified: new Date().getTime()
@@ -565,19 +559,30 @@ async function shareDialog() {
    )
   ];
 
-    
-    // var blob = fetch(fonteDaImg).then(r=>r.blob());
-    // let files = fonteDaImg;
     shareData = {
         title: "Bíblia Ilustrada por IA",
-        files: filesArray,
         text: livroNome + " : " + capNumero + " - " + imgVerse,
-        url: "https://biosdead.github.io/bibleAI/",
+        url: "https://biosdead.github.io/bibleAI/"
+        // files: filesArray,
     }
 
+
+    // if (navigator.canShare && navigator.canShare(shareData)) {
+    //     navigator.share(shareData);
+    // } else {
+    //     console.log("Sem suporte ao compartilhamento");
+    // }
+
     try {
-         navigator.share(shareData);
-    } catch (err) {
-        console.log(`Error: ${err}`);
-      }
+        await navigator.share(shareData);
+   } catch (err) {
+       console.log(`Error: ${err}`);
+       console.log("Sem suporte ao compartilhamento");
+     }
+}
+
+function compartilhar() {
+
+   
+    
 }
