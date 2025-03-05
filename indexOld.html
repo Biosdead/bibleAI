@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8048981882025505">
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto&family=Courgette&family=Poetsen+One'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Bíblia com IA</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1 class="font-reader">Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span></h1>
+        <br>
+        <nav>
+            <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
+            <ul id="old-testament" style="display: none;">
+                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+            </ul>
+            <button class="chapter" onclick="HideNewTestament()">Novo Testamento</button>
+            <ul id="new-testament" style="display: none;">
+                <!-- Nomes dos livros da Bíblia serão adicionados dinamicamente aqui -->
+            </ul>
+            <div class="container" id="divChapters" style="display: none;">
+                <p>Capítulos de <span  id="bookName">livro</span></p>
+                <br>
+                <ul id="chapters">
+                </ul>
+                <!-- <button class="chapter" onclick="hideChapters()">Minimizar</button> -->
+            </div>
+            <div class="container" id="divVerses" style="display: none;">
+                <p><span  id="bookNameChapter">livro - </span></p>
+                <br>
+                <ul id="verses">
+                </ul>
+                <!-- <button onclick="hideVerses()">Minimizar</button> -->
+            </div>
+            <br>
+            <br>
+            <div id="search">
+                    <input class="chapterSmall" placeholder="Procurar..." type="search" id="busca" value="">
+                    <!-- <button class="chapterSmall" onclick="search()" type="submit" id="btnBusca"><i class="fa fa-search"></i></button> -->
+            </div>
+            <br>
+            <br>
+            <!-- <a href="./indexEn.html" class="chapter">Inglês</a> -->
+            
+            <!-- <label for="version">Escolha a tradução:</label> -->
+            <!-- <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+              <option value="aa">Almeida Atualizada</option>
+              <option  value="ara">Almeida Revista e Atualizada</option>
+              <option value="acf">Almeida Corrigida Fiel</option>
+              <option value="nvi">Nova Versão Internacional</option>
+            </select> -->
+
+            <!-- <button onclick="biblia()">Teste</button> -->
+        </nav>
+        <!-- <button class="chapterSpecial" onclick="openDialog()">Mostrar Dialogo</button> -->
+    </header>
+    <main>
+        <article>
+
+            <!-- Inicio do Dialog -->
+            <dialog id="DialogMain">
+                <!-- <div class="dialogTitle">
+                    <h2 class="font-reader">Bíbl<span id="logo">ia</span> - Bíblia ilustrada por <span id="logo">Inteligência Artificial</span></h2>
+                </div> -->
+                <!-- <div class="dialogBody"> -->
+                        <fieldset>
+                            <figure>
+                            <img class="ilustrated" id="imgSelected" src="./imgs/1_1_2.jpg">
+                            <!-- <figcaption class="font-reader ilustrated" id="legenda"></figcaption> -->
+                        </figure>
+                        <p class="font-reader ilustrated" id="legenda"></p>
+                        </fieldset>     
+                <!-- </div> -->
+                <div class="dialogBtns">
+                    <button class="chapterSpecial" onclick="closeDialog()">Voltar</button>
+                    <!-- <button onclick="shareVerse()" class="chapterSpecial">Compartilhar</button> -->
+                </div>
+            </dialog>
+            <!-- Fim do Dialog -->
+
+
+
+
+            <h1 class="font-reader" id="book">Livro</h1>
+            <!-- <h2 class="poetsen-one-regular" id="chapter"></h2> -->
+            <h2 class="font-reader" id="chapter"></h2>
+            <!-- Adicione mais versículos -->
+            <div id="loader" class="loader"></div>
+        </article>
+    </main>
+
+    <div class="btns">
+        <button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button>
+        <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button>
+    </div>
+
+
+    <footer>
+        <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
+        <br>
+        <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
+        <br>
+        <label for="version">Escolha a tradução:</label>
+        <br>    
+        <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+            <option value="aa">Almeida Atualizada</option>
+            <option  value="ara">Almeida Revista e Atualizada</option>
+            <option value="acf">Almeida Corrigida Fiel</option>
+            <option value="nvi">Nova Versão Internacional</option>
+          </select>
+        <p>Versão 1.5</p>
+        <p>Qualquer sugestão  - Me Contate nas redes Sociais</p>
+        <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity " style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://github.com/Biosdead" class="fa fa-github w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://biosdead.github.io/portifolio/" class="fa fa-language w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://www.linkedin.com/in/lennonsfurtado-engsoft/" class="fa fa-linkedin w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <p id="Criado">Criado por Lennon Sales Furtado - Bíblia Ilustrada por IA - Direitos reservados</p>
+    <script>
+        const date = new Date(); 
+        document.getElementById("Criado").innerText += " - " +  date.getFullYear();
+    </script>
+        <p id="Criado">Todas as imagens foram geradas usando o ChatGPT 4o</p>
+        <a href="./privacidade.html"><small>Política de Privacidade</small></a>
+    </footer>
+    <script src="./jsons/br/aa.js"></script>
+    <script src="./jsons/br/acf.js"></script>
+    <script src="./jsons/br/ara.js"></script>
+    <script src="./jsons/br/nvi.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
