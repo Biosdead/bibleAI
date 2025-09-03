@@ -7,6 +7,9 @@
     --footer-border: #4a4a4a;
     --contraster-color:aqua;
     --contraster-color2:teal;
+    --fontSizeH1:2rem;
+    --fontSizeH2:1.5rem;
+    --fontSizeP:1.4rem;
 
 
     /* Light mode */
@@ -21,7 +24,7 @@
 body {
     font-family:  "Roboto" , 'Montserrat' , sans-serif;      
     font-weight: bolder;
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     background-color: var(--backgorund-color);
     color: var(--font-color);
@@ -37,36 +40,37 @@ body {
 
 main {
     padding: 20px;
+    margin-bottom: 22vh;
 }
 
 article {
     margin-bottom: 1%;
+    /* margin-bottom: 30px; */
     /* display: flex;
     flex-direction: column; */
 }
 
 article h2 {
-    font-size: 1.5rem;
+    font-size: var(--fontSizeH2);
 }
 
 article p {
-    font-size: 1.4rem;
+    font-size: var(--fontSizeP);
     line-height: 1.6;
 }
 
-footer {
+/* footer {
     background-color: var(--footer-color);
     text-align: center;
     padding-top: 10px;
-    /* position: fixed; */
     bottom: 0;
     width: 100%;
     border-top: 2px solid var(--footer-border);
-}
+} */
 
-footer p {
+/* footer p {
     font-size: 0.8rem;
-}
+} */
 
 
 .chapter{
@@ -119,7 +123,7 @@ header {
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: var(--fontSizeH1);
     margin: 0;
 }
 
@@ -323,3 +327,53 @@ select{
     background-color: red;
 
 }
+
+#buttonBar{
+    overflow: hidden;
+    all: unset;
+    width: 100%;
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    /* margin-top: 30px; */
+}
+
+#buttonBar ul{
+    display: flexbox;
+    width: 100%;
+    flex: 1;
+}
+
+#buttonBar ul li{
+    all: unset;
+    text-align: center;
+    width: 20%;
+}
+
+#buttonBar ul li button{
+    all: unset;
+    border: #ffffff solid 2px;
+    width:99%;
+    height: 100%;
+    /* margin-bottom: 5px; */
+}
+
+#buttonBar ul li button:hover {
+    background-color: var(--contraster-color2);
+}
+
+#buttonBar ul li button:active {
+    background-color: var(--footer-color);
+}
+
+#buttonBar ul li select{
+    /* all: unset; */
+    background-color: var(--backgorund-color);
+    color: var(--font-color);
+    border: #ffffff solid 2px;
+    border-radius: 0%;
+    width:99%;
+    height: 100%;
+    /* margin-bottom: 5px; */
+}
+

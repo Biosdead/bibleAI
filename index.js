@@ -8,7 +8,7 @@ var globalBook = 0; // shows the current book
 var darkModeBtn = document.getElementById('darkMode');
 var darkModeOn = 1; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
-var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
+// var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 var searchBar = document.getElementById("busca");
 const dialogo = document.querySelector("dialog");
 var imgSelected = document.getElementById("imgSelected");
@@ -21,6 +21,7 @@ var shareData;
 var imgSouce;
 var imgVerse;
 var imageVerseNumber;
+var GlobalFontSize = 0;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -390,14 +391,14 @@ function loadBibleVersion(){
 function darkMode() {
     darkModeOn = (darkModeOn==1)?0:1;
     if (darkModeOn==1) {
-        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Escuro";
+        // lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
+        // lblDM.innerText = "Ativar Modo Escuro";
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
     }else if (darkModeOn==0){
-        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Claro";
+        // lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
+        // lblDM.innerText = "Ativar Modo Claro";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
@@ -409,14 +410,14 @@ function darkMode() {
 
 function darkModeChage(){
     if (darkModeOn==1) {
-        lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Escuro";
+        // lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
+        // lblDM.innerText = "Ativar Modo Escuro";
         darkModeBtn.classList.remove('fa-toggle-on');
         darkModeBtn.classList.add('fa-toggle-off');
         lightMode();
     }else if (darkModeOn==0){
-        lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
-        lblDM.innerText = "Ativar Modo Claro";
+        // lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
+        // lblDM.innerText = "Ativar Modo Claro";
         darkModeBtn.classList.remove('fa-toggle-off');
         darkModeBtn.classList.add('fa-toggle-on');
         shadowMode();
@@ -592,6 +593,9 @@ function backToBible(){
     window.location="./index.html";
 }
 
+function goToInfo(){
+    window.location="./info.html";
+}
 
 // async function shareVerse() {
 //     let imgElement = document.getElementById("imgSelected"); // Captura a imagem selecionada
@@ -629,3 +633,41 @@ function backToBible(){
 //         alert("O compartilhamento não é suportado neste navegador.");
 //     }
 // }
+
+
+function increaseFontSize(){
+    if(GlobalFontSize == 0){
+        GlobalFontSize = 1;
+    }else if(GlobalFontSize == 1){
+        GlobalFontSize = 2;
+    }else if(GlobalFontSize == 2){
+        GlobalFontSize = 3;
+    }
+
+    changeFontSize();
+}
+
+function decreaseFontSize(){
+    if(GlobalFontSize == 3){
+        GlobalFontSize = 2;
+    }else if(GlobalFontSize == 2){
+        GlobalFontSize = 1;
+    }else if(GlobalFontSize == 1){
+        GlobalFontSize = 0;
+    }
+
+    changeFontSize();
+}
+
+function changeFontSize(){
+    if(GlobalFontSize == 0){
+        r.style.setProperty('--fontSizeP', "1.4rem");
+    }else if(GlobalFontSize == 1){
+        r.style.setProperty('--fontSizeP', "2rem");
+    }else if(GlobalFontSize == 2){
+        r.style.setProperty('--fontSizeP', "2.5rem");
+    }else if( GlobalFontSize == 3){
+        r.style.setProperty('--fontSizeP', "3rem");
+        // document.getElementById("increaseFontSizeBtn").disabled = true;
+    }
+}

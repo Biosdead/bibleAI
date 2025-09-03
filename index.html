@@ -15,15 +15,15 @@
     <!-- Open Graph: para compartilhamento em redes sociais -->
     <meta property="og:title" content="Bíblia Ilustrada por IA">
     <meta property="og:description" content="Explore passagens da Bíblia ilustradas por Inteligência Artificial, com uma experiência visual única de cada versículo.">
-    <meta property="og:image" content="./imgs/compartilhamento.jpg"> <!-- Exemplo de imagem -->
-    <meta property="og:url" content="https://seudominio.com"> <!-- URL do seu site -->
+    <meta property="og:image" content="./imgs/icon/iconOriginal.png"> <!-- Exemplo de imagem -->
+    <meta property="og:url" content="https://www.bibliailustradaporia.com.br"> <!-- URL do seu site -->
     <meta property="og:type" content="website">
 
     <!-- Twitter Cards (opcional) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bíblia Ilustrada por IA">
     <meta name="twitter:description" content="Descubra uma experiência única ao ler a Bíblia com ilustrações geradas por IA.">
-    <meta name="twitter:image" content="./imgs/compartilhamento.jpg">
+    <meta name="twitter:image" content="./imgs/icon/iconOriginal.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./imgs/favicon/biblia.png">
@@ -98,50 +98,72 @@
     </main>
 
     <!-- Navegação de capítulos -->
-    <div class="btns">
+    <!-- <div class="btns">
         <button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button>
         <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button>
-    </div>
+    </div> -->
 
     <footer>
-        <!-- Controle de Modo Escuro/Claro -->
-        <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label>
-        <br>
-        <button onclick="darkMode()" class="chapterSmall">
+    <nav id="buttonBar">
+        <ul>
+            <li><button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button></li>
+            <li> <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button></li>
+        </ul>
+        <ul>
+            <li><button onclick="darkMode()" class="chapterSmall">
             <i id="darkMode" class="fa fa-toggle-on" style="font-size:2rem;"></i>
-        </button>
-        <br><br>
-
-        <!-- Seleção de Versão da Bíblia -->
-        <label for="version">Escolha a tradução:</label>
-        <br>
-        <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+        </button></li>
+            <li><button id="increaseFontSizeBtn" onclick="increaseFontSize()">A+</button></li>
+            <li><button id="decreaseFontSizeBtn" onclick="decreaseFontSize()">A-</button></li>
+            <li><button onclick="goToInfo()">Info</button></li>
+            <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
             <option value="aa">Almeida Atualizada</option>
             <option value="ara">Almeida Revista e Atualizada</option>
             <option value="acf">Almeida Corrigida Fiel</option>
             <option value="nvi">Nova Versão Internacional</option>
-        </select>
-        <br><br>
+        </select></li>
+        </ul>
+    </nav>
+    </footer>
+    <!-- <footer> -->
+        <!-- Controle de Modo Escuro/Claro -->
+        <!-- <label for="darkMode" id="lblDarkMode">Ativar Modo Claro</label> -->
+        <!-- <br> -->
+        <!-- <button onclick="darkMode()" class="chapterSmall">
+            <i id="darkMode" class="fa fa-toggle-on" style="font-size:2rem;"></i>
+        </button> -->
+        <!-- <br><br> -->
 
-        <p>Versão 1.6 - SEO Aprimorado</p>
-        <p>Qualquer sugestão – Me contate nas redes sociais:</p>
+        <!-- Seleção de Versão da Bíblia -->
+        <!-- <label for="version">Escolha a tradução:</label>
+        <br> -->
+        <!-- <select class="chapter" onchange="bibleTranslation()" name="version" id="version">
+            <option value="aa">Almeida Atualizada</option>
+            <option value="ara">Almeida Revista e Atualizada</option>
+            <option value="acf">Almeida Corrigida Fiel</option>
+            <option value="nvi">Nova Versão Internacional</option>
+        </select> -->
+        <!-- <br><br> -->
+
+        <!-- <p>Versão 1.62 - SEO Aprimorado</p>
+        <p>Qualquer sugestão – Me contate nas redes sociais:</p> -->
         
         <!-- Links de Redes Sociais -->
-        <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <!-- <a href="https://www.facebook.com/lennon.sfurtado" class="fa fa-facebook-official w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://www.instagram.com/lennonsfurtado/" class="fa fa-instagram w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://github.com/Biosdead" class="fa fa-github w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
         <a href="https://biosdead.github.io/portifolio/" class="fa fa-language w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
-        <a href="https://www.linkedin.com/in/lennonsfurtado-engsoft/" class="fa fa-linkedin w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a>
+        <a href="https://www.linkedin.com/in/lennonsfurtado-engsoft/" class="fa fa-linkedin w3-hover-opacity" style="font-size: xx-large; text-decoration: none;"></a> -->
         
         <!-- Informações de Rodapé -->
-        <p id="Criado">Criado por Lennon Sales Furtado – Bíblia Ilustrada por IA – Direitos reservados</p>
+        <!-- <p id="Criado">Criado por Lennon Sales Furtado – Bíblia Ilustrada por IA – Direitos reservados</p>
         <script>
             const date = new Date(); 
             document.getElementById("Criado").innerText += " - " + date.getFullYear();
         </script>
         <p id="imagensGeradas">Todas as imagens foram geradas usando ChatGPT 4.0</p>
         <a href="./privacidade.html"><small>Política de Privacidade</small></a>
-    </footer>
+    </footer> -->
 
     <!-- Scripts colocados no final para melhorar performance -->
     <script src="./jsons/br/aa.js"></script>

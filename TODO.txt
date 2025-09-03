@@ -78,12 +78,23 @@ v99
 - Limpar código.
 
 
+v1.7
+- Barra de navegação na parte de baixo com os botões Ok
+- Botão Dark Mode OK
+- Botão A+ OK
+- Botão A- OK
+- Versões da biblia OK
+- Fazer o estado do A+ e A- ou seja GlobalFontSize permanente no localStorage
+- Deixar a Fonte mais Sobria
+- Fazer Versão offline
+- Compartilhar as imagens com os Versículos via Redes Sociais.
+- Fazer Animação de Esconder Barra e aparecer barra baseado no scroll
+- Fazer Assinatura via Iphone
+- Barra Fixa - OK  
 
-v1.1 
-- Fazer biblía com gamificação, mostando quantos capítulos faltam pro fim do livro através de uma barra de progressos.
-- Para otimizar inserir as imagens no firebase. Se ficar muito pesado colocar imagens no firebase o acesso.
+
+v2 
 - Inserir barra de busca com split e excluindo preposições.
-- Criar versão com diferentes traduções e salvar a selecionada.
 - Usar leitor de voz para ler a biblia, web speech api.
 - Fazer galeria de imagens com os seus versículos.
 
