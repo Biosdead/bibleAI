@@ -87,6 +87,7 @@
                 </fieldset>     
                 <div class="dialogBtns">
                     <button class="chapterSpecial" onclick="closeDialog()">Voltar</button>
+                    <button onclick="shareVerse()" class="chapterSpecial">Compartilhar</button>
                 </div>
             </dialog>
 
@@ -117,10 +118,14 @@
             <li><button id="decreaseFontSizeBtn" onclick="decreaseFontSize()">A-</button></li>
             <li><button onclick="goToInfo()">Info</button></li>
             <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
-            <option value="aa">Almeida Atualizada</option>
-            <option value="ara">Almeida Revista e Atualizada</option>
-            <option value="acf">Almeida Corrigida Fiel</option>
-            <option value="nvi">Nova Versão Internacional</option>
+            <!-- <option value="aa">AA</option>
+            <option value="ara">ARA</option>
+            <option value="acf">ACF</option>
+            <option value="nvi">NVI</option> -->
+            <option value="aa">AA - Almeida Atualizada</option>
+            <option value="ara">ARA - Almeida Revista e Atualizada</option>
+            <option value="acf">ACF - Almeida Corrigida Fiel</option>
+            <option value="nvi">NVI - Nova Versão Internacional</option>
         </select></li>
         </ul>
     </nav>
@@ -171,5 +176,24 @@
     <script src="./jsons/br/ara.js"></script>
     <script src="./jsons/br/nvi.js"></script>
     <script src="./index.js"></script>
+    <script>
+        //Script para animar a barra de nav no fundo da página
+        let lastScrollTop = 0;
+    const navbar = document.getElementById("buttonBar");
+
+    window.addEventListener("scroll", function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Rolando para baixo → esconder barra
+        navbar.classList.add("hidden");
+      } else {
+        // Rolando para cima → mostrar barra
+        navbar.classList.remove("hidden");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // evita valores negativos
+    });
+    </script>
 </body>
 </html>

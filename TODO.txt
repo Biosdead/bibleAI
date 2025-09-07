@@ -84,13 +84,19 @@ v1.7
 - Botão A+ OK
 - Botão A- OK
 - Versões da biblia OK
-- Fazer o estado do A+ e A- ou seja GlobalFontSize permanente no localStorage
-- Deixar a Fonte mais Sobria
-- Fazer Versão offline
-- Compartilhar as imagens com os Versículos via Redes Sociais.
-- Fazer Animação de Esconder Barra e aparecer barra baseado no scroll
-- Fazer Assinatura via Iphone
 - Barra Fixa - OK  
+- Fazer Animação de Esconder Barra e aparecer barra baseado no scroll - OK
+- Fazer o estado do A+ e A- ou seja GlobalFontSize permanente no localStorage - OK
+- Fazer Página de Info - OK
+- Compartilhar as imagens com os Versículos via Redes Sociais. 
+
+v1.8
+- Mudar icone de próximo capítulo por seta
+- Mudar icone de capítulo Anterior por seta
+- Mudar icone de Modo claro e escuro por sol ou lampada
+- Deixar a Fonte mais Sobria
+- Fazer Assinatura via Iphone
+- Fazer Versão offline
 
 
 v2 

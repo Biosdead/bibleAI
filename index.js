@@ -5,6 +5,7 @@ const divChapters = document.getElementById("divChapters");
 const divVerses = document.getElementById("divVerses");
 var globalChapter = 0; // shows the current chapter
 var globalBook = 0; // shows the current book
+var globalFontSize = 0;
 var darkModeBtn = document.getElementById('darkMode');
 var darkModeOn = 1; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
@@ -21,7 +22,6 @@ var shareData;
 var imgSouce;
 var imgVerse;
 var imageVerseNumber;
-var GlobalFontSize = 0;
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -49,7 +49,7 @@ window.onload = function(){
     loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
     loadBibleVersion();
-    // renderBookAndChapter(globalBook,globalChapter);
+    loadFontSize();
     hideVerses();
     searchBarListener();
 }
@@ -386,8 +386,6 @@ function loadBibleVersion(){
     }
 }
 
-
-
 function darkMode() {
     darkModeOn = (darkModeOn==1)?0:1;
     if (darkModeOn==1) {
@@ -568,11 +566,11 @@ async function shareDialog() {
     }
 
 
-    // if (navigator.canShare && navigator.canShare(shareData)) {
-    //     navigator.share(shareData);
-    // } else {
-    //     console.log("Sem suporte ao compartilhamento");
-    // }
+    if (navigator.canShare && navigator.canShare(shareData)) {
+        navigator.share(shareData);
+    } else {
+        alert("Sem suporte ao compartilhamento");
+    }
 
     try {
         await navigator.share(shareData);
@@ -597,76 +595,90 @@ function goToInfo(){
     window.location="./info.html";
 }
 
-// async function shareVerse() {
-//     let imgElement = document.getElementById("imgSelected"); // Captura a imagem selecionada
-//     let verseText = document.getElementById("legenda").innerText; // Captura o versículo
+async function shareVerse() {
+    let imgElement = document.getElementById("imgSelected"); // Captura a imagem selecionada
+    let verseText = document.getElementById("legenda").innerText; // Captura o versículo
 
 
-//     const response = await fetch(imgElement.src);
-//   const blob = await response.blob();
-//   const filesArray = [
-//     new File(
-//       [blob],
-//       'Genesis.jpg',
-//       {
-//         type: "image/jpeg",
-//         lastModified: new Date().getTime()
-//       }
-//    )
-//   ];
+    const response = await fetch(imgElement.src);
+  const blob = await response.blob();
+  const filesArray = [
+    new File(
+      [blob],
+      'Genesis.jpg',
+      {
+        type: "image/jpeg",
+        lastModified: new Date().getTime()
+      }
+   )
+  ];
 
 
 
-//     if (navigator.share) {
-//         navigator.share({
-//             files: filesArray,
-//             title: "Bible Illustrated by AI",
-//             text: verseText,
-//             // file: imgElement.src,
-//             url: "https://www.bibleillustratedbyai.com" // Compartilha o link da imagem
-//         }).then(() => {
-//             console.log("Compartilhamento bem-sucedido");
-//         }).catch((error) => {
-//             console.error("Erro ao compartilhar:", error);
-//         });
-//     } else {
-//         alert("O compartilhamento não é suportado neste navegador.");
-//     }
-// }
+    if (navigator.share) {
+        navigator.share({
+            files: filesArray,
+            title: "Bible Illustrated by AI",
+            text: verseText,
+            // file: imgElement.src,
+            url: "https://www.bibleillustratedbyai.com" // Compartilha o link da imagem
+        }).then(() => {
+            console.log("Compartilhamento bem-sucedido");
+        }).catch((error) => {
+            console.error("Erro ao compartilhar:", error);
+        });
+    } else {
+        alert("O compartilhamento não é suportado neste navegador.");
+    }
+}
+
+
+function saveFontSize(){
+    localStorage.setItem("fontSize", globalFontSize);
+}
+
+function loadFontSize(){
+    if (localStorage.getItem("fontSize") != null) {
+    globalFontSize = parseInt(localStorage.getItem("fontSize"));
+    changeFontSize();
+    }else{
+        globalFontSize = 0; 
+    }
+}
 
 
 function increaseFontSize(){
-    if(GlobalFontSize == 0){
-        GlobalFontSize = 1;
-    }else if(GlobalFontSize == 1){
-        GlobalFontSize = 2;
-    }else if(GlobalFontSize == 2){
-        GlobalFontSize = 3;
+    if(globalFontSize == 0){
+        globalFontSize = 1;
+    }else if(globalFontSize == 1){
+        globalFontSize = 2;
+    }else if(globalFontSize == 2){
+        globalFontSize = 3;
     }
-
+    saveFontSize();
     changeFontSize();
 }
 
 function decreaseFontSize(){
-    if(GlobalFontSize == 3){
-        GlobalFontSize = 2;
-    }else if(GlobalFontSize == 2){
-        GlobalFontSize = 1;
-    }else if(GlobalFontSize == 1){
-        GlobalFontSize = 0;
+    if(globalFontSize == 3){
+        globalFontSize = 2;
+    }else if(globalFontSize == 2){
+        globalFontSize = 1;
+    }else if(globalFontSize == 1){
+        globalFontSize = 0;
     }
-
+    saveFontSize();
     changeFontSize();
 }
 
 function changeFontSize(){
-    if(GlobalFontSize == 0){
+    if(globalFontSize == 0){
         r.style.setProperty('--fontSizeP', "1.4rem");
-    }else if(GlobalFontSize == 1){
+    }else if(globalFontSize == 1){
         r.style.setProperty('--fontSizeP', "2rem");
-    }else if(GlobalFontSize == 2){
+    }else if(globalFontSize == 2){
         r.style.setProperty('--fontSizeP', "2.5rem");
-    }else if( GlobalFontSize == 3){
+    }else if( globalFontSize == 3){
         r.style.setProperty('--fontSizeP', "3rem");
         // document.getElementById("increaseFontSizeBtn").disabled = true;
     }
