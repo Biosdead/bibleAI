@@ -38,35 +38,302 @@
     <!-- Seu arquivo CSS -->
     <link rel="stylesheet" href="index.css">
     <title>Info</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5efe6 0%, #fdf6e3 45%, #f1e8d3 100%);
+            color: #2c2c2c;
+        }
+
+        .info-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 6rem;
+            position: relative;
+        }
+
+        .info-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 10%, rgba(0, 128, 128, 0.12), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.8rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: "Poetsen One", "Roboto", sans-serif;
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .hero-card {
+            background: #fffaf1;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        #profileImg {
+            border-radius: 16px;
+            border: 6px solid #e2d8c3;
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .hero-actions .chapter {
+            min-width: auto;
+            padding: 0.6rem 1.2rem;
+        }
+
+        .highlights {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .highlights li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .highlights i {
+            color: teal;
+        }
+
+        .section {
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section h2 {
+            font-family: "Poetsen One", "Roboto", sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section p {
+            line-height: 1.6;
+        }
+
+        .suggestion-form {
+            margin-top: 1.5rem;
+            display: grid;
+            gap: 1rem;
+            background: #fffaf1;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .suggestion-form input,
+        .suggestion-form select,
+        .suggestion-form textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 2px solid #d3c6a8;
+            padding: 0.65rem 0.8rem;
+            font-family: "Roboto", sans-serif;
+            font-size: 1rem;
+            background: #fffdf8;
+        }
+
+        .suggestion-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 0.9rem;
+            color: #4b5f5f;
+        }
+
+        .submit-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .submit-row button {
+            background: teal;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.7rem 1.4rem;
+            font-weight: 600;
+        }
+
+        .guidelines {
+            display: grid;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .guidelines li {
+            margin-left: 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        #buttonBar {
+            z-index: 999;
+        }
+
+        #buttonBar ul {
+            display: flex;
+        }
+
+        #buttonBar ul li {
+            width: 50%;
+        }
+
+        footer,
+        footer p,
+        footer a,
+        footer small {
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 
-    <main>
-        <div id="perfil">
-            <img id="profileImg" height="20%" src="./imgs/profile/perfilBW.png" alt="" srcset="">
-        </div>
-        <section id="profileText">
-            <h1>Lennon Sales Furtado</h1>
-            <p>Lennon possui doutorado em Ciências da Computação pelo Programa de Pós Graduação em Ciência da Computação da Universidade Federal do Pará (UFPA) 
-                sob orientação do prof. Dr. Sandro Ronaldo Bezerra Oliveira; 
-                Pós-Graduação (Mestrado) em ciências da computação 
-                com ênfase em Gestão da Informação pelo Programa de Pós Graduação 
-                em Ciência da Computação da Universidade Federal do Pará (UFPA) 
-                sob orientação do prof. Dr. Bianchi Serique Meiguins; Bacharel 
-                em Engenharia de Computação pelo Instituto de Estudos Superiores 
-                da Amazônia (2013); Atualmente é Professor EBTT do Instituto 
-                Federal do Pará - IFPA no Brasil. Lennon tem experiência nas 
-                áreas de Jogos Digitais, Gamificação, Visualização de informação,
-                Engenharia de Software, Medição de Software e Melhoria de Processos de Software.</p>
+    <main class="info-page">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Quem desenvolveu</p>
+                <h1>Lennon Sales Furtado</h1>
+                <p>
+                    Doutor em Ciência da Computação (UFPA), professor EBTT no Instituto Federal do Pará (IFPA)
+                    e entusiasta da interseção entre fé, tecnologia e narrativa visual. A Bíblia Ilustrada por IA
+                    nasce do desejo de tornar a leitura mais imersiva, acessível e inspiradora.
+                </p>
+                <div class="hero-actions">
+                    
+                </div>
+            </div>
+            <div class="hero-card">
+                <img id="profileImg" src="./imgs/profile/perfilBW.png" alt="Foto de Lennon Sales Furtado">
+                <ul class="highlights">
+                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> Doutorado e Mestrado em Ciência da Computação</li>
+                    <li><i class="fa fa-gamepad" aria-hidden="true"></i> Jogos digitais e gamificação</li>
+                    <li><i class="fa fa-paint-brush" aria-hidden="true"></i> Visualização de informação aplicada</li>
+                    <li><i class="fa fa-code" aria-hidden="true"></i> Engenharia de software e melhoria de processos</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="section" id="suggestions">
+            <h2>Sugira imagens e ajustes</h2>
+            <p>
+                Quer ver um capítulo ilustrado, sugerir uma cena bíblica ou corrigir uma imagem existente?
+                Preencha o formulário abaixo. Assim que você enviar, o seu aplicativo de e-mail será aberto
+                com todos os dados preenchidos para envio direto ao meu endereço.
+            </p>
+
+            <form class="suggestion-form" action="mailto:lennonsfurtado@gmail.com?subject=Sugestao%20Biblia%20Ilustrada%20por%20IA" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" name="Nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu e-mail</label>
+                    <input type="email" id="email" name="Email" placeholder="voce@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de solicitação</label>
+                    <select id="tipo" name="Tipo">
+                        <option value="Nova imagem">Nova imagem para capítulo</option>
+                        <option value="Ajuste">Ajuste em imagem existente</option>
+                        <option value="Sugestao">Sugestão geral</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="referencia">Livro, capítulo e versículo</label>
+                    <input type="text" id="referencia" name="Referencia" placeholder="Ex.: Gênesis 1:1-5" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descreva a imagem ou ajuste desejado</label>
+                    <textarea id="descricao" name="Descricao" placeholder="Conte o que você imagina, estilo, detalhes importantes..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="link">Link de referência (opcional)</label>
+                    <input type="url" id="link" name="Link" placeholder="https://">
+                </div>
+                <p class="form-hint">Para anexos, compartilhe um link público (Drive, Dropbox, etc.).</p>
+                <div class="submit-row">
+                    <button type="submit">Enviar sugestão</button>
+                    <span class="form-hint">O envio abre seu app de e-mail.</span>
+                </div>
+            </form>
+        </section>
+
+        <section class="section guidelines">
+            <h2>Boas práticas para sugestões</h2>
+            <ul>
+                <li>Descreva o clima da cena (luz, emoção, época, ambiente).</li>
+                <li>Diga se prefere um estilo mais clássico, realista ou ilustrado.</li>
+                <li>Explique qualquer detalhe bíblico que não pode faltar.</li>
+                <li>Informe se a sugestão é para corrigir algo que já está publicado.</li>
+            </ul>
         </section>
     </main>
 
-    <div class="divCenter">
-    <button onclick="backToBible()" class="chapter">Voltar para a Bíblia</button>
-    </div>
+    <nav id="buttonBar" aria-label="Menu rápido">
+        <ul>
+            <li><button onclick="backToBible()" class="chapter">Voltar</button></li>
+            <li><button onclick="goToSuggestions()" class="chapter">Sugestões</button></li>
+        </ul>
+    </nav>
 </body>
 <footer>
-     <p>Versão 1.79 - SEO Aprimorado</p>
+     <p>Versão 1.86 - Compartilhar Aprimorado</p>
         <p>Qualquer sugestão – Me contate nas redes sociais:</p>
         
         <!-- Links de Redes Sociais -->
@@ -87,4 +354,31 @@
     </footer>
 
 <script src="./index.js"></script>
+<script>
+    function goToSuggestions() {
+        const section = document.getElementById("suggestions");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+    function goToEmail() {
+        window.location.href = "mailto:lennonsfurtado@gmail.com";
+    }
+
+    let lastScrollTop = 0;
+    const navbar = document.getElementById("buttonBar");
+
+    window.addEventListener("scroll", function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        navbar.classList.add("hidden");
+      } else {
+        navbar.classList.remove("hidden");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+</script>
 </html>

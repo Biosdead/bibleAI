@@ -391,14 +391,14 @@ function darkMode() {
     if (darkModeOn==1) {
         // lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
         // lblDM.innerText = "Ativar Modo Escuro";
-        darkModeBtn.classList.remove('fa-toggle-on');
-        darkModeBtn.classList.add('fa-toggle-off');
+        darkModeBtn.classList.remove('lamp-off');
+        darkModeBtn.classList.add('lamp-on');
         lightMode();
     }else if (darkModeOn==0){
         // lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
         // lblDM.innerText = "Ativar Modo Claro";
-        darkModeBtn.classList.remove('fa-toggle-off');
-        darkModeBtn.classList.add('fa-toggle-on');
+        darkModeBtn.classList.remove('lamp-on');
+        darkModeBtn.classList.add('lamp-off');
         shadowMode();
     }
     saveDarkMode(darkModeOn);
@@ -410,14 +410,14 @@ function darkModeChage(){
     if (darkModeOn==1) {
         // lblDM.innerText = "Ativar Modo Escuro" + darkModeOn;
         // lblDM.innerText = "Ativar Modo Escuro";
-        darkModeBtn.classList.remove('fa-toggle-on');
-        darkModeBtn.classList.add('fa-toggle-off');
+        darkModeBtn.classList.remove('lamp-off');
+        darkModeBtn.classList.add('lamp-on');
         lightMode();
     }else if (darkModeOn==0){
         // lblDM.innerText = "Ativar Modo Claro" + darkModeOn;
         // lblDM.innerText = "Ativar Modo Claro";
-        darkModeBtn.classList.remove('fa-toggle-off');
-        darkModeBtn.classList.add('fa-toggle-on');
+        darkModeBtn.classList.remove('lamp-on');
+        darkModeBtn.classList.add('lamp-off');
         shadowMode();
     }
 }
@@ -598,7 +598,8 @@ function goToInfo(){
 async function shareVerse() {
     let imgElement = document.getElementById("imgSelected"); // Captura a imagem selecionada
     let verseText = document.getElementById("legenda").innerText; // Captura o versículo
-
+    let livroNome = bible[globalBook].name;
+    let capNumero = globalChapter +1;
 
     const response = await fetch(imgElement.src);
   const blob = await response.blob();
@@ -619,7 +620,8 @@ async function shareVerse() {
         navigator.share({
             files: filesArray,
             title: "Bible Illustrated by AI",
-            text: verseText,
+            // text:verseText,
+            text:livroNome + " - " + capNumero + ":" + verseText,
             // file: imgElement.src,
             url: "https://www.bibleillustratedbyai.com" // Compartilha o link da imagem
         }).then(() => {

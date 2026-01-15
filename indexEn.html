@@ -83,12 +83,12 @@
     </main>
 
     <div class="btns">
-        <button onclick="PreviousChapter()" class="chapter">Previous Chapter</button>
-        <button onclick="NextChapter()" class="chapter">Next Chapter</button>
+        <button onclick="PreviousChapter()" class="chapter" aria-label="Previous Chapter"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button onclick="NextChapter()" class="chapter" aria-label="Next Chapter"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
     </div>
 
     <footer>
-        <button onclick="darkMode()" class="chapterSmall"><i id="darkMode" class='fa fa-toggle-on' style='font-size:2rem;'></i></button>
+        <button onclick="darkMode()" class="chapterSmall" aria-label="Light/Dark mode"><i id="darkMode" class="fa fa-lightbulb-o lamp-off" style="font-size:2rem;" aria-hidden="true"></i></button>
         <br>
         <label for="darkMode" id="lblDarkMode">Activate Light Mode</label>
         <p>v1.0 - Bible In Basic English - BBE Translation</p>

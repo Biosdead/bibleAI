@@ -97,6 +97,14 @@ footer p {
     margin-right: 2%;
 }
 
+.lamp-on{
+    color: #f4c542;
+}
+
+.lamp-off{
+    color: #ffffff;
+}
+
 #logo{
  color: var(--contraster-color);   
 }

@@ -358,14 +358,14 @@ function darkMode() {
     if (darkModeOn==1) {
         lblDM.innerText = "Activate Dark Mode" + darkModeOn;
         lblDM.innerText = "Activate Dark Mode";
-        darkModeBtn.classList.remove('fa-toggle-on');
-        darkModeBtn.classList.add('fa-toggle-off');
+        darkModeBtn.classList.remove('lamp-off');
+        darkModeBtn.classList.add('lamp-on');
         lightMode();
     }else if (darkModeOn==0){
         lblDM.innerText = "Activate Light Mode" + darkModeOn;
         lblDM.innerText = "Activate Light Mode";
-        darkModeBtn.classList.remove('fa-toggle-off');
-        darkModeBtn.classList.add('fa-toggle-on');
+        darkModeBtn.classList.remove('lamp-on');
+        darkModeBtn.classList.add('lamp-off');
         shadowMode();
     }
     saveDarkMode(darkModeOn);
@@ -377,14 +377,14 @@ function darkModeChage(){
     if (darkModeOn==1) {
         lblDM.innerText = "Activate Dark Mode" + darkModeOn;
         lblDM.innerText = "Activate Dark Mode";
-        darkModeBtn.classList.remove('fa-toggle-on');
-        darkModeBtn.classList.add('fa-toggle-off');
+        darkModeBtn.classList.remove('lamp-off');
+        darkModeBtn.classList.add('lamp-on');
         lightMode();
     }else if (darkModeOn==0){
         lblDM.innerText = "Activate Light Mode" + darkModeOn;
         lblDM.innerText = "Activate Light Mode";
-        darkModeBtn.classList.remove('fa-toggle-off');
-        darkModeBtn.classList.add('fa-toggle-on');
+        darkModeBtn.classList.remove('lamp-on');
+        darkModeBtn.classList.add('lamp-off');
         shadowMode();
     }
 }

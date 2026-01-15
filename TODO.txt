@@ -88,22 +88,28 @@ v1.7
 - Fazer Animação de Esconder Barra e aparecer barra baseado no scroll - OK
 - Fazer o estado do A+ e A- ou seja GlobalFontSize permanente no localStorage - OK
 - Fazer Página de Info - OK
-- Compartilhar as imagens com os Versículos via Redes Sociais. 
+- Compartilhar as imagens com os Versículos via Redes Sociais. OK
 
 v1.8
-- Mudar icone de próximo capítulo por seta
-- Mudar icone de capítulo Anterior por seta
-- Mudar icone de Modo claro e escuro por sol ou lampada
+- Inserir imagens de anjos precisamente biblicos.
+- Mudar icone de próximo capítulo por seta - OK
+- Mudar icone de capítulo Anterior por seta - OK
+- Mudar icone de Modo claro e escuro por sol ou lampada - OK
+- Mudar icone de Info por bonequinho - OK
+- Colocar o Livro, capítulo e link correto (loja Iphone) no texto compartilhado. OK
 - Deixar a Fonte mais Sobria
-- Fazer Assinatura via Iphone
-- Fazer Versão offline
+- Deixar interface iphone like liquid glass
 
+v1.9
+- Botão Home (Talvez)
+- Tirar o foco dos botões pressionados no iphone. 
 
 v2 
 - Inserir barra de busca com split e excluindo preposições.
 - Usar leitor de voz para ler a biblia, web speech api.
 - Fazer galeria de imagens com os seus versículos.
-
+- Fazer Assinatura via Iphone
+- Fazer Versão offline (React Native)
 
 
 

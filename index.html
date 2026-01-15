@@ -44,7 +44,7 @@
     <header>
         <!-- H1 principal do site -->
         <h1 class="font-reader">
-            Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
+           Bibl_ia - Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
         </h1>
         <br>
         <nav>
@@ -107,16 +107,16 @@
     <footer>
     <nav id="buttonBar">
         <ul>
-            <li><button onclick="PreviousChapter()" class="chapter">Capítulo Anterior</button></li>
-            <li> <button onclick="NextChapter()" class="chapter">Próximo Capítulo</button></li>
+            <li><button onclick="PreviousChapter()" class="chapter" aria-label="Capítulo Anterior"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></li>
+            <li><button onclick="NextChapter()" class="chapter" aria-label="Próximo Capítulo"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></li>
         </ul>
         <ul>
-            <li><button onclick="darkMode()" class="chapterSmall">
-            <i id="darkMode" class="fa fa-toggle-on" style="font-size:2rem;"></i>
+            <li><button onclick="darkMode()" class="chapterSmall" aria-label="Modo claro/escuro">
+            <i id="darkMode" class="fa fa-lightbulb-o lamp-off" style="font-size:2rem;" aria-hidden="true"></i>
         </button></li>
             <li><button id="increaseFontSizeBtn" onclick="increaseFontSize()">A+</button></li>
             <li><button id="decreaseFontSizeBtn" onclick="decreaseFontSize()">A-</button></li>
-            <li><button onclick="goToInfo()">Info</button></li>
+            <li><button onclick="goToInfo()" aria-label="Info"><i class="fa fa-user" aria-hidden="true"></i></button></li>
             <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
             <!-- <option value="aa">AA</option>
             <option value="ara">ARA</option>
