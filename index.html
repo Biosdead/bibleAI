@@ -30,8 +30,7 @@
     
     <!-- CSS e Fontes -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto&family=Courgette&family=Poetsen+One'>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Manrope:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Título da página -->
@@ -41,7 +40,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
+    <header id="mainHeader">
         <!-- H1 principal do site -->
         <h1 class="font-reader">
            Bibl_ia - Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
@@ -66,11 +65,11 @@
                 <br>
                 <ul id="verses"></ul>
             </div>
-            <br><br>
+            <!-- <br><br>
             <div id="search">
                 <input class="chapterSmall" placeholder="Procurar..." type="search" id="busca" value="">
             </div>
-            <br><br>
+            <br><br> -->
         </nav>
     </header>
     
@@ -177,23 +176,7 @@
     <script src="./jsons/br/nvi.js"></script>
     <script src="./index.js"></script>
     <script>
-        //Script para animar a barra de nav no fundo da página
-        let lastScrollTop = 0;
-    const navbar = document.getElementById("buttonBar");
-
-    window.addEventListener("scroll", function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (currentScroll > lastScrollTop) {
-        // Rolando para baixo → esconder barra
-        navbar.classList.add("hidden");
-      } else {
-        // Rolando para cima → mostrar barra
-        navbar.classList.remove("hidden");
-      }
-
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // evita valores negativos
-    });
+        // Scroll hide handled in index.js to keep header/menu behavior consistent.
     </script>
 </body>
 </html>

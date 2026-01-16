@@ -91,18 +91,22 @@ v1.7
 - Compartilhar as imagens com os Versículos via Redes Sociais. OK
 
 v1.8
-- Inserir imagens de anjos precisamente biblicos.
 - Mudar icone de próximo capítulo por seta - OK
 - Mudar icone de capítulo Anterior por seta - OK
 - Mudar icone de Modo claro e escuro por sol ou lampada - OK
 - Mudar icone de Info por bonequinho - OK
 - Colocar o Livro, capítulo e link correto (loja Iphone) no texto compartilhado. OK
-- Deixar a Fonte mais Sobria
-- Deixar interface iphone like liquid glass
+- Botão Home (Talvez) - OK
+- Tirar o campo de busca e fazer o menu de cima com os botões se esconderem e se mostrarem iguais o de baixo. OK
+- Deixar a Fonte mais Sobria. OK 
+- Deixar interface iphone like liquid glass. OK
+- Insira icones nos botões de voltar o icone de uma casinha e o botão de sugestão um icone sugestivo. - OK
+- Inserir imagens de anjos precisamente biblicos.
+
 
 v1.9
-- Botão Home (Talvez)
 - Tirar o foco dos botões pressionados no iphone. 
+
 
 v2 
 - Inserir barra de busca com split e excluindo preposições.

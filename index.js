@@ -22,6 +22,32 @@ var shareData;
 var imgSouce;
 var imgVerse;
 var imageVerseNumber;
+var scrollHideDisabled = false;
+
+function setScrollVisibility(show) {
+    const navbar = document.getElementById("buttonBar");
+    const mainHeader = document.getElementById("mainHeader");
+    if (navbar) {
+        navbar.classList.toggle("hidden", !show);
+    }
+    if (mainHeader) {
+        mainHeader.classList.toggle("hidden", !show);
+    }
+}
+
+function isVisible(element) {
+    return element && window.getComputedStyle(element).display !== "none";
+}
+
+function updateScrollHideState() {
+    const oldTestament = document.getElementById("old-testament");
+    const newTestament = document.getElementById("new-testament");
+    const shouldDisable = isVisible(oldTestament) || isVisible(newTestament) || isVisible(divChapters) || isVisible(divVerses);
+    scrollHideDisabled = shouldDisable;
+    if (shouldDisable) {
+        setScrollVisibility(true);
+    }
+}
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -52,6 +78,42 @@ window.onload = function(){
     loadFontSize();
     hideVerses();
     searchBarListener();
+    setupScrollHide();
+}
+
+function setupScrollHide(){
+    const navbar = document.getElementById("buttonBar");
+    const mainHeader = document.getElementById("mainHeader");
+    if (!navbar && !mainHeader) {
+        return;
+    }
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollTimeout = null;
+    setScrollVisibility(true);
+    window.addEventListener("scroll", function() {
+        if (scrollHideDisabled) {
+            setScrollVisibility(true);
+            return;
+        }
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll <= 0) {
+            setScrollVisibility(true);
+            lastScrollTop = 0;
+            return;
+        }
+        if (currentScroll > lastScrollTop + 2) {
+            setScrollVisibility(false);
+        } else if (currentScroll < lastScrollTop - 2) {
+            setScrollVisibility(true);
+        }
+        lastScrollTop = currentScroll;
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(function() {
+            setScrollVisibility(true);
+        }, 350);
+    });
 }
 
 
@@ -174,6 +236,7 @@ function HideOldTestament() {
     new_testament_books.style.display = "none";
     hideChapters();
     hideVerses();
+    updateScrollHideState();
   }
 
   function HideNewTestament() {
@@ -187,6 +250,7 @@ function HideOldTestament() {
     old_testament_books.style.display = "none";
     hideChapters();
     hideVerses();
+    updateScrollHideState();
   }
 
   function populateChapters(livro) {
@@ -213,6 +277,7 @@ function HideOldTestament() {
     btnHide.setAttribute('onclick','hideChapters()');
     btnHide.classList.add("chapterSpecial");
     capitulos.appendChild(btnHide);
+    updateScrollHideState();
   }
 
   function populateVerses(livro,capitulo) {
@@ -240,6 +305,7 @@ function HideOldTestament() {
     btnHide.setAttribute('onclick','hideVerses()');
     btnHide.classList.add("chapterSpecial");
     versesUl.appendChild(btnHide);
+    updateScrollHideState();
   }
 
 //   function zoom() {
@@ -256,6 +322,7 @@ function HideOldandNewTestament(){
     old_testament_books.style.display = "none";
     var new_testament_books = document.getElementById("new-testament");
     new_testament_books.style.display = "none";
+    updateScrollHideState();
 }
 
 function removeChildrenNodes(node){
@@ -272,18 +339,22 @@ function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
 
 function showDiv(div){
     div.style.display = "flex";
+    updateScrollHideState();
 }
 
 function hideDiv(div){
     div.style.display = "none";
+    updateScrollHideState();
 }
 
 function hideChapters(){
     divChapters.style.display = "none";
+    updateScrollHideState();
 }
 
 function hideVerses(){
     divVerses.style.display = "none";
+    updateScrollHideState();
 }
 
 function NextChapter(){
@@ -424,23 +495,35 @@ function darkModeChage(){
 
 
 function lightMode(){
-    r.style.setProperty('--font-family', "Poetsen One");
-    r.style.setProperty('--backgorund-color', "#ffffff");
-    r.style.setProperty('--font-color', '#333333');
-    r.style.setProperty('--footer-color', '#f8f4e6');
-    r.style.setProperty('--footer-border', '#c0c0c0');
-    r.style.setProperty('--contraster-color', 'teal'); // --contraster-color: #008080;
-    r.style.setProperty('--contraster-color2', 'aqua'); // --contraster-color2: #008000;
+    r.style.setProperty('--font-family', '"Atkinson Hyperlegible", "Manrope", sans-serif');
+    r.style.setProperty('--backgorund-color', "#f7f7fb");
+    r.style.setProperty('--page-bg', 'radial-gradient(circle at 15% 15%, rgba(120, 180, 255, 0.35), transparent 45%), radial-gradient(circle at 85% 5%, rgba(120, 220, 255, 0.25), transparent 55%), linear-gradient(160deg, #f7f7fb 0%, #eef1f7 60%, #e7edf5 100%)');
+    r.style.setProperty('--font-color', '#1a1d24');
+    r.style.setProperty('--footer-color', 'rgba(255, 255, 255, 0.7)');
+    r.style.setProperty('--footer-border', 'rgba(0, 0, 0, 0.08)');
+    r.style.setProperty('--contraster-color', '#2f7bff');
+    r.style.setProperty('--contraster-color2', '#54b6ff');
+    r.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.65)');
+    r.style.setProperty('--glass-strong', 'rgba(255, 255, 255, 0.85)');
+    r.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.75)');
+    r.style.setProperty('--glass-shadow', '0 20px 45px rgba(0, 0, 0, 0.12)');
+    r.style.setProperty('--glass-blur', '18px');
 }
 
 function shadowMode(){
-    r.style.setProperty('--font-family', 'Courgette, cursive');
-    r.style.setProperty('--backgorund-color', '#1f1f1f');
-    r.style.setProperty('--font-color', '#ffffff');
-    r.style.setProperty('--footer-color', '#2c2c2c');
-    r.style.setProperty('--footer-border', '#4a4a4a');
-    r.style.setProperty('--contraster-color', 'aqua');  
-    r.style.setProperty('--contraster-color2', 'teal');  
+    r.style.setProperty('--font-family', '"Atkinson Hyperlegible", "Manrope", sans-serif');
+    r.style.setProperty('--backgorund-color', '#0e1116');
+    r.style.setProperty('--page-bg', 'radial-gradient(circle at 20% 20%, rgba(70, 120, 255, 0.18), transparent 45%), radial-gradient(circle at 80% 10%, rgba(0, 200, 255, 0.12), transparent 50%), linear-gradient(160deg, #0b0d10 0%, #12161d 60%, #1a2028 100%)');
+    r.style.setProperty('--font-color', '#f5f5f7');
+    r.style.setProperty('--footer-color', 'rgba(18, 20, 24, 0.75)');
+    r.style.setProperty('--footer-border', 'rgba(255, 255, 255, 0.12)');
+    r.style.setProperty('--contraster-color', '#8fd3ff');  
+    r.style.setProperty('--contraster-color2', '#5fb3ff');  
+    r.style.setProperty('--glass-bg', 'rgba(25, 28, 34, 0.6)');
+    r.style.setProperty('--glass-strong', 'rgba(32, 36, 44, 0.75)');
+    r.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.18)');
+    r.style.setProperty('--glass-shadow', '0 20px 45px rgba(0, 0, 0, 0.35)');
+    r.style.setProperty('--glass-blur', '18px');
 }
 
 function saveDarkMode(d) {
@@ -458,16 +541,19 @@ function loadDarkMode() {
 
 
 function searchBarListener() {
+    if (!searchBar) {
+        return;
+    }
     // Execute a function when the user presses a key on the keyboard
-searchBar.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    // event.preventDefault();
-    // Trigger the button element with a click
-    search();
-  }
-});
+    searchBar.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        // event.preventDefault();
+        // Trigger the button element with a click
+        search();
+      }
+    });
 }
 
 function openDialog() {

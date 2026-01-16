@@ -391,23 +391,35 @@ function darkModeChage(){
 
 
 function lightMode(){
-    r.style.setProperty('--font-family', "Poetsen One");
-    r.style.setProperty('--backgorund-color', "#ffffff");
-    r.style.setProperty('--font-color', '#333333');
-    r.style.setProperty('--footer-color', '#f8f4e6');
-    r.style.setProperty('--footer-border', '#c0c0c0');
-    r.style.setProperty('--contraster-color', 'teal'); // --contraster-color: #008080;
-    r.style.setProperty('--contraster-color2', 'aqua'); // --contraster-color2: #008000;
+    r.style.setProperty('--font-family', '"Atkinson Hyperlegible", "Manrope", sans-serif');
+    r.style.setProperty('--backgorund-color', "#f7f7fb");
+    r.style.setProperty('--page-bg', 'radial-gradient(circle at 15% 15%, rgba(120, 180, 255, 0.35), transparent 45%), radial-gradient(circle at 85% 5%, rgba(120, 220, 255, 0.25), transparent 55%), linear-gradient(160deg, #f7f7fb 0%, #eef1f7 60%, #e7edf5 100%)');
+    r.style.setProperty('--font-color', '#1a1d24');
+    r.style.setProperty('--footer-color', 'rgba(255, 255, 255, 0.7)');
+    r.style.setProperty('--footer-border', 'rgba(0, 0, 0, 0.08)');
+    r.style.setProperty('--contraster-color', '#2f7bff');
+    r.style.setProperty('--contraster-color2', '#54b6ff');
+    r.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.65)');
+    r.style.setProperty('--glass-strong', 'rgba(255, 255, 255, 0.85)');
+    r.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.75)');
+    r.style.setProperty('--glass-shadow', '0 20px 45px rgba(0, 0, 0, 0.12)');
+    r.style.setProperty('--glass-blur', '18px');
 }
 
 function shadowMode(){
-    r.style.setProperty('--font-family', 'Courgette, cursive');
-    r.style.setProperty('--backgorund-color', '#1f1f1f');
-    r.style.setProperty('--font-color', '#ffffff');
-    r.style.setProperty('--footer-color', '#2c2c2c');
-    r.style.setProperty('--footer-border', '#4a4a4a');
-    r.style.setProperty('--contraster-color', 'aqua');  
-    r.style.setProperty('--contraster-color2', 'teal');  
+    r.style.setProperty('--font-family', '"Atkinson Hyperlegible", "Manrope", sans-serif');
+    r.style.setProperty('--backgorund-color', '#0e1116');
+    r.style.setProperty('--page-bg', 'radial-gradient(circle at 20% 20%, rgba(70, 120, 255, 0.18), transparent 45%), radial-gradient(circle at 80% 10%, rgba(0, 200, 255, 0.12), transparent 50%), linear-gradient(160deg, #0b0d10 0%, #12161d 60%, #1a2028 100%)');
+    r.style.setProperty('--font-color', '#f5f5f7');
+    r.style.setProperty('--footer-color', 'rgba(18, 20, 24, 0.75)');
+    r.style.setProperty('--footer-border', 'rgba(255, 255, 255, 0.12)');
+    r.style.setProperty('--contraster-color', '#8fd3ff');  
+    r.style.setProperty('--contraster-color2', '#5fb3ff');  
+    r.style.setProperty('--glass-bg', 'rgba(25, 28, 34, 0.6)');
+    r.style.setProperty('--glass-strong', 'rgba(32, 36, 44, 0.75)');
+    r.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.18)');
+    r.style.setProperty('--glass-shadow', '0 20px 45px rgba(0, 0, 0, 0.35)');
+    r.style.setProperty('--glass-blur', '18px');
 }
 
 function saveDarkMode(d) {
