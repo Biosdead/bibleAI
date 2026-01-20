@@ -68,7 +68,7 @@ article p {
     line-height: 1.6;
 }
 
-footer {
+/* footer {
     background: var(--glass-strong);
     text-align: center;
     padding-top: 10px;
@@ -78,7 +78,7 @@ footer {
     box-shadow: var(--glass-shadow);
     backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
-}
+} */
 
 footer p {
     font-size: 0.8rem;
@@ -464,6 +464,15 @@ select{
     transition: transform 0.25s ease, opacity 0.25s ease;
     transform: translateY(0);
     opacity: 1;
+    /* position: sticky;
+    top: 0;
+    z-index: 11;
+    background: var(--glass-strong);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform: translateY(0);
+    opacity: 1; */
 }
 
 #buttonBar ul{

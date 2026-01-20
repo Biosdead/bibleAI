@@ -101,11 +101,12 @@ v1.8
 - Deixar a Fonte mais Sobria. OK 
 - Deixar interface iphone like liquid glass. OK
 - Insira icones nos botões de voltar o icone de uma casinha e o botão de sugestão um icone sugestivo. - OK
-- Inserir imagens de anjos precisamente biblicos.
-
 
 v1.9
+- Corrigi o comportamento das barras. OK
+- Modificar a pagina de info somente para sugestões - OK
 - Tirar o foco dos botões pressionados no iphone. 
+- Inserir imagens de anjos precisamente biblicos.
 
 
 v2 

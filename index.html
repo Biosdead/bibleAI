@@ -115,7 +115,8 @@
         </button></li>
             <li><button id="increaseFontSizeBtn" onclick="increaseFontSize()">A+</button></li>
             <li><button id="decreaseFontSizeBtn" onclick="decreaseFontSize()">A-</button></li>
-            <li><button onclick="goToInfo()" aria-label="Info"><i class="fa fa-user" aria-hidden="true"></i></button></li>
+            <li><button onclick="goToInfo()" class="chapter" aria-label="Sugestões"><i class="fa fa-commenting" aria-hidden="true"></i></button></li>
+            <!-- <button onclick="goToInfo()" aria-label="Info"><i class="fa fa-user" aria-hidden="true"></i></button> -->
             <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
             <!-- <option value="aa">AA</option>
             <option value="ara">ARA</option>
@@ -176,7 +177,25 @@
     <script src="./jsons/br/nvi.js"></script>
     <script src="./index.js"></script>
     <script>
-        // Scroll hide handled in index.js to keep header/menu behavior consistent.
+    let lastScrollTop = 0;
+    const navbar = document.getElementById("buttonBar");
+    const topBar = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Rolando para baixo → esconder barra
+        navbar.classList.add("hidden");
+        topBar.classList.add("hidden");
+      } else {
+        // Rolando para cima → mostrar barra
+        navbar.classList.remove("hidden");
+        topBar.classList.remove("hidden");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // evita valores negativos
+    });
     </script>
 </body>
 </html>

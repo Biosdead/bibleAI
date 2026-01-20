@@ -22,32 +22,32 @@ var shareData;
 var imgSouce;
 var imgVerse;
 var imageVerseNumber;
-var scrollHideDisabled = false;
+// var scrollHideDisabled = false;
 
-function setScrollVisibility(show) {
-    const navbar = document.getElementById("buttonBar");
-    const mainHeader = document.getElementById("mainHeader");
-    if (navbar) {
-        navbar.classList.toggle("hidden", !show);
-    }
-    if (mainHeader) {
-        mainHeader.classList.toggle("hidden", !show);
-    }
-}
+// function setScrollVisibility(show) {
+//     const navbar = document.getElementById("buttonBar");
+//     const mainHeader = document.getElementById("mainHeader");
+//     if (navbar) {
+//         navbar.classList.toggle("hidden", !show);
+//     }
+//     if (mainHeader) {
+//         mainHeader.classList.toggle("hidden", !show);
+//     }
+// }
 
-function isVisible(element) {
-    return element && window.getComputedStyle(element).display !== "none";
-}
+// function isVisible(element) {
+//     return element && window.getComputedStyle(element).display !== "none";
+// }
 
-function updateScrollHideState() {
-    const oldTestament = document.getElementById("old-testament");
-    const newTestament = document.getElementById("new-testament");
-    const shouldDisable = isVisible(oldTestament) || isVisible(newTestament) || isVisible(divChapters) || isVisible(divVerses);
-    scrollHideDisabled = shouldDisable;
-    if (shouldDisable) {
-        setScrollVisibility(true);
-    }
-}
+// function updateScrollHideState() {
+//     const oldTestament = document.getElementById("old-testament");
+//     const newTestament = document.getElementById("new-testament");
+//     const shouldDisable = isVisible(oldTestament) || isVisible(newTestament) || isVisible(divChapters) || isVisible(divVerses);
+//     scrollHideDisabled = shouldDisable;
+//     if (shouldDisable) {
+//         setScrollVisibility(true);
+//     }
+// }
 
 // Array contendo os nomes dos livros da Bíblia
 const booksOfBible = [
@@ -78,43 +78,43 @@ window.onload = function(){
     loadFontSize();
     hideVerses();
     searchBarListener();
-    setupScrollHide();
+    // setupScrollHide();
 }
 
-function setupScrollHide(){
-    const navbar = document.getElementById("buttonBar");
-    const mainHeader = document.getElementById("mainHeader");
-    if (!navbar && !mainHeader) {
-        return;
-    }
-    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    let scrollTimeout = null;
-    setScrollVisibility(true);
-    window.addEventListener("scroll", function() {
-        if (scrollHideDisabled) {
-            setScrollVisibility(true);
-            return;
-        }
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScroll <= 0) {
-            setScrollVisibility(true);
-            lastScrollTop = 0;
-            return;
-        }
-        if (currentScroll > lastScrollTop + 2) {
-            setScrollVisibility(false);
-        } else if (currentScroll < lastScrollTop - 2) {
-            setScrollVisibility(true);
-        }
-        lastScrollTop = currentScroll;
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-        }
-        scrollTimeout = setTimeout(function() {
-            setScrollVisibility(true);
-        }, 350);
-    });
-}
+// function setupScrollHide(){
+//     const navbar = document.getElementById("buttonBar");
+//     const mainHeader = document.getElementById("mainHeader");
+//     if (!navbar && !mainHeader) {
+//         return;
+//     }
+//     let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//     let scrollTimeout = null;
+//     setScrollVisibility(true);
+//     window.addEventListener("scroll", function() {
+//         if (scrollHideDisabled) {
+//             setScrollVisibility(true);
+//             return;
+//         }
+//         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+//         if (currentScroll <= 0) {
+//             setScrollVisibility(true);
+//             lastScrollTop = 0;
+//             return;
+//         }
+//         if (currentScroll > lastScrollTop + 2) {
+//             setScrollVisibility(false);
+//         } else if (currentScroll < lastScrollTop - 2) {
+//             setScrollVisibility(true);
+//         }
+//         lastScrollTop = currentScroll;
+//         if (scrollTimeout) {
+//             clearTimeout(scrollTimeout);
+//         }
+//         scrollTimeout = setTimeout(function() {
+//             setScrollVisibility(true);
+//         }, 350);
+//     });
+// }
 
 
 // Função para preencher o cabeçalho com os nomes dos livros da Bíblia
@@ -236,7 +236,7 @@ function HideOldTestament() {
     new_testament_books.style.display = "none";
     hideChapters();
     hideVerses();
-    updateScrollHideState();
+    // updateScrollHideState();
   }
 
   function HideNewTestament() {
@@ -250,7 +250,7 @@ function HideOldTestament() {
     old_testament_books.style.display = "none";
     hideChapters();
     hideVerses();
-    updateScrollHideState();
+    // updateScrollHideState();
   }
 
   function populateChapters(livro) {
@@ -277,7 +277,7 @@ function HideOldTestament() {
     btnHide.setAttribute('onclick','hideChapters()');
     btnHide.classList.add("chapterSpecial");
     capitulos.appendChild(btnHide);
-    updateScrollHideState();
+    // updateScrollHideState();
   }
 
   function populateVerses(livro,capitulo) {
@@ -305,7 +305,7 @@ function HideOldTestament() {
     btnHide.setAttribute('onclick','hideVerses()');
     btnHide.classList.add("chapterSpecial");
     versesUl.appendChild(btnHide);
-    updateScrollHideState();
+    // updateScrollHideState();
   }
 
 //   function zoom() {
@@ -322,7 +322,7 @@ function HideOldandNewTestament(){
     old_testament_books.style.display = "none";
     var new_testament_books = document.getElementById("new-testament");
     new_testament_books.style.display = "none";
-    updateScrollHideState();
+    // updateScrollHideState();
 }
 
 function removeChildrenNodes(node){
@@ -339,22 +339,22 @@ function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
 
 function showDiv(div){
     div.style.display = "flex";
-    updateScrollHideState();
+    // updateScrollHideState();
 }
 
 function hideDiv(div){
     div.style.display = "none";
-    updateScrollHideState();
+    // updateScrollHideState();
 }
 
 function hideChapters(){
     divChapters.style.display = "none";
-    updateScrollHideState();
+    // updateScrollHideState();
 }
 
 function hideVerses(){
     divVerses.style.display = "none";
-    updateScrollHideState();
+    // updateScrollHideState();
 }
 
 function NextChapter(){
