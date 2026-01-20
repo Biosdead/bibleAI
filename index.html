@@ -178,7 +178,7 @@
     <script src="./index.js"></script>
     <script>
     let lastScrollTop = 0;
-    const navbar = document.getElementById("buttonBar");
+    const buttonBar = document.getElementById("buttonBar");
     const topBar = document.getElementById("mainHeader");
 
     window.addEventListener("scroll", function() {
@@ -186,11 +186,11 @@
 
       if (currentScroll > lastScrollTop) {
         // Rolando para baixo → esconder barra
-        navbar.classList.add("hidden");
+        buttonBar.classList.add("hidden");
         topBar.classList.add("hidden");
       } else {
         // Rolando para cima → mostrar barra
-        navbar.classList.remove("hidden");
+        buttonBar.classList.remove("hidden");
         topBar.classList.remove("hidden");
       }
 

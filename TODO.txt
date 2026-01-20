@@ -105,7 +105,8 @@ v1.8
 v1.9
 - Corrigi o comportamento das barras. OK
 - Modificar a pagina de info somente para sugestões - OK
-- Tirar o foco dos botões pressionados no iphone. 
+- Tirar o foco dos botões pressionados no iphone.OK
+- Footer do info corrigido. OK
 - Inserir imagens de anjos precisamente biblicos.
 
 

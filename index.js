@@ -144,6 +144,9 @@ function populateBookList() {
         }
        i++;
     });
+
+    // const buttonBar = document.getElementById("buttonBar");
+    // buttonBar.classList.add("hidden");
 }
 
 function renderBook(livro){ // Posso apagar
