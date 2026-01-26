@@ -107,7 +107,9 @@ v1.9
 - Modificar a pagina de info somente para sugestões - OK
 - Tirar o foco dos botões pressionados no iphone.OK
 - Footer do info corrigido. OK
-- Inserir imagens de anjos precisamente biblicos.
+- Inserir imagens de anjos precisamente biblicos Antigo testamento. OK
+- Inserir imagens de anjos precisamente biblicos Novo testamento.
+- Fazer os btns antigo e novo testamento mostrar o conteudo em um modal para ocupar toda a página.
 
 
 v2 
