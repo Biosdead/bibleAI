@@ -679,11 +679,11 @@ async function shareVerse() {
     if (navigator.share) {
         navigator.share({
             files: filesArray,
-            title: "Bible Illustrated by AI",
+            title: "IABiblia - Bíblia Ilustrada por IA",
             // text:verseText,
             text:livroNome + " - " + capNumero + ":" + verseText,
             // file: imgElement.src,
-            url: "https://www.bibleillustratedbyai.com" // Compartilha o link da imagem
+            url: "https://www.bibliailustradaporia.com.br" // Compartilha o link da imagem
         }).then(() => {
             console.log("Compartilhamento bem-sucedido");
         }).catch((error) => {
