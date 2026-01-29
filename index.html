@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Título da página -->
-    <title>Bíblia Ilustrada por IA – Descubra Passagens com Inteligência Artificial</title>
+    <title>IABiblia - Bíblia Ilustrada por IA – Descubra Passagens com Inteligência Artificial</title>
 
     <!-- Seu arquivo CSS -->
     <link rel="stylesheet" href="index.css">
@@ -43,27 +43,21 @@
     <header id="mainHeader">
         <!-- H1 principal do site -->
         <h1 class="font-reader">
-           Bibl_ia - Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
+           <span id="logo">IA</span>Bibl<span id="logo">ia</span> - Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
         </h1>
         <br>
         <nav>
-            <button class="chapter" onclick="HideOldTestament()">Antigo Testamento</button>
-            <ul id="old-testament" style="display: none;">
-                <!-- Nomes dos livros adicionados dinamicamente -->
-            </ul>
-            <button class="chapter" onclick="HideNewTestament()">Novo Testamento</button>
-            <ul id="new-testament" style="display: none;">
-                <!-- Nomes dos livros adicionados dinamicamente -->
-            </ul>
-            <div class="container" id="divChapters" style="display: none;">
-                <p>Capítulos de <span  id="bookName">livro</span></p>
-                <br>
-                <ul id="chapters"></ul>
+            <div class="selectGroup">
+                <label for="bookSelect">Livro</label>
+                <select class="chapter" id="bookSelect" aria-label="Selecionar livro"></select>
             </div>
-            <div class="container" id="divVerses" style="display: none;">
-                <p><span  id="bookNameChapter">livro - </span></p>
-                <br>
-                <ul id="verses"></ul>
+            <div class="selectGroup">
+                <label for="chapterSelect">Capítulo</label>
+                <select class="chapter" id="chapterSelect" aria-label="Selecionar capítulo" disabled></select>
+            </div>
+            <div class="selectGroup">
+                <label for="verseSelect">Versículo</label>
+                <select class="chapter" id="verseSelect" aria-label="Selecionar versículo" disabled></select>
             </div>
             <!-- <br><br>
             <div id="search">

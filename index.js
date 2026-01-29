@@ -1,8 +1,9 @@
 const book = document.getElementById('book');
 const loader = document.getElementById('loader');
 const chapter = document.getElementById('chapter');
-const divChapters = document.getElementById("divChapters");
-const divVerses = document.getElementById("divVerses");
+const bookSelect = document.getElementById("bookSelect");
+const chapterSelect = document.getElementById("chapterSelect");
+const verseSelect = document.getElementById("verseSelect");
 var globalChapter = 0; // shows the current chapter
 var globalBook = 0; // shows the current book
 var globalFontSize = 0;
@@ -11,7 +12,7 @@ var darkModeOn = 1; // switchs between the dark mode and light mode
 var r = document.querySelector(':root'); // select the root element to change the css variables.
 // var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 var searchBar = document.getElementById("busca");
-const dialogo = document.querySelector("dialog");
+const dialogo = document.getElementById("DialogMain");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
 var bible = bibleAA;
@@ -70,7 +71,8 @@ const booksOfBible = [
 
 
 window.onload = function(){
-    populateBookList(); // Chamada da função para preencher o cabeçalho com os nomes dos livros da Bíblia
+    populateBookSelect();
+    bindSelectListeners();
     // disableContextMenu(); // Desabilita o menu de contexto
     loadDarkMode(); // carregar o estado atual do darkmode
     loadData();
@@ -117,50 +119,128 @@ window.onload = function(){
 // }
 
 
-// Função para preencher o cabeçalho com os nomes dos livros da Bíblia
-function populateBookList() {
-    let old_testament = true;
-    const bookListOld = document.getElementById("old-testament");
-    const bookListNew = document.getElementById("new-testament");
-    let i = 0;
-    booksOfBible.forEach(book => {
-        const listItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = '#';
-        // link.onclick = () => renderBook(i);
-        link.textContent = book;
-        link.setAttribute('onclick','populateChapters('+i+')');
-        // link.classList.add('chapter');
-        listItem.appendChild(link);
-
-        if(book == "Mateus"){
-            old_testament = false;
-        }
-
-        if (old_testament) {
-            bookListOld.appendChild(listItem);
-        }else{
-            bookListNew.appendChild(listItem);
-        }
-       i++;
-    });
-
-    // const buttonBar = document.getElementById("buttonBar");
-    // buttonBar.classList.add("hidden");
+function resetSelect(select, placeholder) {
+    if (!select) {
+        return;
+    }
+    select.innerHTML = "";
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = placeholder;
+    option.disabled = true;
+    option.selected = true;
+    select.appendChild(option);
 }
 
-function renderBook(livro){ // Posso apagar
-    let cap = 0;
-    let TrueChapter = cap + 1;
-    book.innerHTML = bible[livro].name;
-    chapter.innerHTML = bible[livro].name + " " + TrueChapter;
-    for (let i = 0; i < bible[livro].chapters[cap].length; i++) {
-        let verse = i + 1;
-        let para = document.createElement("p");
-        para.innerHTML = verse + ". " + bible[livro].chapters[cap][i];
-        chapter.appendChild(para);
+function populateBookSelect() {
+    if (!bookSelect) {
+        return;
     }
-    populateChapters(livro);
+    resetSelect(bookSelect, "Selecione o livro");
+
+    const oldGroup = document.createElement("optgroup");
+    oldGroup.label = "Antigo Testamento";
+    const newGroup = document.createElement("optgroup");
+    newGroup.label = "Novo Testamento";
+
+    booksOfBible.forEach((bookName, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = bookName;
+        if (index < 39) {
+            oldGroup.appendChild(option);
+        } else {
+            newGroup.appendChild(option);
+        }
+    });
+
+    bookSelect.appendChild(oldGroup);
+    bookSelect.appendChild(newGroup);
+}
+
+function populateChapterSelect(bookIndex) {
+    if (!chapterSelect) {
+        return;
+    }
+    resetSelect(chapterSelect, "Selecione o capítulo");
+    const chapters = bible[bookIndex]?.chapters || [];
+    chapters.forEach((_, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = index + 1;
+        chapterSelect.appendChild(option);
+    });
+    chapterSelect.disabled = false;
+}
+
+function populateVerseSelect(bookIndex, chapterIndex) {
+    if (!verseSelect) {
+        return;
+    }
+    resetSelect(verseSelect, "Selecione o versículo");
+    const verses = bible[bookIndex]?.chapters?.[chapterIndex] || [];
+    verses.forEach((_, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.textContent = index + 1;
+        verseSelect.appendChild(option);
+    });
+    verseSelect.disabled = false;
+}
+
+function bindSelectListeners() {
+    if (bookSelect) {
+        bookSelect.addEventListener("change", function() {
+            const bookIndex = parseInt(bookSelect.value);
+            if (Number.isNaN(bookIndex)) {
+                return;
+            }
+            globalBook = bookIndex;
+            populateChapterSelect(bookIndex);
+            if (chapterSelect && chapterSelect.options.length > 1) {
+                chapterSelect.selectedIndex = 1;
+                chapterSelect.dispatchEvent(new Event("change"));
+            }
+        });
+    }
+
+    if (chapterSelect) {
+        chapterSelect.addEventListener("change", function() {
+            const chapterIndex = parseInt(chapterSelect.value);
+            if (Number.isNaN(chapterIndex)) {
+                return;
+            }
+            globalChapter = chapterIndex;
+            renderBookAndChapter(globalBook, chapterIndex);
+            populateVerseSelect(globalBook, chapterIndex);
+        });
+    }
+
+    if (verseSelect) {
+        verseSelect.addEventListener("change", function() {
+            const verseIndex = parseInt(verseSelect.value);
+            if (Number.isNaN(verseIndex)) {
+                return;
+            }
+            const target = document.getElementById("v" + verseIndex);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    }
+}
+
+function syncSelectors(bookIndex, chapterIndex) {
+    if (!bookSelect || !chapterSelect) {
+        return;
+    }
+    if (!bookSelect.value) {
+        populateBookSelect();
+    }
+    bookSelect.value = String(bookIndex);
+    populateChapterSelect(bookIndex);
+    chapterSelect.value = String(chapterIndex);
+    populateVerseSelect(bookIndex, chapterIndex);
 }
 
 function renderBookAndChapter(livro, chap){
@@ -170,7 +250,7 @@ function renderBookAndChapter(livro, chap){
     removeChildrenNodes(chapter);
     let realIndexBook = livro + 1;
     let realIndexChapter = chap + 1;
-    hideDiv(divChapters);
+    syncSelectors(livro, chap);
     let cap = chap;
     book.innerHTML = bible[livro].name;
     chapter.innerHTML = " Capítulo " + realIndexChapter;
@@ -210,7 +290,7 @@ function renderBookAndChapter(livro, chap){
 
     saveData();
     undisplayLoader(); 
-    populateVerses(livro, chap);
+    populateVerseSelect(livro, chap);
 }
 
 
@@ -227,107 +307,6 @@ function renderBookChapterVerse(livro, chap, ver){
     chapter.appendChild(bookchapverse); 
 }
 
-
-function HideOldTestament() {
-    var old_testament_books = document.getElementById("old-testament");
-    if (old_testament_books.style.display === "none") {
-        old_testament_books.style.display = "inline-flex";
-    } else {
-        old_testament_books.style.display = "none";
-    }
-    var new_testament_books = document.getElementById("new-testament");
-    new_testament_books.style.display = "none";
-    hideChapters();
-    hideVerses();
-    // updateScrollHideState();
-  }
-
-  function HideNewTestament() {
-    var new_testament_books = document.getElementById("new-testament");
-    if (new_testament_books.style.display === "none") {
-        new_testament_books.style.display = "inline-flex";
-    } else {
-        new_testament_books.style.display = "none";
-    }
-    var old_testament_books = document.getElementById("old-testament");
-    old_testament_books.style.display = "none";
-    hideChapters();
-    hideVerses();
-    // updateScrollHideState();
-  }
-
-  function populateChapters(livro) {
-    showDiv(divChapters);
-    HideOldandNewTestament();
-    const capitulos = document.getElementById("chapters");
-    const bookName = document.getElementById("bookName");
-    removeChildrenNodes(capitulos);
-    bookName.innerHTML = bible[livro].name;
-    let book = bible[livro].chapters; 
-    let i = 0;
-    book.forEach(chapter => {
-        const listItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = '#';
-        link.textContent = i+1;
-        link.setAttribute('onclick','renderBookAndChapter('+livro+','+i+')');
-        listItem.appendChild(link);
-        capitulos.appendChild(listItem);
-       i++;
-    });
-    const btnHide = document.createElement("button");
-    btnHide.textContent = "Minimizar";
-    btnHide.setAttribute('onclick','hideChapters()');
-    btnHide.classList.add("chapterSpecial");
-    capitulos.appendChild(btnHide);
-    // updateScrollHideState();
-  }
-
-  function populateVerses(livro,capitulo) {
-    showDiv(divVerses);
-    HideOldandNewTestament();
-    const bookName = document.getElementById("bookNameChapter");
-    const versesUl = document.getElementById("verses");
-    removeChildrenNodes(versesUl);
-    let TrueChapter = capitulo + 1;
-    bookName.innerHTML = bible[livro].name+" - " + TrueChapter;
-    let verses = bible[livro].chapters[capitulo]; 
-    let i = 0;
-    verses.forEach(verse => {
-        const listItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.textContent = i+1;
-        link.href = '#v'+i;
-        link.setAttribute('onclick','hideVerses()');
-        listItem.appendChild(link);
-        versesUl.appendChild(listItem);
-       i++;
-    });
-    const btnHide = document.createElement("button");
-    btnHide.textContent = "Minimizar";
-    btnHide.setAttribute('onclick','hideVerses()');
-    btnHide.classList.add("chapterSpecial");
-    versesUl.appendChild(btnHide);
-    // updateScrollHideState();
-  }
-
-//   function zoom() {
-//     var img = document.getElementById("img");
-//     if (img.style.display === "none") {
-//         img.style.display = "block";
-//     } else {
-//         img.style.display = "none";
-//     }
-//   }
-
-function HideOldandNewTestament(){
-    var old_testament_books = document.getElementById("old-testament");
-    old_testament_books.style.display = "none";
-    var new_testament_books = document.getElementById("new-testament");
-    new_testament_books.style.display = "none";
-    // updateScrollHideState();
-}
-
 function removeChildrenNodes(node){
     while (node.hasChildNodes()) {
         node.removeChild(node.firstChild);
@@ -340,24 +319,16 @@ function disableContextMenu(){ // desabilita o segundo Clique do btn esquerdo.
     });
 }
 
-function showDiv(div){
-    div.style.display = "flex";
-    // updateScrollHideState();
-}
+function showDiv() {}
 
-function hideDiv(div){
-    div.style.display = "none";
-    // updateScrollHideState();
-}
+function hideDiv() {}
 
-function hideChapters(){
-    divChapters.style.display = "none";
-    // updateScrollHideState();
-}
+function hideChapters() {}
 
 function hideVerses(){
-    divVerses.style.display = "none";
-    // updateScrollHideState();
+    if (verseSelect) {
+        verseSelect.selectedIndex = 0;
+    }
 }
 
 function NextChapter(){
