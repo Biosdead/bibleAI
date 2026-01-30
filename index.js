@@ -13,6 +13,7 @@ var r = document.querySelector(':root'); // select the root element to change th
 // var lblDM = document.getElementById('lblDarkMode'); // change lable to dark and light mode
 var searchBar = document.getElementById("busca");
 const dialogo = document.getElementById("DialogMain");
+const fontSizeSelect = document.getElementById("fontSizeSelect");
 var imgSelected = document.getElementById("imgSelected");
 var DialogSrc = "";
 var bible = bibleAA;
@@ -80,6 +81,7 @@ window.onload = function(){
     loadFontSize();
     hideVerses();
     searchBarListener();
+    bindFontSizeSelect();
     // setupScrollHide();
 }
 
@@ -706,6 +708,7 @@ function loadFontSize(){
     }else{
         globalFontSize = 0; 
     }
+    syncFontSizeSelect();
 }
 
 
@@ -743,5 +746,26 @@ function changeFontSize(){
     }else if( globalFontSize == 3){
         r.style.setProperty('--fontSizeP', "3rem");
         // document.getElementById("increaseFontSizeBtn").disabled = true;
+    }
+}
+
+function bindFontSizeSelect(){
+    if (!fontSizeSelect) {
+        return;
+    }
+    fontSizeSelect.addEventListener("change", function() {
+        const value = parseInt(fontSizeSelect.value);
+        if (Number.isNaN(value)) {
+            return;
+        }
+        globalFontSize = value;
+        saveFontSize();
+        changeFontSize();
+    });
+}
+
+function syncFontSizeSelect(){
+    if (fontSizeSelect) {
+        fontSizeSelect.value = String(globalFontSize);
     }
 }

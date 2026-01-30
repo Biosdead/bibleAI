@@ -114,12 +114,12 @@ v1.9
 
 v2.0 
 - Colocar o livro, cap e ver na mesma linha; OK
-- Revisar as imagens; Parei no livro 8
-- Gravar Vídeo demonstrando todas as funcionalidades do sistema. E usar como anúncio natural.
+- Revisar as imagens; Parei no livro 35
 - Verificar dominios e nomes de aplicativos para ver disponibilidade. Como IABiblia, Bibl-ia, AIBible, Bibl-AI.
+- Gravar Vídeo demonstrando todas as funcionalidades do sistema. E usar como anúncio natural.
 - Fazer Assinatura (Mais Barato) via Iphone com atualizações mensais e imagens novas. Web View
 - Fazer Versão offline (React Native) Mais caro, mas paga somente uma vez. Com imagens estáticas e sem atualizações. Pode ser webview com dados locais.
-- Fazer A+ e A- com um único select para aumentar e reduzir a fonte.
+- Fazer A+ e A- com um único select para aumentar e reduzir a fonte. OK
 
 
 

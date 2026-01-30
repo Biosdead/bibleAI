@@ -107,8 +107,14 @@
             <li><button onclick="darkMode()" class="chapterSmall" aria-label="Modo claro/escuro">
             <i id="darkMode" class="fa fa-lightbulb-o lamp-off" style="font-size:2rem;" aria-hidden="true"></i>
         </button></li>
-            <li><button id="increaseFontSizeBtn" onclick="increaseFontSize()">A+</button></li>
-            <li><button id="decreaseFontSizeBtn" onclick="decreaseFontSize()">A-</button></li>
+            <li>
+                <select id="fontSizeSelect" aria-label="Tamanho da fonte">
+                    <option value="0">A</option>
+                    <option value="1">A+</option>
+                    <option value="2">A++</option>
+                    <option value="3">A+++</option>
+                </select>
+            </li>
             <li><button onclick="goToInfo()" class="chapter" aria-label="Sugestões"><i class="fa fa-commenting" aria-hidden="true"></i></button></li>
             <!-- <button onclick="goToInfo()" aria-label="Info"><i class="fa fa-user" aria-hidden="true"></i></button> -->
             <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
