@@ -119,6 +119,7 @@ v2.0
 - Verificar dominios e nomes de aplicativos para ver disponibilidade. Como IABiblia, Bibl-ia, AIBible, Bibl-AI.
 - Fazer Assinatura (Mais Barato) via Iphone com atualizações mensais e imagens novas. Web View
 - Fazer Versão offline (React Native) Mais caro, mas paga somente uma vez. Com imagens estáticas e sem atualizações. Pode ser webview com dados locais.
+- Fazer A+ e A- com um único select para aumentar e reduzir a fonte.
 
 
 
