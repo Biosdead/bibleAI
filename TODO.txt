@@ -110,7 +110,7 @@ v1.9
 - Inserir imagens de anjos precisamente biblicos Antigo testamento. OK
 - Inserir imagens de anjos precisamente biblicos Novo testamento. Ok
 - Fazer os btns antigo e novo testamento mostrar o conteudo em um modal para ocupar toda a página. OK
-- Fazer o clique alternar: se os menus estiverem visíveis, esconder; se estiverem escondidos, mostrar.
+
 
 
 v2.0 
@@ -121,6 +121,8 @@ v2.0
 - Fazer Assinatura (Mais Barato) via Iphone com atualizações mensais e imagens novas. Web View
 - Fazer Versão offline (React Native) Mais caro, mas paga somente uma vez. Com imagens estáticas e sem atualizações. Pode ser webview com dados locais.
 - Fazer A+ e A- com um único select para aumentar e reduzir a fonte. OK
+- Fazer o clique alternar: se os menus estiverem visíveis, esconder; se estiverem escondidos, mostrar. OK
+- Atualizar Versão inglês. 
 
 
 
