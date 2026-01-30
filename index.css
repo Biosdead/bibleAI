@@ -201,7 +201,7 @@ nav select.chapter:disabled {
 
 nav {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: center;
     gap: 0.4rem;
@@ -221,22 +221,29 @@ nav {
 }
 
 @media (max-width: 720px) {
+    nav {
+        flex-wrap: nowrap;
+        gap: 0.3rem;
+    }
     nav select.chapter {
-        width: min(28vw, 160px);
-        padding: 6px 10px;
-        font-size: 0.9rem;
+        width: min(30vw, 140px);
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    .selectGroup {
+        min-width: 0;
     }
 }
 
 @media (max-width: 480px) {
     nav {
-        gap: 0.6rem;
+        flex-wrap: nowrap;
+        gap: 0.25rem;
     }
     nav select.chapter {
-        width: min(80vw, 240px);
-    }
-    .selectGroup {
-        width: 100%;
+        width: min(30vw, 120px);
+        padding: 5px 6px;
+        font-size: 0.8rem;
     }
 }
 nav .container {
