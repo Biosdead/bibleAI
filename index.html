@@ -196,6 +196,20 @@
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // evita valores negativos
     });
+
+    const mainContent = document.querySelector("main");
+    if (mainContent) {
+      mainContent.addEventListener("click", function() {
+        const isHidden = buttonBar.classList.contains("hidden") && topBar.classList.contains("hidden");
+        if (isHidden) {
+          buttonBar.classList.remove("hidden");
+          topBar.classList.remove("hidden");
+        } else {
+          buttonBar.classList.add("hidden");
+          topBar.classList.add("hidden");
+        }
+      });
+    }
     </script>
 </body>
 </html>

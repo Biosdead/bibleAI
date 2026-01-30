@@ -110,6 +110,7 @@ v1.9
 - Inserir imagens de anjos precisamente biblicos Antigo testamento. OK
 - Inserir imagens de anjos precisamente biblicos Novo testamento. Ok
 - Fazer os btns antigo e novo testamento mostrar o conteudo em um modal para ocupar toda a página. OK
+- Fazer o clique alternar: se os menus estiverem visíveis, esconder; se estiverem escondidos, mostrar.
 
 
 v2.0 
