@@ -621,7 +621,7 @@ async function shareDialog() {
   ];
 
     shareData = {
-        title: "Bíblia Ilustrada por IA",
+        title: "Bíblia Ilustrada por IA – Bibliarte",
         text: livroNome + " : " + capNumero + " - " + imgVerse,
         url: "https://biosdead.github.io/bibleAI/"
         // files: filesArray,
@@ -681,7 +681,7 @@ async function shareVerse() {
     if (navigator.share) {
         navigator.share({
             files: filesArray,
-            title: "IABiblia - Bíblia Ilustrada por IA",
+            title: "Bíblia Ilustrada por IA – Bibliarte",
             // text:verseText,
             text:livroNome + " - " + capNumero + ":" + verseText,
             // file: imgElement.src,

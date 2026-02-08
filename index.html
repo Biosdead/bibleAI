@@ -13,7 +13,7 @@
     <meta name="keywords" content="Bíblia, IA, Inteligência Artificial, Antigo Testamento, Novo Testamento, ilustrações bíblicas">
 
     <!-- Open Graph: para compartilhamento em redes sociais -->
-    <meta property="og:title" content="Bíblia Ilustrada por IA">
+    <meta property="og:title" content="Bíblia Ilustrada por IA – Bibliarte">
     <meta property="og:description" content="Explore passagens da Bíblia ilustradas por Inteligência Artificial, com uma experiência visual única de cada versículo.">
     <meta property="og:image" content="./imgs/icon/iconOriginal.png"> <!-- Exemplo de imagem -->
     <meta property="og:url" content="https://www.bibliailustradaporia.com.br"> <!-- URL do seu site -->
@@ -21,7 +21,7 @@
 
     <!-- Twitter Cards (opcional) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bíblia Ilustrada por IA">
+    <meta name="twitter:title" content="Bíblia Ilustrada por IA – Bibliarte">
     <meta name="twitter:description" content="Descubra uma experiência única ao ler a Bíblia com ilustrações geradas por IA.">
     <meta name="twitter:image" content="./imgs/icon/iconOriginal.png">
 
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Título da página -->
-    <title>IABiblia - Bíblia Ilustrada por IA – Descubra Passagens com Inteligência Artificial</title>
+    <title>Bíblia Ilustrada por IA – Bibliarte</title>
 
     <!-- Seu arquivo CSS -->
     <link rel="stylesheet" href="index.css">
@@ -43,21 +43,22 @@
     <header id="mainHeader">
         <!-- H1 principal do site -->
         <h1 class="font-reader">
-           <span id="logo">IA</span>Bibl<span id="logo">ia</span> - Bíbl<span id="logo">ia</span> ilustrada por <span id="logo">Inteligência Artificial</span>
+           Bíbl<span id="logo">ia</span> Ilustrada por <span id="logo">IA</span>
         </h1>
+        <h3>Bibl<span id="logo">iart</span>e</h3>
         <br>
         <nav>
             <div class="selectGroup">
                 <label for="bookSelect">Livro</label>
-                <select class="chapter" id="bookSelect" aria-label="Selecionar livro"></select>
+                <select class="chapter" id="bookSelect" aria-label="Selecionar livro" style="font-size:1.2rem;"></select>
             </div>
             <div class="selectGroup">
                 <label for="chapterSelect">Capítulo</label>
-                <select class="chapter" id="chapterSelect" aria-label="Selecionar capítulo" disabled></select>
+                <select class="chapter" id="chapterSelect" aria-label="Selecionar capítulo" disabled style="font-size:1.2rem;"></select>
             </div>
             <div class="selectGroup">
                 <label for="verseSelect">Versículo</label>
-                <select class="chapter" id="verseSelect" aria-label="Selecionar versículo" disabled></select>
+                <select class="chapter" id="verseSelect" aria-label="Selecionar versículo" disabled style="font-size:1.2rem;"></select>
             </div>
             <!-- <br><br>
             <div id="search">
@@ -100,33 +101,28 @@
     <footer>
     <nav id="buttonBar">
         <ul>
-            <li><button onclick="PreviousChapter()" class="chapter" aria-label="Capítulo Anterior"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></li>
-            <li><button onclick="NextChapter()" class="chapter" aria-label="Próximo Capítulo"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></li>
+            <li><button onclick="PreviousChapter()" class="chapter" aria-label="Capítulo Anterior"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size:1.2rem;"></i></button></li>
+            <li><button onclick="NextChapter()" class="chapter" aria-label="Próximo Capítulo"><i class="fa fa-arrow-right" aria-hidden="true" style="font-size:1.2rem;"></i></button></li>
         </ul>
         <ul>
             <li><button onclick="darkMode()" class="chapterSmall" aria-label="Modo claro/escuro">
             <i id="darkMode" class="fa fa-lightbulb-o lamp-off" style="font-size:2rem;" aria-hidden="true"></i>
         </button></li>
             <li>
-                <select id="fontSizeSelect" aria-label="Tamanho da fonte">
+                <select id="fontSizeSelect" aria-label="Tamanho da fonte" class="chapterSmall" style="font-size:1.2rem;">
                     <option value="0">A</option>
                     <option value="1">A+</option>
                     <option value="2">A++</option>
                     <option value="3">A+++</option>
                 </select>
             </li>
-            <li><button onclick="goToInfo()" class="chapter" aria-label="Sugestões"><i class="fa fa-commenting" aria-hidden="true"></i></button></li>
-            <!-- <button onclick="goToInfo()" aria-label="Info"><i class="fa fa-user" aria-hidden="true"></i></button> -->
-            <li><select class="chapter" onchange="bibleTranslation()" name="version" id="version">
-            <!-- <option value="aa">AA</option>
-            <option value="ara">ARA</option>
-            <option value="acf">ACF</option>
-            <option value="nvi">NVI</option> -->
+            <li><select onchange="bibleTranslation()" name="version" id="version" class="chapterSmall" style="font-size:1.2rem;">
             <option value="aa">AA - Almeida Atualizada</option>
             <option value="ara">ARA - Almeida Revista e Atualizada</option>
             <option value="acf">ACF - Almeida Corrigida Fiel</option>
             <option value="nvi">NVI - Nova Versão Internacional</option>
         </select></li>
+            <li><button onclick="goToInfo()" class="chapterSmall" aria-label="Sugestões"><i class="fa fa-commenting" aria-hidden="true" style="font-size:2rem;"></i></button></li>
         </ul>
     </nav>
     </footer>

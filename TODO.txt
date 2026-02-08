@@ -115,15 +115,15 @@ v1.9
 
 v2.0 
 - Colocar o livro, cap e ver na mesma linha; OK
-- Revisar as imagens; Parei no livro 35
-- Verificar dominios e nomes de aplicativos para ver disponibilidade. Como IABiblia, Bibl-ia, AIBible, Bibl-AI.
-- Gravar Vídeo demonstrando todas as funcionalidades do sistema. E usar como anúncio natural.
-- Fazer Assinatura (Mais Barato) via Iphone com atualizações mensais e imagens novas. Web View
-- Fazer Versão offline (React Native) Mais caro, mas paga somente uma vez. Com imagens estáticas e sem atualizações. Pode ser webview com dados locais.
+- Revisar as imagens; OK
 - Fazer A+ e A- com um único select para aumentar e reduzir a fonte. OK
 - Fazer o clique alternar: se os menus estiverem visíveis, esconder; se estiverem escondidos, mostrar. OK
+- Verificar dominios e nomes de aplicativos para ver disponibilidade. Como IABiblia, Bibl-ia, AIBible, Bibl-AI. Todos os nomes anteriores já possuiam registro de domínio por isso ficou Bibliarte. Art vem de artificial e de arte. OK
+- Fazer imagens da cobra e da expulsão do paraiso. Ok
+- Fazer Assinatura (Mais Barato) via Iphone com atualizações mensais e imagens novas. Web View
+- Fazer Versão offline (React Native) Mais caro, mas paga somente uma vez. Com imagens estáticas e sem atualizações. Pode ser webview com dados locais.
 - Atualizar Versão inglês. 
-
+- Gravar Vídeo demonstrando todas as funcionalidades do sistema. E usar como anúncio natural.
 
 
 
@@ -131,6 +131,10 @@ v2.1
 - Inserir barra de busca com split e excluindo preposições.
 - Usar leitor de voz para ler a biblia, web speech api.
 - Fazer galeria de imagens com os seus versículos.
+- JSON NTLH e King James
+- Gif animado na biblia. (Principalmente os anjos)
+- Modo história vai lendo e mostrando imagens para ilustrar a história. (Para isso vou precisar ter uma imagem para a maioria dos versículos.)
+
 
 
 
